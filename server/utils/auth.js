@@ -29,8 +29,8 @@ module.exports = {
     return req;
   },
 //   signToken args will change based on our User model 
-  signToken: function ({ /* insert args here */ }) {
-    const payload = { /* pulled from args */ };
+  signToken: function ({ userName }) {
+    const payload = { userName };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
   },
