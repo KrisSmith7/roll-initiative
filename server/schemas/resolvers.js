@@ -23,8 +23,8 @@ const resolvers = {
             return { token, user }; 
         },
         // login fn for testing JWT, needs updating as User model is updated
-        login: async(parent, { userName }) => {
-            const user = await User.findOne({ userName });
+        login: async(parent, { username }) => {
+            const user = await User.findOne({ username });
 
             if (!user) {
                 throw new AuthenticationError('Incorrect credentials!');

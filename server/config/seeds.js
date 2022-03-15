@@ -5,7 +5,7 @@ db.once('open', async () => {
     await User.deleteMany(); 
 
     await User.create({
-        userName: 'testBoi'
+        username: 'testBoi'
     })
 
     console.log('user created');
