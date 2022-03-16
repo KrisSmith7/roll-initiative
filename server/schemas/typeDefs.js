@@ -7,6 +7,14 @@ const typeDefs = gql`
         email: String
     }
 
+    type Thought {
+        _id: ID
+        thoughtText: String
+        createdAt: String
+        userName: String
+
+    }
+
     type Auth {
         token: ID!
         user: User
@@ -15,11 +23,15 @@ const typeDefs = gql`
     type Query {
         me: User
         users: [User]
+        thoughts(userName: String): [Thought]
+        thought(_id: ID!): Thought
     }
    
     type Mutation {
-        login(email: String!, password: String!): Auth
-        addUser(username: String!, email: String!, password: String!): Auth
-    }`
+        login(userName: String!): Auth
+        addUser(userName: String!): Auth
+        addThought(thoughtText: String!): Thought
+    }
+`;
 
 module.exports = typeDefs; 
