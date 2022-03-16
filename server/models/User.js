@@ -60,12 +60,12 @@ userSchema.pre('save', async function(next) {
     }
 
     next();
-    thoughts: [
-        {
-            type: Schema.Types.ObjectId,
-            ref: 'Thought'
-        }
-    ]
+    // thoughts: [
+    //     {
+    //         type: Schema.Types.ObjectId,
+    //         ref: 'Thought'
+    //     }
+    // ]
 })
 
 // fn for comparing inc password with hashed password

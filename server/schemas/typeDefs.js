@@ -11,7 +11,7 @@ const typeDefs = gql`
         _id: ID
         thoughtText: String
         createdAt: String
-        userName: String
+        username: String
 
     }
 
@@ -23,13 +23,13 @@ const typeDefs = gql`
     type Query {
         me: User
         users: [User]
-        thoughts(userName: String): [Thought]
+        thoughts(username: String): [Thought]
         thought(_id: ID!): Thought
     }
    
     type Mutation {
-        login(userName: String!): Auth
-        addUser(userName: String!): Auth
+        login(username: String!): Auth
+        addUser(username: String!): Auth
         addThought(thoughtText: String!): Thought
     }
 `;
