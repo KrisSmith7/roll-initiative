@@ -32,12 +32,12 @@ const userSchema = new Schema({
             ref: 'Thought'
         }
     ], 
-    // characters: [
-    //     {
-    //         type: Schema.Types.ObjectId, 
-    //         ref: 'Character'
-    //     }
-    // ],
+    characters: [
+        {
+            type: Schema.Types.ObjectId, 
+            ref: 'Character'
+        }
+    ],
     // campaigns: [
     //     {
     //         type: Schema.Types.ObjectId, 

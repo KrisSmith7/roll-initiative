@@ -15,6 +15,24 @@ const typeDefs = gql`
 
     }
 
+    type Character {
+        _id: ID 
+        username: String
+        name: String
+        class: String
+        level: Int
+        background: String
+        race: String
+        alignment: String
+        bio: String
+        str: Int
+        dex: Int
+        con: Int
+        int: Int
+        wis: Int
+        cha: Int
+    }
+
     type Auth {
         token: ID!
         user: User
@@ -31,6 +49,8 @@ const typeDefs = gql`
         login(email: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addThought(thoughtText: String!): Thought
+        addCharacter(name: String!, class: String!, level: Int, background: String, 
+            race: String, alignment: String, bio: String): Character
     }`
 
 module.exports = typeDefs; 
