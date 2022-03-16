@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-
 const characterSchema = new Schema({
     username: {
         type: String, 
@@ -39,19 +38,19 @@ const characterSchema = new Schema({
         type: Number
     },
     dex: {
-        type: INTEGER
+        type: Number
     },
     con: {
-        type: INTEGER
+        type: Number
     },
     int: {
-        type: INTEGER
+        type: Number
     },
     wis: {
-        type: INTEGER
+        type: Number
     },
     cha: {
-        type: INTEGER
+        type: Number
     }
     },
     {
