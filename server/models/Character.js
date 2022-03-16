@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const { INTEGER } = require('sequelize/dist');
 
 const { Schema } = mongoose;
 
@@ -21,7 +20,7 @@ const characterSchema = new Schema({
         trim: true,
     },
     level: {
-        type: INTEGER, 
+        type: Number, 
         required: true,
     },
     background: {
@@ -37,7 +36,7 @@ const characterSchema = new Schema({
         type: String,
     },
     str: {
-        type: INTEGER
+        type: Number
     },
     dex: {
         type: INTEGER
