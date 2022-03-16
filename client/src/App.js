@@ -35,18 +35,12 @@ const client = new ApolloClient({
 
 function App() {
   return (
-<<<<<<< HEAD
     <ApolloProvider client={client}>
 
       <SiteContainer/>
 
     </ApolloProvider>
     
-=======
-
-    <SiteContainer/>
-
->>>>>>> dd3b8c9126209996361cb7256724d37bcc24135f
   );
 }
 
