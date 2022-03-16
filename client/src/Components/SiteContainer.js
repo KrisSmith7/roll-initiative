@@ -3,8 +3,8 @@ import NavTabs from './NavTabs';
 import Footer from './Footer';
 import Homepage from './Pages/Homepage';
 import Dashboard from './Pages/Dashboard';
-import Campaigns from './Pages/Campaigns';
-import Characters from './Pages/Characters';
+// import Campaigns from './Pages/Campaigns';
+import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
 
 export default function SiteContainer() {
@@ -19,36 +19,27 @@ export default function SiteContainer() {
 
     if (currentPage === 'Dashboard') {
       return (
-        <div>
+        <div className='flex'>
           <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
           <Dashboard />
         </div>
       );
     }
 
-    if (currentPage === 'Campaigns') {
+    if (currentPage === 'Profile') {
       return (
-        <div>
+        <div className='flex'>
           <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-          <Campaigns />
-        </div>
-      );
-    }
-
-    if (currentPage === 'Characters') {
-      return (
-        <div>
-          <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-          <Characters />
+          <Profile />
         </div>
       );
     }
 
     if (currentPage === 'Resources') {
       return (
-      <div>
+      <div className='flex'>
         <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-        <Characters />
+        <Resources />
       </div>
       );
     }

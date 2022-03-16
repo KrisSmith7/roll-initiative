@@ -15,6 +15,9 @@ module.exports = {
         macondo: ['Macondo Swash Caps', 'cursive'],
         antiqua: ['Modern Antiqua', 'cursive'],
       },
+      backgroundImage: {
+       'sidebar': "url('./assets/stock_images/stock_image10.jpg')"
+      }
     },
   },
   plugins: [],
