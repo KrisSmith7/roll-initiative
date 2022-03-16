@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Thought, Character } = require('../models');
+const { User, Post, Character } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -14,12 +14,12 @@ const resolvers = {
                 return userData; 
             }
         },
-        thoughts: async (parent, { username }) => {
+        posts: async (parent, { username }) => {
             const params = username ? { username } : {};
-            return Thought.find(params).sort({ createdAt: -1 });
+            return Post.find(params).sort({ createdAt: -1 });
         },
-        thought: async (parent, { _id }) => {
-            return Thought.findOne({ _id });
+        post: async (parent, { _id }) => {
+            return Post.findOne({ _id });
         }
     }, 
     Mutation: {
@@ -46,17 +46,17 @@ const resolvers = {
 
             return { token, user }; 
         },
-        addThought: async (parent, args, context) => {
+        addPost: async (parent, args, context) => {
             if (context.user) {
-                const thought = await Thought.create({ ...args, username: context.user.username });
+                const post = await Post.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
-                    { $push: { thoughts: thought._id } },
+                    { $push: { posts: post._id } },
                     { new: true }
                 );
 
-                return thought;
+                return post;
             }
 
             

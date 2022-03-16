@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_THOUGHT } from '../../utils/mutations';
-import { QUERY_THOUGHTS, QUERY_ME } from '../../utils/queries';
+import { ADD_POST } from '../../utils/mutations';
+import { QUERY_POSTS, QUERY_ME } from '../../utils/queries';
 
-const ThoughtForm = () => {
-  const [thoughtText, setText] = useState('');
+const PostForm = () => {
+  const [postText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-    update(cache, { data: { addThought } }) {
+  const [addPost, { error }] = useMutation(ADD_POST, {
+    update(cache, { data: { addPost } }) {
       try {
-        const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
         cache.writeQuery({
-          query: QUERY_THOUGHTS,
-          data: { thoughts: [addThought, ...thoughts] }
+          query: QUERY_POSTS,
+          data: { posts: [addPost, ...posts] }
         });
       } catch (err) {
         console.error(err);
@@ -21,7 +21,7 @@ const ThoughtForm = () => {
       const { me } = cache.readQuery({ query: QUERY_ME });
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } }
+        data: { me: { ...me, posts: [...me.posts, addPost] } }
       });
     }
   });
@@ -36,8 +36,8 @@ const ThoughtForm = () => {
   const handleFormSubmit = async event => {
     event.preventDefault();
     try {
-      await addThought({
-        variables: { thoughtText }
+      await addPost({
+        variables: { postText }
       });
 
       setText('');
@@ -51,8 +51,8 @@ const ThoughtForm = () => {
     <div>
       <form onSubmit={handleFormSubmit}>
         <textarea
-          placeholder="Type your thoughts here"
-          value={thoughtText}
+          placeholder="Type your post here"
+          value={postText}
           onChange={handleChange}
         ></textarea>
         <button type="submit">
@@ -63,4 +63,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default PostForm;

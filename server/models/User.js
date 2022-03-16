@@ -26,10 +26,10 @@ const userSchema = new Schema({
         default: false, 
     },
     // prelim nested arrays, needs update when other models are added
-    thoughts: [
+    posts: [
         {
             type: Schema.Types.ObjectId, 
-            ref: 'Thought'
+            ref: 'Post'
         }
     ], 
     characters: [
@@ -76,8 +76,8 @@ userSchema.methods.isCorrectPassword = async function(password) {
 //     return this.campaigns.length; 
 // })
 
-// userSchema.virtual('thoughtCount').get(function() {
-//     return this.thoughts.length; 
+// userSchema.virtual('postCount').get(function() {
+//     return this.posts.length; 
 // })
 
 const User = mongoose.model('User', userSchema);
