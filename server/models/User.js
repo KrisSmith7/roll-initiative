@@ -24,14 +24,14 @@ const userSchema = new Schema({
     dmstatus: {
         type: Boolean, 
         default: false, 
-    }
+    },
     // prelim nested arrays, needs update when other models are added
-    // thoughts: [
-    //     {
-    //         type: Schema.Types.ObjectId, 
-    //         ref: 'Thought'
-    //     }
-    // ], 
+    thoughts: [
+        {
+            type: Schema.Types.ObjectId, 
+            ref: 'Thought'
+        }
+    ], 
     // characters: [
     //     {
     //         type: Schema.Types.ObjectId, 
