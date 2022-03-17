@@ -4,6 +4,7 @@ import { QUERY_POSTS } from '../../utils/queries';
 import stockImg from '../../assets/stock_images/stock_image0.jpg'
 
 import PostList from "../PostList";
+import PostForm from '../PostForm';
 import Auth from '../../utils/auth';
 
 function Dashboard() {
@@ -19,19 +20,24 @@ function Dashboard() {
             <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" />
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
-            <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-start py-4 xl:py-40">
+            <div className="mx-auto px-6 md:px-12 relative z-10 flex items-start py-4 xl:py-40">
                 <div className="w-full flex flex-col items-center relative z-10">
                     <h1 className="font-bold text-4xl text-center p-4 rounded-lg lg:text-7xl text-white leading-tight">
                         Tavern Talk
                     </h1>
-                    <div className="container bg-turq/75 rounded-md text-lg text-white mt-10 w-full">
+                    <div className=" bg-turq/75 rounded-md text-lg text-white mt-10 w-full">
                         <div className="p-4 font-antiqua text-center text-slate text-2xl lg:text-4xl">
                             Gather 'round, grab an ale, and share your tales!
                         </div>
 
 
                         {/* forum/discussion post element   */}
-                        <div className="container tracking-wider text-md lg:text-xl lg:p-8">
+                        <div className=" tracking-wider text-md lg:text-xl lg:p-8">
+                            {loggedIn && (
+                                <div>
+                                    <PostForm />
+                                </div>
+                            )}
                             {/* <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
 
                                 <div className="bg-gray-800 rounded-md p-4">
