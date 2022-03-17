@@ -5,8 +5,8 @@ import axe from '../assets/axe.svg';
 import beer from '../assets/beer.svg';
 import books from '../assets/books.svg';
 import Auth from '../utils/auth';
-import SignUpForm from './Pages/SignUpForm';
-import LoginForm from './Pages/LoginForm';
+import SignUpForm from './SignUpForm';
+import LoginForm from './LoginForm';
 import { Modal, Nav, Tab } from 'react-bootstrap';
 
 //create nav links at top of page that conditionally renders component based on selected link
