@@ -1,11 +1,11 @@
 import React from 'react';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PostList = ({ posts }) => {
   if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
-  console.log("postList posts", posts)
+  //console.log("postList posts", posts)
 
   return (
     <div>
@@ -14,9 +14,9 @@ const PostList = ({ posts }) => {
           <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
           <div key={post._id}>
           <div className="whitespace-pre-wrap">
-            {/* <Link to={`/post/${post._id}`}> */}
+            <Link to={`/post/${post._id}`}>
               <p>{post.postText}</p>
-            {/* </Link> */}
+            </Link>
           </div>
           <div className="py-4 font-semibold">
             Posted by: {' '}

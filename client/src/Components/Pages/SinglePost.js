@@ -1,14 +1,14 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 
-import commentList from '../components/CommentList';
-import CommentForm from '../components.CommentForm';
+import CommentList from '..//CommentList';
+import CommentForm from '../CommentForm';
 
 import Auth from '../../utils/auth';
 import { useQuery } from '@apollo/client';
 import { QUERY_POST } from '../../utils/queries';
 
-const SInglePost = (props) => {
+const SinglePost = () => {
   const { id: postId } = useParams();
 
   const { loading, data } = useQuery(QUERY_POST, {

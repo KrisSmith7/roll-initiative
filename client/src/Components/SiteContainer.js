@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavTabs from './NavTabs';
 import Footer from './Footer';
 import Homepage from './Pages/Homepage';
 import Dashboard from './Pages/Dashboard';
+import SinglePost from './Pages/SinglePost';
+import NoMatch from './Pages/NoMatch';
 // import Campaigns from './Pages/Campaigns';
 import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
@@ -51,8 +54,23 @@ export default function SiteContainer() {
   return (
     <section>
       {/* conditionally renders component based on value of the currentPage variable; calls the function */}
-      {renderPage()}
-      <Footer />
+      {/* {renderPage()} */}
+      <Router>
+        <div className='flex'>
+          <NavTabs />
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/homepage" component={Homepage} />
+            <Route exact path="/profile/:username?" component={Profile} />
+            <Route exact path="/resources" component={Resources} />
+            <Route exact path="/post/:id" component={SinglePost} />
+
+            <Route component={NoMatch} />
+          </Switch>
+        </div>
+        <Footer />
+      </Router>
+      
 
     </section>
   );
