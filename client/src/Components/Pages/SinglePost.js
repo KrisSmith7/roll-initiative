@@ -33,6 +33,10 @@ const SInglePost = (props) => {
         <div>
           <p>{post.postText}</p>
         </div>
+        <div>
+          <button type='button'>Edit Post</button>
+          <button type='button'>Delete Post</button>
+        </div>
       </div>
 
       {post.commentCount > 0 && (
