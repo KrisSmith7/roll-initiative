@@ -34,7 +34,7 @@ const LoginForm = () => {
         <>
             <form onSubmit={handleFormSubmit} className="flex flex-col items-center text-slate-50">
                 <input
-                    className='m-2'
+                    className='form-input m-2'
                     placeholder='Your username'
                     name='username'
                     type='username'
@@ -43,7 +43,7 @@ const LoginForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className='m-2'
+                    className='form-input m-2'
                     placeholder='Your password'
                     name='password'
                     type='password'

@@ -1,13 +1,19 @@
 // import { render } from '@testing-library/react';
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/socialrolls_logo.png';
-// import axe from '../assets/axe.svg';
-// import beer from '../assets/beer.svg';
-// import books from '../assets/books.svg';
+import axe from '../assets/axe.svg';
+import beer from '../assets/beer.svg';
+import books from '../assets/books.svg';
 import Auth from '../utils/auth';
+import SignUpForm from './Pages/SignUpForm';
+import LoginForm from './Pages/LoginForm';
+import { Modal, Nav, Tab } from 'react-bootstrap';
 
 //create nav links at top of page that conditionally renders component based on selected link
 function NavTabs({ currentPage, handlePageChange }) {
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     return (     
         <>
@@ -15,7 +21,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                 <div className="flex flex-col sm:flex-row sm:justify-around">
                     <div className="w-72 h-screen">
                         <div className="flex items-center justify-start mx-6 mt-10">
-                            <img className="h-10" src={logo}/>
+                            <img className="h-10" src={logo} alt="social rolls logo"/>
                             <span className="text-gray-600 dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">
                                 Social Rolls
                             </span>
@@ -23,7 +29,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                         <nav className="mt-10 px-6 ">
                             <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
                                 onClick={() => handlePageChange('Dashboard')}>
-                                    {/* <img src={beer} /> */}
+                                    <img src={beer} alt="Beer glasses" />
                                     <span className="mx-4 text-lg font-normal">
                                         Tavern Talk
                                     </span>
@@ -34,7 +40,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                 <>
                                     <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-800 dark:text-gray-100 rounded-lg bg-gray-100 dark:bg-gray-600" href="#profile"
                                     onClick={() => handlePageChange('Profile')}>
-                                        {/* <img src={axe}/> */}
+                                        <img src={axe} alt="axe"/>
                                         <span className="mx-4 text-lg font-normal">
                                             Characters and Quests
                                         </span>
@@ -43,7 +49,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                     </a>
                                     <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#resources"
                                     onClick={() => handlePageChange('Resources')}>
-                                        {/* <img src={books}/> */}
+                                        <img src={books} alt="books"/>
                                         <span className="mx-4 text-lg font-normal">
                                             Resources
                                         </span>
@@ -51,7 +57,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                         </span>
                                     </a>
                                     <div className="absolute bottom-0 my-10">
-                                        <a className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 flex items-center py-2 px-8" href="#homepage"
+                                        <a className="text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-gray-100 transition-colors duration-200 flex items-center py-2 px-8" href="#dashboard"
                                             onClick={() => {
                                                 handlePageChange('Dashboard');
                                                 Auth.logout();
@@ -69,8 +75,8 @@ function NavTabs({ currentPage, handlePageChange }) {
                                 
                             ) : (
                                 <>
-                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg" 
-                                    onClick={() => handlePageChange('Modal')}>
+                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg" href='#dashboard'
+                                    onClick={handleShow}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-door-open-fill" viewBox="0 0 16 16">
                                                 <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
                                         </svg>
@@ -86,7 +92,39 @@ function NavTabs({ currentPage, handlePageChange }) {
                     </div>
                 </div>
             </div>
-            
+            <Modal
+                // {...props}
+                size="lg"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                show={showModal}
+                onHide={handleClose}
+            >
+                <Tab.Container defaultActiveKey="login">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-vcenter">
+                            <Nav variant="tabs">
+                                <Nav.Item>
+                                    <Nav.Link eventKey="login">Login</Nav.Link>
+                                </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="signup">Sign Up</Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <Tab.Content>
+                            <Tab.Pane eventKey="login">
+                                <LoginForm handleModalClose={() => setShowModal(false)} />
+                            </Tab.Pane>
+                            <Tab.Pane eventKey="signup">
+                                <SignUpForm handleModalClose={() => setShowModal(false)} />
+                            </Tab.Pane>
+                        </Tab.Content>
+                    </Modal.Body>
+                </Tab.Container >
+            </Modal>
         </>  
     );
 }

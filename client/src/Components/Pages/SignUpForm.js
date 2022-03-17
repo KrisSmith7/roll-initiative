@@ -41,7 +41,7 @@ const SignUpForm = () => {
         <>
             <form onSubmit={handleFormSubmit} className="flex flex-col items-center text-slate-50">
                 <input
-                    className=''
+                    className='form-input m-2'
                     placeholder='username'
                     name='username'
                     type='username'
@@ -50,7 +50,7 @@ const SignUpForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className=''
+                    className='form-input m-2'
                     placeholder='email'
                     name='email'
                     type='email'
@@ -59,7 +59,7 @@ const SignUpForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className=''
+                    className='form-input m-2'
                     placeholder='password'
                     name='password'
                     type='password'

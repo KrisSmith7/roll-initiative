@@ -5,7 +5,7 @@ function Homepage() {
 
     return (
         <div className="bg-slate relative overflow-hidden h-screen">
-            <img src={stockImg11} className="absolute h-full w-full object-cover opacity-50" />
+            <img src={stockImg11} className="absolute h-full w-full object-cover opacity-50" alt="DnD gameplay" />
             <div className="inset-0 bg-gradient-to-r from-charcoal to-slate opacity-50 absolute">
             </div>
             <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
