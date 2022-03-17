@@ -5,7 +5,7 @@ function Dashboard() {
 
     return (
         <div className="bg-slate relative overflow-hidden h-screen">
-            <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" />
+            <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
             <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-start py-4 xl:py-40">
