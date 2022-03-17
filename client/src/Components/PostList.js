@@ -1,26 +1,27 @@
 import React from 'react';
 //import { Link } from 'react-router-dom';
 
-const PostList = ({ posts, title }) => {
-  if (!post.length) {
+const PostList = ({ posts }) => {
+  if (!posts.length) {
     return <h3>No Posts Yet</h3>;
   }
+  console.log("postList posts", posts)
 
   return (
     <div>
-      <h3>{title}</h3>
       {posts &&
-        posts.map(post => {
+        posts.map(post => (
+          <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
           <div key={post._id}>
-            <p>
-              {post.username}
-              {' '}post on { post.createdAt}
-            </p>
-          <div>
+          <div className="whitespace-pre-wrap">
             <p>{post.postText}</p>
           </div>
+          <div className="py-4 font-semibold">
+            Posted by: {post.username} on {post.createdAt}   
           </div>
-        })}
+          </div>
+          </article>
+        ))}
     </div>
   );
 };

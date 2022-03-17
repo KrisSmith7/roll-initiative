@@ -1,7 +1,18 @@
 import React from "react";
+import { useQuery } from '@apollo/client';
+import { QUERY_POSTS } from '../../utils/queries';
 import stockImg from '../../assets/stock_images/stock_image0.jpg'
 
+import PostList from "../PostList";
+import Auth from '../../utils/auth';
+
 function Dashboard() {
+
+    const { loading, data } = useQuery(QUERY_POSTS);
+    const posts = data?.posts || [];
+    console.log("dashboard posts", posts);
+
+    const loggedIn = Auth.loggedIn();
 
     return (
         <div className="bg-slate relative overflow-hidden h-screen">
@@ -21,7 +32,7 @@ function Dashboard() {
 
                         {/* forum/discussion post element   */}
                         <div className="container tracking-wider text-md lg:text-xl lg:p-8">
-                            <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
+                            {/* <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
 
                                 <div className="bg-gray-800 rounded-md p-4">
 
@@ -34,7 +45,13 @@ function Dashboard() {
                                 <div className="py-4 font-semibold">
                                             Posted by: examplepost   
                                 </div>
-                            </article>
+                            </article> */}
+                            {loading ? (
+                                <div>Loading...</div>
+                            ) : (
+                                <PostList posts={posts} title="Some talk from the Tavern" />
+                            )}
+                            
                         </div>
                         {/* end of user post container */}
 
