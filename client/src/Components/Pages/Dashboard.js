@@ -25,13 +25,13 @@ function Dashboard() {
 
                                 <div className="bg-gray-800 rounded-md p-4">
 
-                                    <div className="whitespace-pre-wrap">
+                                    <div className="whitespace-pre-wrap font-cormorant">
                                         Cleric: You need to lie still. You’ve lost a lot of blood. <br />
                                         Barbarian: I didn’t lose it. I know exactly where it is *Points to puddle of blood*
                                     </div>
 
                                 </div>
-                                <div className="py-4 font-semibold">
+                                <div className="py-4 font-cormorant">
                                             Posted by: examplepost   
                                 </div>
                             </article>
