@@ -5,6 +5,9 @@ const typeDefs = gql`
         _id: ID
         username: String
         email: String
+        dmstatus: Boolean
+        posts: [Post]
+        characters: [Character]
     }
 
     type Post {
@@ -12,7 +15,6 @@ const typeDefs = gql`
         postText: String
         createdAt: String
         username: String
-
     }
 
     type Character {
