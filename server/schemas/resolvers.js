@@ -5,7 +5,7 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return await User.find().populate('posts').populate('characters'); 
+            return await User.find().populate('posts').populate('characters').populate('campaigns'); 
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -84,13 +84,13 @@ const resolvers = {
             throw new AuthenticationError('Must log in or sign up to create a character!')
         },
 
-// adding campaign code -- do we want to change user dmstatus to true here?
+    // adding campaign code -- do we want to change user dmstatus to true here?
         addCampaign: async (parent, args, context) => {
             if (context.user) {
                 const campaign = await Campaign.create({ ...args, username: context.user.username });
                 
                 await User.findByIdAndUpdate(
-                    { _id: context.user_id },
+                    { _id: context.user._id },
                     { $push: { campaigns: campaign._id }},
                     { new: true }
                 );

@@ -13,7 +13,7 @@ function Campaigns ({ campaigns }){
                 {campaigns.map(campaign => {
                     return( 
                         <div>
-                        <h1>{campaign.name}</h1>
+                        <h1>{campaign.campaignName}</h1>
                         <h1>{campaign.description}</h1>
                         <h1>{campaign.setting}</h1>
                         </div>

@@ -49,6 +49,11 @@ export const QUERY_ME = gql`
         wis
         cha
       }
+      campaigns {
+        campaignName
+        description
+        setting
+      }
     }
   }
 `;
