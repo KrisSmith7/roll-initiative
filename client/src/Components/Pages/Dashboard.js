@@ -16,7 +16,7 @@ function Dashboard() {
 
     return (
         <div className="bg-slate relative overflow-hidden h-screen">
-            <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" />
+            <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
             <div className="container mx-auto px-6 md:px-12 relative z-10 flex items-start py-4 xl:py-40">
@@ -36,13 +36,13 @@ function Dashboard() {
 
                                 <div className="bg-gray-800 rounded-md p-4">
 
-                                    <div className="whitespace-pre-wrap">
+                                    <div className="whitespace-pre-wrap font-cormorant">
                                         Cleric: You need to lie still. You’ve lost a lot of blood. <br />
                                         Barbarian: I didn’t lose it. I know exactly where it is *Points to puddle of blood*
                                     </div>
 
                                 </div>
-                                <div className="py-4 font-semibold">
+                                <div className="py-4 font-cormorant">
                                             Posted by: examplepost   
                                 </div>
                             </article> */}

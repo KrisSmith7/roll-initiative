@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import NavTabs from './NavTabs';
 import Footer from './Footer';
-import Modal from './Modal';
 import Homepage from './Pages/Homepage';
 import Dashboard from './Pages/Dashboard';
 // import Campaigns from './Pages/Campaigns';
@@ -41,15 +40,6 @@ export default function SiteContainer() {
       <div className='flex'>
         <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
         <Resources />
-      </div>
-      );
-    }
-
-    if (currentPage === 'Modal') {
-      return (
-      <div className='flex'>
-        <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-        <Modal />
       </div>
       );
     }

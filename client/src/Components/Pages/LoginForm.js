@@ -32,9 +32,9 @@ const LoginForm = () => {
 
     return (
         <>
-            <form onSubmit={handleFormSubmit} className="flex flex-col items-center text-slate-50">
+            <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
                 <input
-                    className='m-2'
+                    className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your username'
                     name='username'
                     type='username'
@@ -43,7 +43,7 @@ const LoginForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className='m-2'
+                    className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your password'
                     name='password'
                     type='password'
@@ -51,7 +51,7 @@ const LoginForm = () => {
                     value={userFormData.password}
                     onChange={handleInputChange}
                 />
-                <button className='btn d-block w-100' type='submit'>
+                <button className='form-btn text-slate d-block w-50 m-5 text-lg font-macondo bg-turq/75 w-1/2' type='submit'>
                    Submit
                 </button>
             </form>
