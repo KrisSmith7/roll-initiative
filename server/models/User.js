@@ -38,12 +38,12 @@ const userSchema = new Schema({
             ref: 'Character'
         }
     ],
-    // campaigns: [
-    //     {
-    //         type: Schema.Types.ObjectId, 
-    //         ref: 'Campaign'
-    //     }
-    // ],
+    campaigns: [
+        {
+            type: Schema.Types.ObjectId, 
+            ref: 'Campaign'
+        }
+    ],
     },
     {
         toJSON: {

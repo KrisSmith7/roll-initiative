@@ -1,13 +1,27 @@
 import React from "react";
 
-function Campaigns (){
+function Campaigns ({ campaigns }){
 
-    return (
-    <div>
-        <h1> Page should display users' active campaigns</h1>
-        <p>If time permits, allow invites to friends to join.</p>
-    </div>
-    )
-}
+        if (!campaigns.length) {
+            return (
+            <h2>You are not a part of any campaigns. What are you waiting for?</h2>
+            )
+        }
+    
+        return (
+            <>
+                {campaigns.map(campaign => {
+                    return( 
+                        <div>
+                        <h1>{campaign.name}</h1>
+                        <h1>{campaign.description}</h1>
+                        <h1>{campaign.setting}</h1>
+                        </div>
+                     
+                    )
+                })}
+            </>
+        )
+    }
 
 export default Campaigns;

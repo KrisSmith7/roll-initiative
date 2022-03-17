@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Post, Character } = require('../models');
+const { User, Post, Character, Campaign } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -76,6 +76,20 @@ const resolvers = {
             }
 
             throw new AuthenticationError('Must log in or sign up to create a character!')
+        },
+
+// adding campaign code -- do we want to change user dmstatus to true here?
+        addCampaign: async (parent, args, context) => {
+            if (context.user) {
+                const campaign = await Campaign.create({ ...args, username: context.user.username });
+                await User.findByIdAndUpdate(
+                    { _id: context.user_id },
+                    { $push: { campaigns: campaign._id }},
+                    { new: true }
+                );
+                return campaign; 
+            }
+            throw new AuthenticationError('Must log in or sign up to create a campaign!')
         }
 
     }

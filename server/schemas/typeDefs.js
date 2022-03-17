@@ -33,6 +33,14 @@ const typeDefs = gql`
         cha: Int
     }
 
+    type Campaign {
+        _id: ID
+        campaignName: String
+        description: String
+        setting: String
+        username: String
+    }
+
     type Auth {
         token: ID!
         user: User
@@ -51,6 +59,7 @@ const typeDefs = gql`
         addPost(postText: String!): Post
         addCharacter(name: String!, class: String!, level: Int, background: String, 
             race: String, alignment: String, bio: String): Character
-    }`
+        addCampaign(campaignName: String, description: String, setting: String, username: String): Campaign
+           }`
 
 module.exports = typeDefs; 
