@@ -12,7 +12,15 @@ const typeDefs = gql`
         postText: String
         createdAt: String
         username: String
+        commentCount: Int
+        comments: [Comment]
+    }
 
+    type Comment {
+        _id: ID
+        commentText: String
+        createdAt: String
+        username: String
     }
 
     type Character {
@@ -49,8 +57,11 @@ const typeDefs = gql`
         login(username: String!, password: String!): Auth
         addUser(username: String!, email: String!, password: String!): Auth
         addPost(postText: String!): Post
+        updatePost(postId: ID!, postText: String!): Post
+        deletePost(postId: ID!): String
+        addComment(postId: ID!, commentText: String!): Post
         addCharacter(name: String!, class: String!, level: Int, background: String, 
             race: String, alignment: String, bio: String): Character
-    }`
+    }`;
 
 module.exports = typeDefs; 

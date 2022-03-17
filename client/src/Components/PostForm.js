@@ -27,7 +27,8 @@ const PostForm = () => {
   });
 
   const handleChange = event => {
-    if (event.target.value.length <= 280) {
+    console.log(event.target.value);
+    if (event.target.value.length <= 480) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
