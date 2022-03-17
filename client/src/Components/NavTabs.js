@@ -15,6 +15,8 @@ function NavTabs({ currentPage, handlePageChange }) {
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
+    console.log(currentPage);
+    
     return (     
         <>
             <div className="relative bg-charcoal ">

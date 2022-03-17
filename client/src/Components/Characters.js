@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function Characters ({ characters }) {
+function Characters ({ characters, currentPage, handlePageChange }) {
 
     if (!characters.length) {
         return (
@@ -13,8 +13,15 @@ function Characters ({ characters }) {
         <>
             {characters.map(character => {
                 return( 
-                    <h1>{character.name}</h1>
-                )
+                    <div key={character._id}> 
+                        <h1>{character.name}</h1>
+                        <div
+                            onClick={() => handlePageChange(`character/${character.id}`)}
+                            >
+                            <p>View {character.name}'s character sheet! </p>
+                            </div> 
+                    </div>
+                )   
             })}
         </>
     )

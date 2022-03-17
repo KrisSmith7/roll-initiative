@@ -4,7 +4,7 @@ import Campaigns from "../Campaigns";
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../../utils/queries'
 
-function Profile (){
+function Profile ({currentPage, handlePageChange}){
 
     const { loading, data } = useQuery(QUERY_ME); 
 
@@ -19,7 +19,9 @@ function Profile (){
 
     return (
         <div>
-            <Characters characters={user.characters}/>
+            <Characters characters={user.characters}
+                currentPage={currentPage}
+                handlePageChange={handlePageChange}/>
             <Campaigns campaigns={user.campaigns} />
         </div>
     )

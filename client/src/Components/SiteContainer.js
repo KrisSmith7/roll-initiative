@@ -12,6 +12,17 @@ export default function SiteContainer() {
   // automates change from landing page to about page on first render after 3 seconds.
   useEffect(() => { setTimeout((page) => { handlePageChange('Dashboard') }, 3000) }, []);
 
+  const characterPageCheck = (currentPage) => {
+    const regex = new RegExp('character/');
+    
+    if (regex.test(currentPage)) {
+      return true; 
+    } else {
+      return false; 
+    }
+    
+  }
+
   const renderPage = () => {
     if (currentPage === 'Homepage') {
       return <Homepage />;
@@ -30,7 +41,7 @@ export default function SiteContainer() {
       return (
         <div className='flex'>
           <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
-          <Profile />
+          <Profile currentPage={currentPage} handlePageChange={handlePageChange} />
         </div>
       );
     }
@@ -44,6 +55,16 @@ export default function SiteContainer() {
       );
     }
 
+    if (characterPageCheck(currentPage)) {
+      return (
+        <div className = 'flex'> 
+          <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
+          <div>
+            <p> Help </p>
+          </div>
+        </div> 
+      )
+    }
   };
 
   const handlePageChange = (page) => setCurrentPage(page);
