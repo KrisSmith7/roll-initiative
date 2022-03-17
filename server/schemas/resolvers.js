@@ -5,14 +5,20 @@ const { signToken } = require('../utils/auth');
 const resolvers = {
     Query: {
         users: async () => {
-            return await User.find(); 
+            return await User.find().populate('posts').populate('characters'); 
         },
         me: async (parent, args, context) => {
             if (context.user) {
-                const userData = await User.findOne({ _id: context.user_id })
+                const userData = await User.findOne({ _id: context.user._id })
+                    .select('-__v -password')
+                    .populate('posts')
+                    .populate('characters')
+                    // .populate('campaigns')
 
                 return userData; 
             }
+
+            throw new AuthenticationError('Not logged in');
         },
         posts: async (parent, { username }) => {
             const params = username ? { username } : {};
@@ -67,7 +73,7 @@ const resolvers = {
                 const character = await Character.create({ ...args, username: context.user.username });
 
                 await User.findByIdAndUpdate(
-                    { _id: context.user_id },
+                    { _id: context.user._id },
                     { $push: { characters: character._id }},
                     { new: true }
                 );

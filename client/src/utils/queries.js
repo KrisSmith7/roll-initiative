@@ -12,7 +12,7 @@ export const QUERY_POST = gql`
 `;
 
 export const QUERY_POSTS = gql`
-  query posts($usernameL String) {
+  query posts($username: String) {
     posts(username: $username) {
       _id
       postText
@@ -33,7 +33,24 @@ export const QUERY_ME = gql`
         postText
         createdAt
       }
+      characters {
+        _id
+        name
+        class
+        level
+        background
+        race
+        alignment
+        bio
+        str
+        dex
+        con
+        int
+        wis
+        cha
+      }
     }
   }
 `;
+
 
