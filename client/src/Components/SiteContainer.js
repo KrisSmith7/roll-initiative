@@ -19,7 +19,7 @@ export default function SiteContainer() {
 
     if (currentPage === 'Dashboard') {
       return (
-        <div className='flex'>
+        <div className='site-container flex'>
           <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
           <Dashboard />
         </div>
@@ -28,7 +28,7 @@ export default function SiteContainer() {
 
     if (currentPage === 'Profile') {
       return (
-        <div className='flex'>
+        <div className='site-container flex'>
           <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
           <Profile />
         </div>
@@ -37,7 +37,7 @@ export default function SiteContainer() {
 
     if (currentPage === 'Resources') {
       return (
-      <div className='flex'>
+      <div className='site-container flex'>
         <NavTabs currentPage={currentPage} handlePageChange={handlePageChange} />
         <Resources />
       </div>

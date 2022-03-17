@@ -19,17 +19,17 @@ function NavTabs({ currentPage, handlePageChange }) {
 
     return (     
         <>
-            <div className="relative bg-charcoal ">
+            <div className="flex-initial w-1/6 relative bg-charcoal ">
                 <div className="flex flex-col sm:flex-row sm:justify-around">
                     <div className="w-72 h-screen">
                         <div className="flex items-center justify-start mx-6 mt-10">
                             <img className="h-10" src={logo} alt="social rolls logo"/>
-                            <span className="text-gray-600 dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">
+                            <span className="text-white dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">
                                 Social Rolls
                             </span>
                         </div>
                         <nav className="mt-10 px-6 ">
-                            <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
+                            <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-300 dark:text-gray-400 rounded-lg " href="#dashboard"
                                 onClick={() => handlePageChange('Dashboard')}>
                                     <img src={beer} alt="Beer glasses" />
                                     <span className="mx-4 text-lg font-cormorant">
@@ -40,16 +40,16 @@ function NavTabs({ currentPage, handlePageChange }) {
                             </a>
                             {Auth.loggedIn() ? (
                                 <>
-                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#profile"
+                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-300 dark:text-gray-400 rounded-lg " href="#profile"
                                     onClick={() => handlePageChange('Profile')}>
                                         <img src={axe} alt="axe"/>
                                         <span className="mx-4 text-lg font-cormorant">
-                                            Characters and Quests
+                                            My Profile
                                         </span>
                                         <span className="flex-grow text-right">
                                         </span>
                                     </a>
-                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#resources"
+                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-300 dark:text-gray-400 rounded-lg " href="#resources"
                                     onClick={() => handlePageChange('Resources')}>
                                         <img src={books} alt="books"/>
                                         <span className="mx-4 text-lg font-cormorant">
@@ -59,7 +59,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                         </span>
                                     </a>
                                     <div className="absolute bottom-0 my-10">
-                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
+                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-300 dark:text-gray-400 rounded-lg " href="#dashboard"
                                             onClick={() => {
                                                 handlePageChange('Dashboard');
                                                 Auth.logout();
@@ -77,7 +77,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                 
                             ) : (
                                 <>
-                                    <a  className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg" href='#dashboard'
+                                    <a  className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-300 dark:text-gray-400 rounded-lg" href='#dashboard'
                                     onClick={handleShow}>
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-door-open-fill" viewBox="0 0 16 16">
                                                 <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
