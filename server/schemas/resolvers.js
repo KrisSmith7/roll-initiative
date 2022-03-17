@@ -62,6 +62,38 @@ const resolvers = {
             
             throw new AuthenticationError('You need to be logged in!');
         },
+        updatePost: async (parent, { postId, postText }, context) => {
+            if (context.user) {
+                const updatedPost = await Post.findOneAndUpdate(
+                    { _id: postId },
+                    { postText },
+                    { new: true, runValidators: true}
+                );
+
+                return updatedPost;
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
+        },
+        deletePost: async (parent, { postId }, context) => {
+            if (context.user) {
+                await Post.findOneAndDelete(
+                    { _id: postId },
+                    { $pullAll: { comments: comment }  },
+                    { new: true }
+                );
+
+                await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { posts: post._id } },
+                    { new: true }
+                );
+
+                return "Post has been deleted";
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
+        },
         addComment: async (parent, { postId, commentText }, context) => {
             if (context.user) {
                 const updatedPost = await Post.findOneAndUpdate(
