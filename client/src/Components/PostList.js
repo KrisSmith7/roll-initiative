@@ -19,13 +19,13 @@ const PostList = ({ posts }) => {
             {/* </Link> */}
           </div>
           <div className="py-4 font-semibold">
-            Posted by: 
+            Posted by: {' '}
             {/* <Link
               to={`/profile/${post.username}`}
             > */}
             {post.username}
             {/* </Link>{' '} */}
-            on {post.createdAt} 
+            {' '}on {post.createdAt} 
             <p>
               Comments: {post.commentCount}
             </p> 
