@@ -12,7 +12,7 @@ export const QUERY_POST = gql`
 `;
 
 export const QUERY_POSTS = gql`
-  query posts($usernameL String) {
+  query posts($username: String) {
     posts(username: $username) {
       _id
       postText
