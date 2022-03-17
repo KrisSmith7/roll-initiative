@@ -8,7 +8,7 @@ import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
 
 export default function SiteContainer() {
-  const [currentPage, setCurrentPage] = useState('Homepage');
+  const [currentPage, setCurrentPage] = useState('Dashboard');
   // automates change from landing page to about page on first render after 3 seconds.
   useEffect(() => { setTimeout((page) => { handlePageChange('Dashboard') }, 3000) }, []);
 

@@ -13,7 +13,7 @@ const resolvers = {
                     .select('-__v -password')
                     .populate('posts')
                     .populate('characters')
-                    // .populate('campaigns')
+                    .populate('campaigns')
 
                 return userData; 
             }
@@ -88,6 +88,7 @@ const resolvers = {
         addCampaign: async (parent, args, context) => {
             if (context.user) {
                 const campaign = await Campaign.create({ ...args, username: context.user.username });
+                
                 await User.findByIdAndUpdate(
                     { _id: context.user_id },
                     { $push: { campaigns: campaign._id }},

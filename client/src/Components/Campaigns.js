@@ -4,7 +4,7 @@ function Campaigns ({ campaigns }){
 
         if (!campaigns.length) {
             return (
-            <h2>You are not a part of any campaigns. What are you waiting for?</h2>
+            <p>You are not a part of any campaigns. What are you waiting for?</p>
             )
         }
     

@@ -20,7 +20,7 @@ function Profile (){
     return (
         <div>
             <Characters characters={user.characters}/>
-            <Campaigns/>
+            {/* <Campaigns campaigns={user.campaigns} /> */}
         </div>
     )
 }

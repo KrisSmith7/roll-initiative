@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const campaignSchema = new Schema({
+    username: {
+        type: String, 
+        required: true, 
+    },
     campaignName: {
         type: String, 
         required: true,  
@@ -13,10 +17,6 @@ const campaignSchema = new Schema({
         required: true
     },
     setting: {
-        type: String, 
-        required: true, 
-    },
-    username: {
         type: String, 
         required: true, 
     },

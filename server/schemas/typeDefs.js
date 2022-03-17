@@ -8,6 +8,7 @@ const typeDefs = gql`
         dmstatus: Boolean
         posts: [Post]
         characters: [Character]
+        campaigns: [Campaign]
     }
 
     type Post {
@@ -37,10 +38,10 @@ const typeDefs = gql`
 
     type Campaign {
         _id: ID
+        username: String
         campaignName: String
         description: String
         setting: String
-        username: String
     }
 
     type Auth {
@@ -61,7 +62,7 @@ const typeDefs = gql`
         addPost(postText: String!): Post
         addCharacter(name: String!, class: String!, level: Int, background: String, 
             race: String, alignment: String, bio: String): Character
-        addCampaign(campaignName: String, description: String, setting: String, username: String): Campaign
+        addCampaign(campaignName: String!, description: String!, setting: String!): Campaign
            }`
 
 module.exports = typeDefs; 
