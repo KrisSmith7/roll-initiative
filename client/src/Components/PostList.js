@@ -14,10 +14,21 @@ const PostList = ({ posts }) => {
           <article className="bg-gradient-to-r from-charcoal to-slate p-4 rounded-b-md ">
           <div key={post._id}>
           <div className="whitespace-pre-wrap">
-            <p>{post.postText}</p>
+            {/* <Link to={`/post/${post._id}`}> */}
+              <p>{post.postText}</p>
+            {/* </Link> */}
           </div>
           <div className="py-4 font-semibold">
-            Posted by: {post.username} on {post.createdAt}   
+            Posted by: 
+            {/* <Link
+              to={`/profile/${post.username}`}
+            > */}
+            {post.username}
+            {/* </Link>{' '} */}
+            on {post.createdAt} 
+            <p>
+              Comments: {post.commentCount}
+            </p> 
           </div>
           </div>
           </article>
