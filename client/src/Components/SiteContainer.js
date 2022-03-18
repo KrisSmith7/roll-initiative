@@ -6,7 +6,7 @@ import Homepage from './Pages/Homepage';
 import Dashboard from './Pages/Dashboard';
 import SinglePost from './Pages/SinglePost';
 import NoMatch from './Pages/NoMatch';
-// import Campaigns from './Pages/Campaigns';
+import AllCampaigns from './Pages/AllCampaigns';
 import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
 
@@ -83,6 +83,7 @@ export default function SiteContainer() {
             <Route exact path="/" component={Dashboard} />
             <Route exact path="/homepage" component={Homepage} />
             <Route exact path="/profile/:username?" component={Profile} />
+            <Route exact path="/campaigns" component={AllCampaigns} />
             <Route exact path="/resources" component={Resources} />
             <Route exact path="/post/:id" component={SinglePost} />
 

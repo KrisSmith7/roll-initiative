@@ -1,8 +1,8 @@
 import React from "react";
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
-import stockImg from '../../assets/stock_images/stock_image0.jpg'
-
+import stockImg from '../../assets/stock_images/stock_image0.jpg';
+import parchment from '../../assets/stock_images/parchment.jpg';
 import PostList from "../PostList";
 import PostForm from '../PostForm';
 import Auth from '../../utils/auth';
@@ -16,7 +16,7 @@ function Dashboard() {
     const loggedIn = Auth.loggedIn();
 
     return (
-        <div className="bg-slate relative overflow-hidden h-screen">
+        <div className="bg-slate relative h-full w-full">
             <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
@@ -25,14 +25,17 @@ function Dashboard() {
                     <h1 className="font-bold text-4xl text-center p-4 rounded-lg lg:text-7xl text-white leading-tight">
                         Tavern Talk
                     </h1>
-                    <div className=" bg-turq/75 rounded-md text-lg text-white mt-10 w-full">
-                        <div className="p-4 font-antiqua text-center text-slate text-2xl lg:text-4xl">
-                            Gather 'round, grab an ale, and share your tales!
-                        </div>
+                    
+                    <div className="modal-content rounded-md text-lg text-white mt-10 w-full">
+                        <div className="overflow-auto inset-0 bg-gradient-to-b from-charcoal/[.35] rounded-md p-4 ">
+                           <h1 className="font-antiqua text-center pb-4 text-2xl lg:text-4xl border-b-2 border-sienna">
+                               Gather 'round, grab an ale, and share your tales!
+                               </h1> 
+                        {/* </div> */}
 
 
                         {/* forum/discussion post element   */}
-                        <div className=" tracking-wider text-md lg:text-xl lg:p-8">
+                        <div className="tracking-wider text-md p-4 lg:text-xl lg:p-8">
                             {loggedIn && (
                                 <div>
                                     <PostForm />
@@ -60,7 +63,7 @@ function Dashboard() {
                             
                         </div>
                         {/* end of user post container */}
-
+</div>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,7 @@ import logo from '../assets/socialrolls_logo.png';
 import axe from '../assets/axe.svg';
 import beer from '../assets/beer.svg';
 import books from '../assets/books.svg';
+import search from '../assets/search.svg';
 import Auth from '../utils/auth';
 import SignUpForm from './Pages/SignUpForm';
 import LoginForm from './Pages/LoginForm';
@@ -49,11 +50,21 @@ function NavTabs({ currentPage, handlePageChange }) {
                                         <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                                             <img src={axe} alt="axe"/>
                                             <span className="mx-4 text-lg font-cormorant">
-                                                Characters and Quests
+                                                Your Characters and Quests
                                             </span>
                                             <span className="flex-grow text-right">
                                             </span>
                                         </a>
+                                    </Link>
+                                   <Link to="/campaigns">
+                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
+                                        <img src={search} alt="search icon"/>
+                                        <span className="mx-4 text-lg font-cormorant">
+                                            Find a Campaign
+                                        </span>
+                                        <span className="flex-grow text-right">
+                                        </span>
+                                    </a>
                                     </Link>
                                     <Link to="/resources">
                                         <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
@@ -65,6 +76,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                                         </span>
                                     </a>
                                     </Link>
+                                    
                                     
                                     
                                     <div className="absolute bottom-0 my-10">

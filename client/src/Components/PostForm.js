@@ -50,7 +50,7 @@ const PostForm = () => {
 
   return (
     <div>
-      <form onSubmit={handleFormSubmit}>
+      <form className="text-slate" onSubmit={handleFormSubmit}>
         <textarea
           placeholder="Type your post here"
           value={postText}
