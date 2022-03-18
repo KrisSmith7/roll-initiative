@@ -106,13 +106,13 @@ const resolvers = {
                 );
 
                 // finds the user and pulls the post from the user's posts
-                await User.findByIdAndUpdate(
+                const updatedUser = await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $pull: { posts: post._id } },
                     { new: true }
                 );
 
-                return "Post has been deleted";
+                return updatedUser;
             }
 
             throw new AuthenticationError("You need to be logged in!");
