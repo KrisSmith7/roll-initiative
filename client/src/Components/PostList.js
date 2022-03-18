@@ -20,11 +20,11 @@ const PostList = ({ posts }) => {
           </div>
           <div className="py-4 font-light">
             Posted by: {' '}
-            {/* <Link
+            <Link
               to={`/profile/${post.username}`}
-            > */}
+            >
             {post.username}
-            {/* </Link>{' '} */}
+            </Link>{' '}
             {' '}on {post.createdAt} 
             <p>
               Comments: {post.commentCount}

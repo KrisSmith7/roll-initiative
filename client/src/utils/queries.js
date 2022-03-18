@@ -36,12 +36,57 @@ export const QUERY_POSTS = gql`
   }
 `;
 
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      dmstatus
+      posts {
+        _id
+        postText
+        createdAt
+        commentCount
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
+      }
+      characters {
+        _id
+        name
+        class
+        level
+        background
+        race
+        alignment
+        bio
+        str
+        dex
+        con
+        int
+        wis
+        cha
+      }
+      campaigns {
+        campaignName
+        description
+        setting
+      }
+    }
+  }
+`;
+
 export const QUERY_ME = gql`
   {
     me {
       _id
       username
       email
+      dmstatus
       posts {
         _id
         postText
@@ -90,3 +135,17 @@ export const QUERY_CAMPAIGN = gql`
     }
   }
 `;
+
+// user($username: String!) {
+//   user(username: $username) {
+
+export const QUERY_CHARACTER = gql`
+  query character($id: ID!) {
+    character(_id: $id) {
+      name
+      level
+      class
+      bio
+      background
+    }
+  }`
