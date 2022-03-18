@@ -12,7 +12,7 @@ function AllCampaigns () {
 
     const { data } = useQuery(QUERY_CAMPAIGN);
     console.log(data)
-    const campaigns = data.campaigns || [];
+    const campaigns = data?.campaigns || [];
     console.log("all campaigns page", campaigns);
 
     const loggedIn = Auth.loggedIn();

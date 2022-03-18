@@ -7,6 +7,13 @@ const resolvers = {
         users: async () => {
             return await User.find().populate('posts').populate('characters').populate('campaigns'); 
         },
+        user: async (parent, { username }) => {
+            return User.findOne({ username })
+                .select('-__v -password')
+                .populate('posts')
+                .populate('characters')
+                .populate('campaigns');
+        },
         me: async (parent, args, context) => {
             if (context.user) {
                 const userData = await User.findOne({ _id: context.user._id })
@@ -27,7 +34,9 @@ const resolvers = {
         post: async (parent, { _id }) => {
             return Post.findOne({ _id });
         },
-
+        character: async (parent, { _id }) => {
+            return Character.findOne({ _id })
+        }, 
         campaigns: async () => {
             const campaignData = await Campaign.find().sort({ createdAt: -1 })
             return campaignData;

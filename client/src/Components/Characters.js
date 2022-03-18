@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
 
 
 function Characters ({ characters, currentPage, handlePageChange }) {
@@ -15,11 +17,13 @@ function Characters ({ characters, currentPage, handlePageChange }) {
                 return( 
                     <div key={character._id}> 
                         <h1>{character.name}</h1>
-                        <div
-                            onClick={() => handlePageChange(`character/${character.id}`)}
-                            >
-                            <p>View {character.name}'s character sheet! </p>
+                        <Link
+                            to={`/character/${character._id}`}
+                        >
+                            <div>
+                                <p>View {character.name}'s character sheet! </p>
                             </div> 
+                        </Link>
                     </div>
                 )   
             })}
