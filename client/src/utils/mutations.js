@@ -55,3 +55,15 @@ export const ADD_COMMENT = gql`
         }
     }
 `;
+
+export const ADD_CAMPAIGN = gql`
+mutation addCampaign($campaignName: String!, $description: String!, $setting: String!) {
+    addCampaign (campaignName: $campaignName
+                description: $description
+                setting: $setting) {
+        campaignName
+        description
+        setting 
+        }
+    }
+`
