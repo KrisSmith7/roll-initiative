@@ -142,6 +142,11 @@ const resolvers = {
 
             throw new AuthenticationError('Must log in or sign up to create a character!')
         },
+        // updateCharacter: async (parent, args, context) => {
+        //     if (context.user) {
+        //         const character = await Character.findOneAndUpdate({ ...args, })
+        //     }
+        // },
 
     // adding campaign code -- do we want to change user dmstatus to true here?
         addCampaign: async (parent, args, context) => {
