@@ -88,12 +88,15 @@ const resolvers = {
         },
         deletePost: async (parent, { postId }, context) => {
             if (context.user) {
+                // finds the post by postId, removes the comments associated with the post and deletes the post
                 await Post.findOneAndDelete(
                     { _id: postId },
-                    { $pullAll: { comments: comment }  },
+                    // gets rid of all comments by setting to an empty array
+                    { $set: { comments: [] }  },
                     { new: true }
                 );
 
+                // finds the user and pulls the post from the user's posts
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $pull: { posts: post._id } },
