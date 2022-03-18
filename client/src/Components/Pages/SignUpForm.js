@@ -39,9 +39,9 @@ const SignUpForm = () => {
 
     return (
         <>
-            <form onSubmit={handleFormSubmit} className="flex flex-col items-center text-slate-50">
+            <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
                 <input
-                    className='form-input m-2'
+                    className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='username'
                     name='username'
                     type='username'
@@ -50,7 +50,7 @@ const SignUpForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className='form-input m-2'
+                    className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='email'
                     name='email'
                     type='email'
@@ -59,7 +59,7 @@ const SignUpForm = () => {
                     onChange={handleInputChange}
                 />
                 <input
-                    className='form-input m-2'
+                    className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='password'
                     name='password'
                     type='password'
@@ -67,7 +67,7 @@ const SignUpForm = () => {
                     value={userFormData.password}
                     onChange={handleInputChange}
                 />
-                <button className='btn d-block w-100' type='submit'>
+                <button className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
                     Submit
                 </button>
             </form>

@@ -18,16 +18,17 @@ const PostForm = () => {
         console.error(err);
       }
 
-      const { me } = cache.readQuery({ query: QUERY_ME });
-      cache.writeQuery({
-        query: QUERY_ME,
-        data: { me: { ...me, posts: [...me.posts, addPost] } }
-      });
+      // const { me } = cache.readQuery({ query: QUERY_ME });
+      // cache.writeQuery({
+      //   query: QUERY_ME,
+      //   data: { me: { ...me, posts: [...me.posts, addPost] } }
+      // });
     }
   });
 
   const handleChange = event => {
-    if (event.target.value.length <= 280) {
+    console.log(event.target.value);
+    if (event.target.value.length <= 480) {
       setText(event.target.value);
       setCharacterCount(event.target.value.length);
     }

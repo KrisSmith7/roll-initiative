@@ -31,7 +31,53 @@ code {
     monospace;
 }
 
-.form-input {
+.modal-content {
+  height: 75vh;
+  background-image: url('./assets/stock_images/parchment.jpg');
+  background-size: cover;
+  background-repeat: none;
+}
+
+nav a {
+  text-decoration: none;
+}
+
+.nav-tab {
+  background-color: #2f3e46;
+}
+
+.nav-tab:active, .nav-tab:hover {
+  background-color: #75cccc;
+}
+
+.nav-a {
+  color: white;
+}
+
+.nav-a:active, .nav-a:hover {
   color: #2f3e46;
 }
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+.form-input {
+  color: #2f3e46;
+  width: 75%;
+  text-align: center;
+}
+
+.form-btn {
+  padding: .5rem;
+  border-radius: 25px;
+}
+
+.form-btn:hover {
+  color: white;
+  background-color: #2f3e46;
+}
+
+
 

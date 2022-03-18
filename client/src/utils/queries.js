@@ -7,6 +7,13 @@ export const QUERY_POST = gql`
       postText
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentText
+      }
     }
   }
 `;
@@ -18,6 +25,13 @@ export const QUERY_POSTS = gql`
       postText
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentText
+      }
     }
   }
 `;
@@ -32,6 +46,13 @@ export const QUERY_ME = gql`
         _id
         postText
         createdAt
+        commentCount
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
       }
       characters {
         _id
