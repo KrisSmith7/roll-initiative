@@ -2,6 +2,8 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_CHARACTER } from '../../utils/queries';
+import { DnDCharacterStatsSheet } from 'dnd-character-sheets';
+import 'dnd-character-sheets/dist/index.css';
 
 const SingleCharacter = () => {
 
@@ -25,6 +27,7 @@ const SingleCharacter = () => {
         <div> 
             <h1> Single Character Page </h1> 
             <h1>{character.name}</h1>
+            <DnDCharacterStatsSheet />
         </div>
     )
 }
