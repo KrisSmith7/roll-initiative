@@ -26,8 +26,13 @@ const resolvers = {
         },
         post: async (parent, { _id }) => {
             return Post.findOne({ _id });
-        }
-    }, 
+        },
+
+        campaigns: async () => {
+            const campaignData = await Campaign.find().sort({ createdAt: -1 })
+            return campaignData;
+    },
+}, 
     Mutation: {
         addUser: async(parent, args) => {
             const user = await User.create(args); 

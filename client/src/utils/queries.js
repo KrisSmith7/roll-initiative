@@ -80,8 +80,8 @@ export const QUERY_ME = gql`
 `;
 
 export const QUERY_CAMPAIGN = gql`
-  query campaigns($id: ID!) {
-    campaigns(_id: $id) {
+  query campaigns {
+    campaigns {
       _id
       username
       campaignName

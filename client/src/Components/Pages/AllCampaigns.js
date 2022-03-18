@@ -8,10 +8,11 @@ import stockImg6 from "../../assets/stock_images/stock_image6.jpg";
 import AddCampaign from "../AddCampaign";
 
 
-function AllCampaigns ({}) {
+function AllCampaigns () {
 
     const { data } = useQuery(QUERY_CAMPAIGN);
-    const campaigns = data?.campaigns || [];
+    console.log(data)
+    const campaigns = data.campaigns || [];
     console.log("all campaigns page", campaigns);
 
     const loggedIn = Auth.loggedIn();

@@ -63,8 +63,9 @@ const typeDefs = gql`
         users: [User]
         posts(username: String): [Post]
         post(_id: ID!): Post
-        campaigns(_id: ID!): Campaign
+        campaigns: [Campaign]
     }
+    
    
     type Mutation {
         login(username: String!, password: String!): Auth
