@@ -44,7 +44,8 @@ function Profile ({currentPage, handlePageChange}){
             <>
             <button onClick={handleShow}>Create a character!</button>
             {/* <div className='modal-container h-screen'> */}
-            <Modal                size="lg"
+            <Modal                
+                size="lg"
                 centered
                 show={showModal}
                 onHide={handleClose}

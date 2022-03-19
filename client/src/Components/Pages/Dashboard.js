@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
 import stockImg from '../../assets/stock_images/stock_image0.jpg';
@@ -14,6 +15,10 @@ function Dashboard() {
     console.log("dashboard posts", posts);
 
     const loggedIn = Auth.loggedIn();
+
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
 
     return (
         <div className="z-[-100]">
@@ -38,8 +43,18 @@ function Dashboard() {
                         {/* forum/discussion post element   */}
                         <div className="tracking-wider text-md lg:text-xl lg:p-4">
                             {loggedIn && (
-                                <div>
-                                    <PostForm />
+                                <div className="flex justify-center">
+                                    <button onClick={handleShow} className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75'>Create New Post</button>
+                                    <Modal
+                                        size="lg"
+                                        centered
+                                        show={showModal}
+                                        onHide={handleClose}
+                                        ClassName="modal"
+                                    >
+                                        <PostForm handleClose={handleClose}/>
+                                    </Modal>
+                                    
                                 </div>
                             )}
                             {loading ? (

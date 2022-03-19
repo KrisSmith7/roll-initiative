@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 
-const PostForm = () => {
+const PostForm = ({ handleClose }) => {
   const [postText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -50,13 +50,20 @@ const PostForm = () => {
 
   return (
     <div>
-      <form className="text-slate" onSubmit={handleFormSubmit}>
+      <p
+        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+      >
+        Character Count: {characterCount}/280
+        {error && <span className="ml-2">Something went wrong...</span>}
+      </p>
+      <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
         <textarea
+          className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
           placeholder="Type your post here"
           value={postText}
           onChange={handleChange}
         ></textarea>
-        <button type="submit">
+        <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' onClick={handleClose}>
           Submit
         </button>
       </form>

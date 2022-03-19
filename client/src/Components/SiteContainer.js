@@ -79,14 +79,14 @@ export default function SiteContainer() {
       {/* {renderPage()} */}
       <Router>
           <NavTabs />
-          <Switch>
-            <Route exact path="/" component={Dashboard} />
-            <Route exact path="/homepage" component={Homepage} />
-            <Route exact path="/profile/:username?" component={Profile} />
-            <Route exact path="/character/:id" component={SingleCharacter} />
-            <Route exact path="/campaigns" component={AllCampaigns} />
-            <Route exact path="/resources" component={Resources} />
-            <Route exact path="/post/:id" component={SinglePost} />
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/homepage" component={Homepage} />
+              <Route exact path="/profile/:username?" component={Profile} />
+              <Route exact path="/character/:id" component={SingleCharacter} />
+              <Route exact path="/campaigns" component={AllCampaigns} />
+              <Route exact path="/resources" component={Resources} />
+              <Route exact path="/post/:id" component={SinglePost} />
 
             <Route component={NoMatch} />
           </Switch>
