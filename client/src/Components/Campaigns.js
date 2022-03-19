@@ -16,6 +16,7 @@ function Campaigns({ campaigns }) {
             </div>
         )
     }
+    
 
     return (
 
@@ -46,8 +47,8 @@ function Campaigns({ campaigns }) {
                     {campaigns.map(campaign => {
                         return (
                             <tr class="bg-turq/25 text-white border-b">
-              <td class="hidden md:block md:px-6 md:py-4 whitespace-nowrap font-medium">
-                  +
+              <td class="md:px-6 md:py-4 whitespace-nowrap font-medium">
+                 <button>+</button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
