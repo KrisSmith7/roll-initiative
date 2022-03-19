@@ -11,7 +11,7 @@ const PostList = ({ posts }) => {
     <div>
       {posts &&
         posts.map(post => (
-          <article className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold">
+          <article className="bg-sienna/50 px-2 mb-4 border-l-2 border-sienna rounded-bl-lg font-semibold">
           <div key={post._id}>
           <div className="whitespace-pre-wrap">
             <Link to={`/post/${post._id}`}>

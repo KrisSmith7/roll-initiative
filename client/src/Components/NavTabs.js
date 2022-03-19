@@ -21,9 +21,18 @@ function NavTabs({ currentPage, handlePageChange }) {
 
     console.log(currentPage);
     
-    return (     
-        <>
-            <div className="relative bg-charcoal ">
+    return (    
+       
+    <div className='z-20 w-full fixed bg-gray-800'>
+        <div className=''>
+         <button class="w-full md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" aria-controls="offcanvasExample">
+             <img src={logo} className="h-8"/> <span className='px-6 tracking-widest font-light text-xl'>
+                 Menu
+                 </span>
+    </button>
+        </div>
+        
+            <div id="menu" className="offcanvas offcanvas-start fixed bottom flex bg-charcoal ">
                 <div className="flex flex-col sm:flex-row sm:justify-around">
                     <div className="w-72 h-screen">
                         <div className="flex items-center justify-start mx-6 mt-10">
@@ -118,7 +127,8 @@ function NavTabs({ currentPage, handlePageChange }) {
                     </div>
                 </div>
             </div>
-            <div className='modal-container h-screen'>
+
+            <div className='modal-container'>
             <Modal
                 // {...props}
                 size="lg"
@@ -157,7 +167,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                 </Tab.Container >
             </Modal>
             </div>
-        </>  
+                </div>
     );
 }
 
