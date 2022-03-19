@@ -94,4 +94,17 @@ nav a {
 }
 
 
-
+@media screen and (max-width: 600px) {
+  table thead {
+    display: none;
+  }
+  table td {
+    display: flex;
+  }
+  
+  table td::before {
+    content: attr(aria-label);
+    font-weight: bold;
+    width: 10px;
+  }
+}

@@ -19,25 +19,25 @@ function Campaigns({ campaigns }) {
 
     return (
 
-                    <div class="flex flex-col items-center w-full">
+                    <div class="md:flex md:flex-col md:items-center w-full">
     <div class="w-full py-2 sm:px-6 lg:px-8">
       <div class="text-white">
         <table class="w-full table-auto">
           <thead class="bg-charcoal text-white border-b">
             <tr>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Request to Join
               </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Campaign Name
               </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Description
               </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Setting
               </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 DM
               </th>
             </tr>
@@ -46,20 +46,20 @@ function Campaigns({ campaigns }) {
                     {campaigns.map(campaign => {
                         return (
                             <tr class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium">
+              <td class="hidden md:block md:px-6 md:py-4 whitespace-nowrap font-medium">
                   +
                   </td>
-              <td class="font-light font-macondo px-6 py-4 whitespace-nowrap">
+              <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
-              <td class="font-light px-6 py-4 whitespace-nowrap">
+              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.description}
               </td>
-              <td class="font-light px-6 py-4 whitespace-nowrap">
+              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.setting}
               </td>
-              <td class="font-light px-6 py-4 whitespace-nowrap">
-                {campaign.username}
+              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+                <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username}
               </td>
             </tr>
                         )
