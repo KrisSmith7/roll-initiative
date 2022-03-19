@@ -32,7 +32,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
+            <form id="login" onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
                 <input
                     className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your username'
