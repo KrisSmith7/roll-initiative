@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
 
-const PostForm = () => {
+const PostForm = ({ handleClose }) => {
   const [postText, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
   const [addPost, { error }] = useMutation(ADD_POST, {
@@ -63,7 +63,7 @@ const PostForm = () => {
           value={postText}
           onChange={handleChange}
         ></textarea>
-        <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' >
+        <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' onClick={handleClose}>
           Submit
         </button>
       </form>
