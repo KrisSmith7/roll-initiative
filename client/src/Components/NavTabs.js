@@ -23,18 +23,18 @@ function NavTabs({ currentPage, handlePageChange }) {
     
     return (    
        
-    <div className='z-20 w-full fixed bg-gray-800'>
+    <div className='bg-gray-800 z-10 w-auto h-auto'>
         <div className=''>
-         <button class="w-full md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu" aria-controls="offcanvasExample">
+         <button class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="invisible" data-bs-target="#menu" aria-controls="offcanvasMenu">
              <img src={logo} className="h-8"/> <span className='px-6 tracking-widest font-light text-xl'>
                  Menu
                  </span>
     </button>
         </div>
         
-            <div id="menu" className="offcanvas offcanvas-start fixed bottom flex bg-charcoal ">
+            <div id="menu" className="w-full h-full visible bottom flex bg-charcoal">
                 <div className="flex flex-col sm:flex-row sm:justify-around">
-                    <div className="w-72 h-screen">
+                    <div className="w-72">
                         <div className="flex items-center justify-start mx-6 mt-10">
                             <img className="h-10" src={logo} alt="social rolls logo"/>
                             <span className="text-gray-600 dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">

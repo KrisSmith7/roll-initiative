@@ -16,7 +16,7 @@ function Dashboard() {
     const loggedIn = Auth.loggedIn();
 
     return (
-        <>
+        <div className="z-[-100]">
         <Homepage/>
         <div className="bg-sienna pt-12 lg:pt-24">
         <div className="bg-slate relative h-full w-full lg:border-t-4 ">
@@ -56,7 +56,7 @@ function Dashboard() {
             </div>
         </div>
         </div>
-</>
+</div>
 
     )
 }
