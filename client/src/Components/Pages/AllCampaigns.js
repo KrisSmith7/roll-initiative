@@ -23,7 +23,7 @@ function AllCampaigns () {
 
     return (<>
 
-        <div className="bg-slate relative overflow-hidden h-screen w-full">
+        <div className="bg-slate relative h-full w-full">
         <img src={stockImg6} className="absolute h-full w-full object-cover opacity-50" alt="castle background" />
         <div className="inset-0 bg-gradient-to-r from-charcoal to-slate opacity-25 absolute">
         </div>
@@ -33,7 +33,7 @@ function AllCampaigns () {
 {/* checks if loggedIn and displays campaigns list */}
 <>
     {loggedIn && (
-        <div className="bg-gray-900/25 w-full h-3/4 flex items-center p-2">
+        <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">
             <Campaigns campaigns={campaigns} />
             <button onClick={handleShow}>Start your own -- Become a DM</button>
         </div>

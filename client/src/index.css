@@ -36,6 +36,7 @@ code {
   background-image: url('./assets/stock_images/parchment.jpg');
   background-size: cover;
   background-repeat: none;
+  z-index: 99999 !important;
 }
 .modal-content2 {
   height: 75vh;
@@ -65,20 +66,26 @@ nav a {
   color: #2f3e46;
 }
 
+.modal {
+  z-index: 999999 !important;
+}
 .form {
   display: flex;
   justify-content: center;
+  z-index: 999999 !important;
 }
 
 .form-input {
   color: #2f3e46;
   width: 75%;
   text-align: center;
+  z-index: 999999 !important;
 }
 
 .form-btn {
   padding: .5rem;
   border-radius: 25px;
+  z-index: 999999 !important;
 }
 
 .form-btn:hover {

@@ -96,20 +96,48 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in!");
         },
         deletePost: async (parent, { postId }, context) => {
+            console.log(context.user);
             if (context.user) {
-                await Post.findOneAndDelete(
-                    { _id: postId },
-                    { $pullAll: { comments: comment }  },
-                    { new: true }
+                console.log("Reached if statement");
+
+                const foundPost = await Post.findById(
+                    { _id: postId}
                 );
 
-                await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { posts: post._id } },
-                    { new: true }
-                );
+                console.log(foundPost.username);
+                if (context.user.username === foundPost.username) {
+                    console.log(foundPost.username + ": Usernames match");
 
-                return "Post has been deleted";
+                    const postSansComments = await Post.findOneAndUpdate(
+                        { _id: postId },
+                        { $set: { comments: [] }},
+                        { new: true }
+                    );
+
+                    console.log(postSansComments);
+
+                    // finds the post by postId and deletes the post
+                    const deletedPost = await Post.deleteOne(
+                        { _id: postId },
+                        { new: true }
+                    );
+
+                    console.log(deletedPost);
+                    
+                    //finds the user and pulls the post from the user's posts
+                    const updatedUser = await User.findByIdAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: { posts: postId } },
+                        { new: true }
+                    );
+
+                    return updatedUser;
+                } else {
+                    throw new Error("You must be the user who made the post to delete it!");
+                };
+
+
+                
             }
 
             throw new AuthenticationError("You need to be logged in!");

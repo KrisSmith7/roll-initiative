@@ -37,7 +37,7 @@ const LoginForm = () => {
                     className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your username'
                     name='username'
-                    type='username'
+                    type='input'
                     id='username'
                     value={userFormData.username}
                     onChange={handleInputChange}

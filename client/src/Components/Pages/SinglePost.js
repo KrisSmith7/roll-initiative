@@ -5,8 +5,9 @@ import CommentList from '..//CommentList';
 import CommentForm from '../CommentForm';
 
 import Auth from '../../utils/auth';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_POST } from '../../utils/queries';
+import { DELETE_POST } from '../../utils/mutations';
 
 const SinglePost = () => {
   const { id: postId } = useParams();
@@ -16,6 +17,26 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
+  const [deletePost] = useMutation(DELETE_POST);
+
+  const handleDeletePost = async (postId) => {
+    console.log("delete button clicked");
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+
+    if (!token) {
+      return false;
+    }
+
+    try {
+      await deletePost({
+        variables: { postId: postId }
+      });
+
+      console.log("deleted post: ", postId);
+    } catch (err) {
+      console.error(err);
+    }
+  } 
 
   if (loading) {
     return <div>Loading...</div>;
@@ -35,7 +56,7 @@ const SinglePost = () => {
         </div>
         <div>
           <button type='button'>Edit Post</button>
-          <button type='button'>Delete Post</button>
+          <button type='button' onClick={() => handleDeletePost(post._id)}>Delete Post</button>
         </div>
       </div>
 
