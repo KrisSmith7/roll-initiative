@@ -16,8 +16,10 @@ function Dashboard() {
     const loggedIn = Auth.loggedIn();
 
     return (
-        <div className="z-[-100]">
+        <div className="">
+            <div className="h-3/4">
         <Homepage/>
+            </div>
         <div className="bg-sienna pt-12 lg:pt-24">
         <div className="bg-slate relative h-full w-full lg:border-t-4 ">
             <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
@@ -29,7 +31,7 @@ function Dashboard() {
                         Tavern Talk
                     </h1>
                     
-                    <div className="modal-content rounded-md text-lg text-white w-2/3 mt-8">
+                    <div className="modal-content rounded-md text-lg text-white w-full lg:2/3 mt-8">
                         <div className="overflow-auto inset-0 bg-gradient-to-b from-charcoal/[.35] rounded-md p-8 ">
                            <h1 className="font-antiqua text-center text-sienna pb-4 text-2xl lg:text-4xl border-b-2 border-sienna">
                                Gather 'round, grab an ale, and share your tales!

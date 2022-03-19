@@ -4,6 +4,7 @@ function Campaigns({ campaigns }) {
 
     if (!campaigns.length) {
         return (
+            <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">
             <div className="w-full flex flex-col items-center justify-center">
                 <h1 className="text-4xl text-center tracking-normal py-2">You are not a part of any campaigns.
                 </h1>
@@ -12,16 +13,16 @@ function Campaigns({ campaigns }) {
                 </p>
 
             </div>
+            </div>
         )
     }
 
     return (
 
-                    <div class="flex flex-col w-full">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-x-auto text-white">
-        <table class="min-w-full">
+                    <div class="flex flex-col items-center w-full">
+    <div class="w-full py-2 sm:px-6 lg:px-8">
+      <div class="text-white">
+        <table class="w-full table-auto">
           <thead class="bg-charcoal text-white border-b">
             <tr>
               <th scope="col" class="text-sm font-medium text-white px-6 py-4 text-left">
@@ -57,7 +58,7 @@ function Campaigns({ campaigns }) {
               <td class="font-light px-6 py-4 whitespace-nowrap">
                 {campaign.setting}
               </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+              <td class="font-light px-6 py-4 whitespace-nowrap">
                 {campaign.username}
               </td>
             </tr>
@@ -68,7 +69,6 @@ function Campaigns({ campaigns }) {
       </div>
     </div>
   </div>
-</div>
     )
 }
 

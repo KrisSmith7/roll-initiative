@@ -23,7 +23,7 @@ function NavTabs({ currentPage, handlePageChange }) {
     
     return (    
        
-    <div className='bg-gray-800 z-10 w-auto h-auto'>
+    <div className='bg-gray-800 w-auto h-auto'>
         <div className=''>
          <button class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out" type="button" data-bs-toggle="invisible" data-bs-target="#menu" aria-controls="offcanvasMenu">
              <img src={logo} className="h-8"/> <span className='px-6 tracking-widest font-light text-xl'>
@@ -32,7 +32,7 @@ function NavTabs({ currentPage, handlePageChange }) {
     </button>
         </div>
         
-            <div id="menu" className="w-full h-full visible bottom flex bg-charcoal">
+            <div id="menu" className="w-full h-full hidden bottom flex bg-charcoal">
                 <div className="flex flex-col sm:flex-row sm:justify-around">
                     <div className="w-72">
                         <div className="flex items-center justify-start mx-6 mt-10">
