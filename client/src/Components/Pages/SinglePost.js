@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
 import CommentList from '..//CommentList';
 import CommentForm from '../CommentForm';
+import UpdatePostForm from '../UpdatePostForm';
 
 import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_POST } from '../../utils/queries';
+import { QUERY_POST, QUERY_POSTS } from '../../utils/queries';
 import { DELETE_POST } from '../../utils/mutations';
 
 const SinglePost = () => {
@@ -17,7 +19,25 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
-  const [deletePost] = useMutation(DELETE_POST);
+  const [deletePost, { error }] = useMutation(DELETE_POST, {
+    update(cache, { data: { deletePost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [...posts]}
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      
+
+    }
+  });
+
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   const handleDeletePost = async (postId) => {
     console.log("delete button clicked");
@@ -33,10 +53,15 @@ const SinglePost = () => {
       });
 
       console.log("deleted post: ", postId);
+
     } catch (err) {
       console.error(err);
     }
-  } 
+  }
+
+  // const handleUpdatePost = async (postId, postText) {
+
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
@@ -45,18 +70,31 @@ const SinglePost = () => {
   return (
     <div>
       <div>
-        <p>
+        <div>
+          <p>{post.postText}</p>
+        </div>
+        <div>
+          <p>
           <span>
             {post.username}
           </span>{' '}
           posted on {post.createdAt}
         </p>
-        <div>
-          <p>{post.postText}</p>
         </div>
+        
+        
         <div>
-          <button type='button'>Edit Post</button>
-          <button type='button' onClick={() => handleDeletePost(post._id)}>Delete Post</button>
+          <button type='button'onClick={handleShow} className='form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
+          <Modal
+            size="lg"
+            centered
+            show={showModal}
+            onHide={handleClose}
+            className="modal"
+          >
+            <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
+          </Modal>
+          <button type='button' onClick={() => handleDeletePost(post._id)} className='form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
         </div>
       </div>
 
