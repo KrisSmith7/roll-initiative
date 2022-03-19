@@ -76,3 +76,19 @@ mutation addCampaign($campaignName: String!, $description: String!, $setting: St
         }
     }
 `
+
+export const ADD_CHARACTER = gql` 
+mutation addCharacter($name: String!, $class: String!, $level: Int, $background: String, 
+    $race: String, $alignment: String, $bio: String) {
+        addCharacter (name: $name, class: $class, level: $level, background: $background, 
+            race: $race, alignment: $alignment, bio: $bio) {
+                name
+                class
+                level
+                background
+                race
+                alignment
+                bio
+            }
+    }
+    `

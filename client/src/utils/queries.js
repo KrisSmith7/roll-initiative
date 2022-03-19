@@ -136,12 +136,20 @@ export const QUERY_CAMPAIGN = gql`
   }
 `;
 
-// user($username: String!) {
-//   user(username: $username) {
-
 export const QUERY_CHARACTER = gql`
   query character($id: ID!) {
     character(_id: $id) {
+      name
+      level
+      class
+      bio
+      background
+    }
+  }`
+
+  export const QUERY_CHARACTERS = gql`
+  query characters {
+    character {
       name
       level
       class
