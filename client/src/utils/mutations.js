@@ -92,3 +92,10 @@ mutation addCharacter($name: String!, $class: String!, $level: Int, $background:
             }
     }
     `
+
+export const DELETE_CHARACTER = gql`
+mutation deleteCharacter($_id: ID!) {
+    deleteCharacter (_id: $_id) {
+        username
+    }
+}`

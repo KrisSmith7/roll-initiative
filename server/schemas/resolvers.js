@@ -170,11 +170,39 @@ const resolvers = {
 
             throw new AuthenticationError('Must log in or sign up to create a character!')
         },
-        // updateCharacter: async (parent, args, context) => {
-        //     if (context.user) {
-        //         const character = await Character.findOneAndUpdate({ ...args, })
-        //     }
-        // },
+        deleteCharacter: async (parent, { _id }, context) => {
+            if (context.user) {
+
+                const character = await Character.findById(
+                     { _id: _id }
+                );
+                
+                console.log("character:", character);
+
+                console.log(context);
+                
+                if (context.user.username === character.username) {
+
+                    const deletedCharacter = await Character.deleteOne(
+                        { _id: _id }, 
+                        { new: true }
+                    );
+
+                    console.log(deletedCharacter);
+
+                    const user = await User.findByIdAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: { characters: character._id } },
+                        { new: true }
+                    )
+                    return user; 
+                }
+
+            }
+
+            throw new AuthenticationError('Must log in to your account to delete characters!')
+
+        },
 
     // adding campaign code -- do we want to change user dmstatus to true here?
         addCampaign: async (parent, args, context) => {

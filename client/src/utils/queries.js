@@ -139,6 +139,7 @@ export const QUERY_CAMPAIGN = gql`
 export const QUERY_CHARACTER = gql`
   query character($id: ID!) {
     character(_id: $id) {
+      _id
       name
       level
       class

@@ -55,7 +55,7 @@ function Profile ({currentPage, handlePageChange}){
                 </Modal>
                 {/* </div> */}
                 </>}
-            <Characters characters={user.characters} />
+            <Characters characters={user.characters} isMe={isMe} />
             <Campaigns campaigns={user.campaigns} />
         </div>
     )

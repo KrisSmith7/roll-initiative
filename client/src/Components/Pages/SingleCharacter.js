@@ -1,19 +1,17 @@
 import React from 'react'; 
 import { useParams } from 'react-router-dom';
-import { useQuery, useMutation } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { QUERY_CHARACTER } from '../../utils/queries';
 import { PageTitle, StatBlock, Note, MagicItem } from 'dungeons-and-components';
 
 
-const SingleCharacter = () => {
+function SingleCharacter() {
 
     const { id: idParam } = useParams(); 
 
     const { loading, data } = useQuery(QUERY_CHARACTER, {
         variables: { id: idParam }
     });
-
-    console.log(data); 
 
     if (loading) {
         return(
