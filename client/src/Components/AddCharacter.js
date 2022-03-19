@@ -30,17 +30,21 @@ function AddCharacter() {
     const [addCharacter, { error }] = useMutation(ADD_CHARACTER, {
         update(cache, { data: { addCharacter } }) {
         try {
-            const me = cache.readQuery({ query: QUERY_ME });
-            console.log(me);
-            const characters = me.me.characters;
+            const { characters } = cache.readQuery({ query: QUERY_CHARACTER });
             console.log(characters);
-            // cache.writeQuery({
-            // query: QUERY_ME,
-            // data: { characters: [addCharacter, ...characters] }
-            // });
+            cache.writeQuery({
+            query: QUERY_CHARACTER,
+            data: { characters: [addCharacter, ...characters] }
+            });
         } catch (err) {
             console.error(err);
         }
+
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, characters: [...me.characters, addCharacter] } }
+        });
         }
     });
 
@@ -49,12 +53,6 @@ function AddCharacter() {
         event.preventDefault();
 
         characterForm.level = parseInt(characterForm.level); 
-
-        if (!characterForm.level == 1) {
-            setCharacterForm({
-                level: 'Required!'
-            })
-        }
 
         try {
             console.log(characterForm);

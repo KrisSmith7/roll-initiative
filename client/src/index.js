@@ -6,6 +6,7 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
+import 'tw-elements'
 
 ReactDOM.render(
   <React.StrictMode>
