@@ -96,23 +96,48 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in!");
         },
         deletePost: async (parent, { postId }, context) => {
+            console.log(context.user);
             if (context.user) {
-                // finds the post by postId, removes the comments associated with the post and deletes the post
-                await Post.findOneAndDelete(
-                    { _id: postId },
-                    // gets rid of all comments by setting to an empty array
-                    { $set: { comments: [] }  },
-                    { new: true }
+                console.log("Reached if statement");
+
+                const foundPost = await Post.findById(
+                    { _id: postId}
                 );
 
-                // finds the user and pulls the post from the user's posts
-                const updatedUser = await User.findByIdAndUpdate(
-                    { _id: context.user._id },
-                    { $pull: { posts: post._id } },
-                    { new: true }
-                );
+                console.log(foundPost.username);
+                if (context.user.username === foundPost.username) {
+                    console.log(foundPost.username + ": Usernames match");
 
-                return updatedUser;
+                    const postSansComments = await Post.findOneAndUpdate(
+                        { _id: postId },
+                        { $set: { comments: [] }},
+                        { new: true }
+                    );
+
+                    console.log(postSansComments);
+
+                    // finds the post by postId and deletes the post
+                    const deletedPost = await Post.deleteOne(
+                        { _id: postId },
+                        { new: true }
+                    );
+
+                    console.log(deletedPost);
+                    
+                    //finds the user and pulls the post from the user's posts
+                    const updatedUser = await User.findByIdAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: { posts: postId } },
+                        { new: true }
+                    );
+
+                    return updatedUser;
+                } else {
+                    throw new Error("You must be the user who made the post to delete it!");
+                };
+
+
+                
             }
 
             throw new AuthenticationError("You need to be logged in!");

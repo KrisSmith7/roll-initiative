@@ -40,11 +40,11 @@ function AddCharacter() {
             console.error(err);
         }
 
-        // const { me } = cache.readQuery({ query: QUERY_ME });
-        // cache.writeQuery({
-        //   query: QUERY_ME,
-        //   data: { me: { ...me, characters: [...me.characters, addCharacter] } }
-        // });
+        const { me } = cache.readQuery({ query: QUERY_ME });
+        cache.writeQuery({
+          query: QUERY_ME,
+          data: { me: { ...me, characters: [...me.characters, addCharacter] } }
+        });
         }
     });
 
