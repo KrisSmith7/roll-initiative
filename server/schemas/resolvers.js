@@ -108,7 +108,7 @@ const resolvers = {
                 if (context.user.username === foundPost.username) {
                     console.log(foundPost.username + ": Usernames match");
 
-                    const postSansComments = await Post.findOneAndUpdate(
+                    const postSansComments = Post.findOneAndUpdate(
                         { _id: postId },
                         { $set: { comments: [] }},
                         { new: true }

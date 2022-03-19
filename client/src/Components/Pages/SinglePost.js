@@ -33,6 +33,7 @@ const SinglePost = () => {
       });
 
       console.log("deleted post: ", postId);
+
     } catch (err) {
       console.error(err);
     }
