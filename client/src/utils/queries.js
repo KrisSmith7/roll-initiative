@@ -7,6 +7,13 @@ export const QUERY_POST = gql`
       postText
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentText
+      }
     }
   }
 `;
@@ -18,6 +25,57 @@ export const QUERY_POSTS = gql`
       postText
       createdAt
       username
+      commentCount
+      comments {
+        _id
+        createdAt
+        username
+        commentText
+      }
+    }
+  }
+`;
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      email
+      dmstatus
+      posts {
+        _id
+        postText
+        createdAt
+        commentCount
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
+      }
+      characters {
+        _id
+        name
+        class
+        level
+        background
+        race
+        alignment
+        bio
+        str
+        dex
+        con
+        int
+        wis
+        cha
+      }
+      campaigns {
+        campaignName
+        description
+        setting
+      }
     }
   }
 `;
@@ -28,12 +86,66 @@ export const QUERY_ME = gql`
       _id
       username
       email
+      dmstatus
       posts {
         _id
         postText
         createdAt
+        commentCount
+        comments {
+          _id
+          createdAt
+          commentText
+          username
+        }
+      }
+      characters {
+        _id
+        name
+        class
+        level
+        background
+        race
+        alignment
+        bio
+        str
+        dex
+        con
+        int
+        wis
+        cha
+      }
+      campaigns {
+        campaignName
+        description
+        setting
       }
     }
   }
 `;
 
+export const QUERY_CAMPAIGN = gql`
+  query campaigns {
+    campaigns {
+      _id
+      username
+      campaignName
+      description
+      setting
+    }
+  }
+`;
+
+// user($username: String!) {
+//   user(username: $username) {
+
+export const QUERY_CHARACTER = gql`
+  query character($id: ID!) {
+    character(_id: $id) {
+      name
+      level
+      class
+      bio
+      background
+    }
+  }`

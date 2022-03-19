@@ -33,6 +33,46 @@ export const ADD_POST = gql`
             postText
             createdAt
             username
+            commentCount
+            comments {
+                _id
+            }
         }
     }
 `;
+
+export const DELETE_POST = gql`
+    mutation deletePost($postId: ID!) {
+        deletePost(postId: $postId) {
+            _id
+            username
+        }
+    }
+`;
+
+export const ADD_COMMENT = gql`
+    mutation addComment($postId: ID!, $commentText: String!) {
+        addComment(postId: $postId, commentText: $commentText) {
+            _id
+            commentCount
+            comments {
+                _id
+                commentText
+                createdAt
+                username
+            }
+        }
+    }
+`;
+
+export const ADD_CAMPAIGN = gql`
+mutation addCampaign($campaignName: String!, $description: String!, $setting: String!) {
+    addCampaign (campaignName: $campaignName
+                description: $description
+                setting: $setting) {
+        campaignName
+        description
+        setting 
+        }
+    }
+`

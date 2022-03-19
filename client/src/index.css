@@ -37,6 +37,13 @@ code {
   background-size: cover;
   background-repeat: none;
 }
+.modal-content2 {
+  height: 75vh;
+  background-image: url('./assets/stock_images/parchment.jpg');
+  background-size: cover;
+  background-repeat: none;
+  opacity: 75;
+}
 
 nav a {
   text-decoration: none;

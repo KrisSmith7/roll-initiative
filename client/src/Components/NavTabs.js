@@ -1,9 +1,11 @@
 // import { render } from '@testing-library/react';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../assets/socialrolls_logo.png';
 import axe from '../assets/axe.svg';
 import beer from '../assets/beer.svg';
 import books from '../assets/books.svg';
+import search from '../assets/search.svg';
 import Auth from '../utils/auth';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
@@ -17,6 +19,8 @@ function NavTabs({ currentPage, handlePageChange }) {
     
     
 
+    console.log(currentPage);
+    
     return (     
         <>
             <div className="relative bg-charcoal ">
@@ -29,28 +33,41 @@ function NavTabs({ currentPage, handlePageChange }) {
                             </span>
                         </div>
                         <nav className="mt-10 px-6 ">
-                            <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
-                                onClick={() => handlePageChange('Dashboard')}>
+                            <Link to="/">
+                                 <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                                     <img src={beer} alt="Beer glasses" />
                                     <span className="mx-4 text-lg font-cormorant">
                                         Tavern Talk
                                     </span>
                                     <span className="flex-grow text-right">
                                     </span>
-                            </a>
+                                </a>
+                            </Link>
+                           
                             {Auth.loggedIn() ? (
                                 <>
-                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#profile"
-                                    onClick={() => handlePageChange('Profile')}>
-                                        <img src={axe} alt="axe"/>
+                                    <Link to="/profile">
+                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
+                                            <img src={axe} alt="axe"/>
+                                            <span className="mx-4 text-lg font-cormorant">
+                                                Your Characters and Quests
+                                            </span>
+                                            <span className="flex-grow text-right">
+                                            </span>
+                                        </a>
+                                    </Link>
+                                   <Link to="/campaigns">
+                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
+                                        <img src={search} alt="search icon"/>
                                         <span className="mx-4 text-lg font-cormorant">
-                                            Characters and Quests
+                                            Find a Campaign
                                         </span>
                                         <span className="flex-grow text-right">
                                         </span>
                                     </a>
-                                    <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#resources"
-                                    onClick={() => handlePageChange('Resources')}>
+                                    </Link>
+                                    <Link to="/resources">
+                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                                         <img src={books} alt="books"/>
                                         <span className="mx-4 text-lg font-cormorant">
                                             Resources
@@ -58,10 +75,14 @@ function NavTabs({ currentPage, handlePageChange }) {
                                         <span className="flex-grow text-right">
                                         </span>
                                     </a>
+                                    </Link>
+                                    
+                                    
+                                    
                                     <div className="absolute bottom-0 my-10">
-                                        <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
+                                        <Link to="/">
+                                            <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#dashboard"
                                             onClick={() => {
-                                                handlePageChange('Dashboard');
                                                 Auth.logout();
                                                 } }>
                                             <svg width="20" fill="currentColor" height="20" className="h-5 w-5" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +92,10 @@ function NavTabs({ currentPage, handlePageChange }) {
                                             <span className="mx-4 text-lg font-cormorant">
                                                 Logout
                                             </span>
-                                        </a>
+                                            </a>
+                                        </Link>
+                                        
+                                        
                                     </div>
                                 </>
                                 
