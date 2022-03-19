@@ -51,9 +51,9 @@ const PostForm = ({ handleClose }) => {
   return (
     <div>
       <p
-        className={`m-0 ${characterCount === 280 || error ? 'text-error' : ''}`}
+        className={`mt-5  text-slate-50 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
-        Character Count: {characterCount}/280
+        <span className='m-5 text-charcoal font-bold'>Character Count: {characterCount}/280</span>
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
       <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
