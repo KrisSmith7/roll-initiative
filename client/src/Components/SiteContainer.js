@@ -74,11 +74,10 @@ export default function SiteContainer() {
   const handlePageChange = (page) => setCurrentPage(page);
 
   return (
-    <section>
+    <section className='overflow-auto h-screen w-full'>
       {/* conditionally renders component based on value of the currentPage variable; calls the function */}
       {/* {renderPage()} */}
       <Router>
-        <div className='flex'>
           <NavTabs />
           <Switch>
             <Route exact path="/" component={Dashboard} />
@@ -91,7 +90,6 @@ export default function SiteContainer() {
 
             <Route component={NoMatch} />
           </Switch>
-        </div>
         <Footer />
       </Router>
       
