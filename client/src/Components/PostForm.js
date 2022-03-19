@@ -56,13 +56,14 @@ const PostForm = () => {
         Character Count: {characterCount}/280
         {error && <span className="ml-2">Something went wrong...</span>}
       </p>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
         <textarea
+          className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
           placeholder="Type your post here"
           value={postText}
           onChange={handleChange}
         ></textarea>
-        <button type="submit">
+        <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' >
           Submit
         </button>
       </form>

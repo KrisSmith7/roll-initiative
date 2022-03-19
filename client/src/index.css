@@ -76,6 +76,12 @@ nav a {
   text-align: center;
 }
 
+textarea {
+  min-height:80px;
+  max-height:200px;
+  overflow:auto;
+}
+
 .form-btn {
   padding: .5rem;
   border-radius: 25px;

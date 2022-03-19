@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { Modal } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_POSTS } from '../../utils/queries';
 import stockImg from '../../assets/stock_images/stock_image0.jpg';
@@ -14,8 +15,12 @@ function Dashboard() {
 
     const loggedIn = Auth.loggedIn();
 
+    const [showModal, setShowModal] = useState(false);
+    const handleClose = () => setShowModal(false);
+    const handleShow = () => setShowModal(true);
+
     return (
-        <div className="bg-slate relative h-full w-full">
+        <div className="bg-slate relative h-screen w-full">
             <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
@@ -35,7 +40,17 @@ function Dashboard() {
                         <div className="tracking-wider text-md p-4 lg:text-xl lg:p-8">
                             {loggedIn && (
                                 <div>
-                                    <PostForm />
+                                    <button onClick={handleShow}>Create New Post</button>
+                                    <Modal
+                                        size="lg"
+                                        centered
+                                        show={showModal}
+                                        onHide={handleClose}
+                                        ClassName="modal"
+                                    >
+                                        <PostForm />
+                                    </Modal>
+                                    
                                 </div>
                             )}
                             {loading ? (
