@@ -68,13 +68,13 @@ const SinglePost = () => {
   }
 
   return (
-    <div>
-      <div>
-        <div>
-          <p>{post.postText}</p>
+    <div className='modal-content'>
+      <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold">
+        <div className="whitespace-pre-wrap">
+          <p className='text-white'>{post.postText}</p>
         </div>
         <div>
-          <p>
+          <p className="py-4 font-light">
           <span>
             {post.username}
           </span>{' '}
@@ -83,8 +83,8 @@ const SinglePost = () => {
         </div>
         
         
-        <div>
-          <button type='button'onClick={handleShow} className='form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
+        <div className='flex'>
+          <button type='button'onClick={handleShow} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
           <Modal
             size="lg"
             centered
@@ -94,7 +94,7 @@ const SinglePost = () => {
           >
             <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
           </Modal>
-          <button type='button' onClick={() => handleDeletePost(post._id)} className='form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
+          <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
         </div>
       </div>
 
