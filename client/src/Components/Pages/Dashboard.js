@@ -12,7 +12,7 @@ function Dashboard() {
 
     const { loading, data } = useQuery(QUERY_POSTS);
     const posts = data?.posts || [];
-    console.log("dashboard posts", posts);
+    //console.log("dashboard posts", posts);
 
     const loggedIn = Auth.loggedIn();
 

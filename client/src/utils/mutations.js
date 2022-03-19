@@ -41,6 +41,21 @@ export const ADD_POST = gql`
     }
 `;
 
+export const UPDATE_POST = gql`
+    mutation updatePost($postId: ID!, $postText: String!) {
+        updatePost(postId: $postId, postText: $postText) {
+            _id
+            postText
+            createdAt
+            username
+            commentCount
+            comments {
+                _id
+            }
+        }
+    }
+`;
+
 export const DELETE_POST = gql`
     mutation deletePost($postId: ID!) {
         deletePost(postId: $postId) {
@@ -75,7 +90,7 @@ mutation addCampaign($campaignName: String!, $description: String!, $setting: St
         setting 
         }
     }
-`
+`;
 
 export const ADD_CHARACTER = gql` 
 mutation addCharacter($name: String!, $class: String!, $level: Int, $background: String, 
@@ -91,4 +106,4 @@ mutation addCharacter($name: String!, $class: String!, $level: Int, $background:
                 bio
             }
     }
-    `
+`;
