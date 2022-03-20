@@ -15,8 +15,8 @@ function Characters ({ characters }) {
         <>
             {characters.map(character => {
                 return( 
-                    <div key={character._id} className="p-2"> 
-                        <h1 className="h-16 w-64 bg-gradient-to-b from-turq/[.35] text-slate p-2">{character.name}</h1>
+                    <div key={character._id} className="p-2 mx-4 border-2 rounded-md"> 
+                        <h1 className="h-16 w-64 bg-gradient-to-b from-turq/[.75] text-slate p-2">{character.name}</h1>
                         <Link
                             to={`/character/${character._id}`}
                         >
