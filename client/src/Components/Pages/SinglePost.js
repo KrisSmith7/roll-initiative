@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 
 import CommentList from '..//CommentList';
@@ -19,13 +19,13 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
-  const [deletePost] = useMutation(DELETE_POST, {
+  const [deletePost, { error }] = useMutation(DELETE_POST, {
     update(cache, { data: { deletePost } }) {
       try {
         const { posts } = cache.readQuery({ query: QUERY_POSTS });
         cache.writeQuery({
           query: QUERY_POSTS,
-          data: { posts: [...posts]}
+          data: { posts: [...posts].filter((post) => post._id !== deletePost._id) }
         });
       } catch (err) {
         console.error(err);
@@ -38,6 +38,8 @@ const SinglePost = () => {
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
+
+  const [isRedirect, setRedirect] = useState(false);
 
   const handleDeletePost = async (postId) => {
     console.log("delete button clicked");
@@ -53,6 +55,7 @@ const SinglePost = () => {
       });
 
       console.log("deleted post: ", postId);
+      setRedirect(true);
 
     } catch (err) {
       console.error(err);
@@ -85,7 +88,7 @@ const SinglePost = () => {
             posted on {post.createdAt}
           </p>
           </div>
-          
+          { isRedirect ? (<Redirect push to="/" />) : null }
           
           <div className='flex'>
             <button type='button'onClick={handleShow} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
