@@ -3,7 +3,7 @@ import { Redirect, useParams } from "react-router-dom";
 import Characters from "../Characters";
 import Campaigns from "../Campaigns";
 import AddCharacter from '../AddCharacter'; 
-import { Modal } from 'react-bootstrap';
+import { Modal, Tab, Nav } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth'; 
@@ -49,32 +49,47 @@ function Profile (props){
                     
                 </div>
                 
-                <div className="flex justify-evenly">
-                    <div className="flex flex-col items-center">
-                        <h2 className="text-3xl text-slate font-antiqua">My Characters</h2>
-                        {user.username && 
-                        <>
-                        <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handleShow}>Create a character!</button>
-                        {/* <div className='modal-container h-screen'> */}
-                        <Modal                
-                            size="lg"
-                            centered
-                            show={showModal}
-                            onHide={handleClose}
-                            ClassName="modal"
-                        >
-                            <AddCharacter />
-                            
-                            </Modal>
-                            {/* </div> */}
-                            </>}
-                        <Characters characters={user.characters} />
-                    </div>
-                    <div className="flex flex-col items-center">
-                        <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2>
-                        <Campaigns campaigns={user.campaigns} />
-                    </div> 
-                </div>
+                <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
+                    <Nav variant="tabs">
+                        <Nav.Item className='nav-tab'>
+                            <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="characters">My Characters</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item className='nav-tab'>
+                            <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="campaigns">My Campaigns</Nav.Link>
+                        </Nav.Item>
+                    </Nav>
+                    <Tab.Content className="p-4 ">
+                        <Tab.Pane eventKey="characters" title="My Characters" className="">
+                            {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
+                            {user.username && 
+                            <>
+                                <div className="flex justify-center">
+                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handleShow}>Create a character!</button>
+                                </div>
+                                
+                                {/* <div className='modal-container h-screen'> */}
+                                <Modal                
+                                    size="lg"
+                                    centered
+                                    show={showModal}
+                                    onHide={handleClose}
+                                    ClassName="modal"
+                                >
+                                    <AddCharacter />
+                                    
+                                    </Modal>
+                                    {/* </div> */}
+                                </>}
+                                <div className="m-2 flex flex-wrap justify-center"> 
+                                    <Characters characters={user.characters} />
+                                </div>
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
+                            {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
+                            <Campaigns campaigns={user.campaigns} />
+                        </Tab.Pane> 
+                    </Tab.Content>
+                </Tab.Container>
             </div>
        </div>
         

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-function Characters ({ characters, currentPage, handlePageChange }) {
+function Characters ({ characters }) {
 
     if (!characters.length) {
         return (
@@ -15,13 +15,13 @@ function Characters ({ characters, currentPage, handlePageChange }) {
         <>
             {characters.map(character => {
                 return( 
-                    <div key={character._id}> 
-                        <h1>{character.name}</h1>
+                    <div key={character._id} className="p-2"> 
+                        <h1 className="h-16 w-64 bg-gradient-to-b from-turq/[.35] text-slate p-2">{character.name}</h1>
                         <Link
                             to={`/character/${character._id}`}
                         >
                             <div>
-                                <p>View {character.name}'s character sheet! </p>
+                                <p className="text-sienna">View {character.name}'s character sheet! </p>
                             </div> 
                         </Link>
                     </div>
