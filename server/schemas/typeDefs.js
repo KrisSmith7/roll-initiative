@@ -80,7 +80,7 @@ const typeDefs = gql`
         addCharacter(name: String!, class: String!, level: Int, background: String, 
             race: String, alignment: String, bio: String): Character
         addCampaign(campaignName: String!, description: String!, setting: String!): Campaign
-        deleteCharacter(_id: ID!): User
+        deleteCharacter(_id: ID!): Character
         }
         `
 

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 import { DELETE_CHARACTER } from "../utils/mutations";
 import { QUERY_ME, QUERY_CHARACTER } from "../utils/queries";
 
@@ -13,21 +13,29 @@ function Characters ({ characters, isMe }) {
     
     const [deleteCharacter, { error }] = useMutation(DELETE_CHARACTER, {
         update(cache, { data: { deleteCharacter }}) {
+
+            console.log(deleteCharacter);
+
             try {
                 const { characters } = cache.readQuery({ query: QUERY_CHARACTER });
-                console.log(characters);
                 cache.writeQuery({
                 query: QUERY_CHARACTER,
-                data: { characters: [...characters] }
+                data: { characters: [...characters].filter((character) => character._id !== deleteCharacter._id) }
                 });
+                
             } catch (err) {
                 console.error(err);
             }
 
+            console.log(characters); 
+
+            // .filter((character) => character._id !== _id)
+
             const { me } = cache.readQuery({ query: QUERY_ME });
+            console.log(me);
             cache.writeQuery({
               query: QUERY_ME,
-              data: { me: { ...me, characters: [...me.characters ] } }
+              data: { me: { ...me, characters: [...me.characters].filter((character) => character._id !== deleteCharacter._id) } }
             });
         }
     });
@@ -39,6 +47,8 @@ function Characters ({ characters, isMe }) {
             await deleteCharacter({
                 variables: { _id: id }
             });
+
+            console.log('after await');
 
             console.log('deleted character ', id);
         } catch (err) {

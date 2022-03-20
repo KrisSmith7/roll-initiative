@@ -112,5 +112,6 @@ export const DELETE_CHARACTER = gql`
 mutation deleteCharacter($_id: ID!) {
     deleteCharacter (_id: $_id) {
         username
+        _id
     }
 }`

@@ -187,7 +187,6 @@ const resolvers = {
 
                     const deletedCharacter = await Character.deleteOne(
                         { _id: _id }, 
-                        { new: true }
                     );
 
                     console.log(deletedCharacter);
@@ -197,7 +196,7 @@ const resolvers = {
                         { $pull: { characters: character._id } },
                         { new: true }
                     )
-                    return user; 
+                    return character; 
                 }
 
             }
