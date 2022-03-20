@@ -1,7 +1,7 @@
 import { React, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { QUERY_CAMPAIGN } from '../../utils/queries';
-import { Modal, Nav, Tab } from 'react-bootstrap';
+import { Modal } from 'react-bootstrap';
 import Campaigns from "../Campaigns";
 import Auth from "../../utils/auth";
 import stockImg6 from "../../assets/stock_images/stock_image6.jpg";
@@ -38,7 +38,7 @@ function AllCampaigns() {
         return (
             <div>
                 <div class="bg-slate h-screen flex flex-col lg:flex-row justify-center items-center">
-                        <img src={knight} />
+                        <img src={knight} alt='knight'/>
                         <p className="text-4xl">You must log in first!</p>
                     </div>
                 </div>

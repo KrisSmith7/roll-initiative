@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 
 const CommentList = ({ comments }) => {
   return (
-    <div>
+    <div className='flex flex-col bg-charcoal w-50 '>
       <div>
-        <span>Comments</span>
+        <span className='text-white font-macondo p-2'>Comments</span>
       </div>
-      <div>
+      <div >
         {comments &&
           comments.map(comment => (
-            <p key={comment._id}>
+            <p className='text-slate bg-white border-b-4 p-2 border-burnt-orange/50' key={comment._id}>
               {comment.commentText} {'// '}
               <Link to={'/profile/${comment.username'}>
                 {comment.username} on {comment.createdAt}

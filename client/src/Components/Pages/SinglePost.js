@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { Modal } from 'react-bootstrap';
 
 import CommentList from '..//CommentList';
@@ -19,7 +19,7 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
-  const [deletePost, { error }] = useMutation(DELETE_POST, {
+  const [deletePost] = useMutation(DELETE_POST, {
     update(cache, { data: { deletePost } }) {
       try {
         const { posts } = cache.readQuery({ query: QUERY_POSTS });
@@ -69,40 +69,45 @@ const SinglePost = () => {
 
   return (
     <div className='modal-content'>
-      <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold">
-        <div className="whitespace-pre-wrap">
-          <p className='text-white'>{post.postText}</p>
-        </div>
-        <div>
-          <p className="py-4 font-light">
-          <span>
-            {post.username}
-          </span>{' '}
-          posted on {post.createdAt}
-        </p>
-        </div>
-        
-        
-        <div className='flex'>
-          <button type='button'onClick={handleShow} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
-          <Modal
-            size="lg"
-            centered
-            show={showModal}
-            onHide={handleClose}
-            className="modal"
-          >
-            <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
-          </Modal>
-          <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
-        </div>
+      <div className='flex justify-center'>
+        <Link to="/dashboard" className='text-slate font-bold mt-5'> ← Back to Dashboard </Link>
       </div>
+      <div className='flex flex-col justify-center items-center mt-2'>
+        <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
+          <div className="whitespace-pre-wrap">
+            <p className='text-white'>{post.postText}</p>
+          </div>
+          <div>
+            <p className="py-4 font-light text-white">
+            <span>
+              {post.username}
+            </span>{' '}
+            posted on {post.createdAt}
+          </p>
+          </div>
+          
+          
+          <div className='flex'>
+            <button type='button'onClick={handleShow} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
+            <Modal
+              size="lg"
+              centered
+              show={showModal}
+              onHide={handleClose}
+              className="modal"
+            >
+              <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
+            </Modal>
+            <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
+          </div>
+        </div>
 
-      {post.commentCount > 0 && (
-        <CommentList comments={post.comments} />
-      )}
+        {post.commentCount > 0 && (
+          <CommentList comments={post.comments} />
+        )}
 
-      {Auth.loggedIn() && <CommentForm postId={post._id} />}
+        {Auth.loggedIn() && <CommentForm postId={post._id} />}
+      </div>
     </div>
   );
 };
