@@ -6,7 +6,7 @@ import stockImg from '../../assets/stock_images/stock_image0.jpg';
 import PostList from "../PostList";
 import PostForm from '../PostForm';
 import Auth from '../../utils/auth';
-import Homepage from "./Homepage";
+import SiteTitle from "../SiteTitle";
 
 function Dashboard() {
 
@@ -23,7 +23,7 @@ function Dashboard() {
     return (
         <div className="">
             <div className="h-3/4">
-        <Homepage/>
+        <SiteTitle/>
             </div>
         <div className="bg-sienna pt-12 lg:pt-24">
         <div className="bg-slate relative h-full w-full lg:border-t-4 ">

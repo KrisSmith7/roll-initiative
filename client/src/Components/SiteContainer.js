@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import NavTabs from './NavTabs';
 import Footer from './Footer';
-import Homepage from './Pages/Homepage';
+import SiteTitle from './SiteTitle';
 import Dashboard from './Pages/Dashboard';
 import SinglePost from './Pages/SinglePost';
 import NoMatch from './Pages/NoMatch';
@@ -81,7 +81,7 @@ export default function SiteContainer() {
           <NavTabs />
             <Switch>
               <Route exact path="/" component={Dashboard} />
-              <Route exact path="/homepage" component={Homepage} />
+              <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/profile/:username?" component={Profile} />
               <Route exact path="/character/:id" component={SingleCharacter} />
               <Route exact path="/campaigns" component={AllCampaigns} />

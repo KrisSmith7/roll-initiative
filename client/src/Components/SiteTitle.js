@@ -1,5 +1,5 @@
 import React from "react";
-import stockImg11 from "../../assets/stock_images/stock_image11.jpg"
+import stockImg11 from "../assets/stock_images/stock_image11.jpg"
 
 function Homepage() {
 
