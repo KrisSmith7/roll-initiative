@@ -49,7 +49,7 @@ function Profile (props){
                     
                 </div>
                 
-                <div className="flex justify-center">
+                <div className="flex justify-evenly">
                     <div className="flex flex-col items-center">
                         <h2 className="text-3xl text-slate font-antiqua">My Characters</h2>
                         {user.username && 
