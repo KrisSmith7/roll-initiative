@@ -1,5 +1,5 @@
 import React from 'react'; 
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_CHARACTER } from '../../utils/queries';
 import { PageTitle, StatBlock, Note, MagicItem } from 'dungeons-and-components';
@@ -27,7 +27,9 @@ function SingleCharacter() {
 
     return(
         <div className="tracking-wider text-md p-4 lg:text-xl lg:p-8"> 
-
+            <div className='flex justify-center'>
+                <Link to="/profile" className='text-slate font-bold mt-5'> ← Back to Profile </Link>
+            </div>
             <PageTitle>{character.name}</PageTitle>
             <Note>
                 <h1>Class</h1><textarea defaultValue={character.class} name="class" onBlur={characterChangeHandler}></textarea>

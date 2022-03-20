@@ -1,57 +1,41 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { ADD_POST } from '../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import { UPDATE_POST } from '../utils/mutations';
 
-const PostForm = ({ handleClose }) => {
-  const [postText, setText] = useState('');
-  const [characterCount, setCharacterCount] = useState(0);
-  const [addPost, { error }] = useMutation(ADD_POST, {
-    update(cache, { data: { addPost } }) {
-      try {
-        const { posts } = cache.readQuery({ query: QUERY_POSTS });
-        cache.writeQuery({
-          query: QUERY_POSTS,
-          data: { posts: [addPost, ...posts] }
-        });
-      } catch (err) {
-        console.error(err);
-      }
 
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, posts: [...me.posts, addPost] } }
-      // });
-    }
-  });
+const UpdatePostForm = (props) => {
+  //console.log("updating post:", props.postId);
+  const {handleClose, postId, postText}  = props;
+  //console.log(`postId: ${postId}, postText: ${postText}`);
+  const [updatedPostText, setUpdatedText] = useState(postText);
+  const [characterCount, setCharacterCount] = useState(postText.length);
+  const [updatePost, { error }] = useMutation(UPDATE_POST);
 
   const handleChange = event => {
     console.log(event.target.value);
     if (event.target.value.length <= 480) {
-      setText(event.target.value);
+      setUpdatedText(event.target.value);
       setCharacterCount(event.target.value.length);
     }
   };
 
   const handleFormSubmit = async event => {
     event.preventDefault();
+    //console.log(`postId: ${postId}, postText: ${updatedPostText}`);
     try {
-      await addPost({
-        variables: { postText }
+      const updatedPost = await updatePost({
+        variables: { postId: postId, postText: updatedPostText }
       });
-
-      setText('');
-      setCharacterCount(0);
+      console.log(updatedPost);
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
 
   return (
     <div>
       <p
-        className={`mt-5  text-slate-50 ${characterCount === 280 || error ? 'text-error' : ''}`}
+        className={`mt-5 ${characterCount === 280 || error ? 'text-error' : ''}`}
       >
         <span className='m-5 text-charcoal font-bold'>Character Count: {characterCount}/280</span>
         {error && <span className="ml-2">Something went wrong...</span>}
@@ -60,7 +44,7 @@ const PostForm = ({ handleClose }) => {
         <textarea
           className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
           placeholder="Type your post here"
-          value={postText}
+          value={updatedPostText}
           onChange={handleChange}
         ></textarea>
         <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' onClick={handleClose}>
@@ -71,4 +55,4 @@ const PostForm = ({ handleClose }) => {
   );
 };
 
-export default PostForm;
+export default UpdatePostForm;

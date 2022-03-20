@@ -8,6 +8,9 @@ import { QUERY_ME, QUERY_CHARACTER } from "../utils/queries";
 
 function Characters ({ characters, isMe }) { 
 
+
+    console.log(isMe); 
+    
     const [deleteCharacter, { error }] = useMutation(DELETE_CHARACTER, {
         update(cache, { data: { deleteCharacter }}) {
             try {

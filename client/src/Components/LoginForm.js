@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
-import Auth from "../../utils/auth";
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from "../utils/auth";
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ username: "", password: "" });
@@ -32,7 +32,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
+            <form id="login" onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
                 <input
                     className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your username'

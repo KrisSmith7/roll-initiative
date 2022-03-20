@@ -1,12 +1,14 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { Modal } from 'react-bootstrap';
 
 import CommentList from '..//CommentList';
 import CommentForm from '../CommentForm';
+import UpdatePostForm from '../UpdatePostForm';
 
 import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
-import { QUERY_POST } from '../../utils/queries';
+import { QUERY_POST, QUERY_POSTS } from '../../utils/queries';
 import { DELETE_POST } from '../../utils/mutations';
 
 const SinglePost = () => {
@@ -17,7 +19,25 @@ const SinglePost = () => {
   });
 
   const post = data?.post || {};
-  const [deletePost] = useMutation(DELETE_POST);
+  const [deletePost] = useMutation(DELETE_POST, {
+    update(cache, { data: { deletePost } }) {
+      try {
+        const { posts } = cache.readQuery({ query: QUERY_POSTS });
+        cache.writeQuery({
+          query: QUERY_POSTS,
+          data: { posts: [...posts]}
+        });
+      } catch (err) {
+        console.error(err);
+      }
+      
+
+    }
+  });
+
+  const [showModal, setShowModal] = useState(false);
+  const handleClose = () => setShowModal(false);
+  const handleShow = () => setShowModal(true);
 
   const handleDeletePost = async (postId) => {
     console.log("delete button clicked");
@@ -33,38 +53,61 @@ const SinglePost = () => {
       });
 
       console.log("deleted post: ", postId);
+
     } catch (err) {
       console.error(err);
     }
-  } 
+  }
+
+  // const handleUpdatePost = async (postId, postText) {
+
+  // }
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <div>
-        <p>
-          <span>
-            {post.username}
-          </span>{' '}
-          posted on {post.createdAt}
-        </p>
-        <div>
-          <p>{post.postText}</p>
-        </div>
-        <div>
-          <button type='button'>Edit Post</button>
-          <button type='button' onClick={() => handleDeletePost(post._id)}>Delete Post</button>
-        </div>
+    <div className='modal-content'>
+      <div className='flex justify-center'>
+        <Link to="/dashboard" className='text-slate font-bold mt-5'> ← Back to Dashboard </Link>
       </div>
+      <div className='flex flex-col justify-center items-center mt-2'>
+        <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
+          <div className="whitespace-pre-wrap">
+            <p className='text-white'>{post.postText}</p>
+          </div>
+          <div>
+            <p className="py-4 font-light text-white">
+            <span>
+              {post.username}
+            </span>{' '}
+            posted on {post.createdAt}
+          </p>
+          </div>
+          
+          
+          <div className='flex'>
+            <button type='button'onClick={handleShow} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Edit Post</button>
+            <Modal
+              size="lg"
+              centered
+              show={showModal}
+              onHide={handleClose}
+              className="modal"
+            >
+              <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
+            </Modal>
+            <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
+          </div>
+        </div>
 
-      {post.commentCount > 0 && (
-        <CommentList comments={post.comments} />
-      )}
+        {post.commentCount > 0 && (
+          <CommentList comments={post.comments} />
+        )}
 
-      {Auth.loggedIn() && <CommentForm postId={post._id} />}
+        {Auth.loggedIn() && <CommentForm postId={post._id} />}
+      </div>
     </div>
   );
 };

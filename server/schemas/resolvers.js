@@ -83,38 +83,40 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         updatePost: async (parent, { postId, postText }, context) => {
+            //console.log("updatePost reached!");
+            //console.log(`postId: ${postId}, postText: ${postText}`);
             if (context.user) {
-                const updatedPost = await Post.findOneAndUpdate(
-                    { _id: postId },
-                    { postText },
-                    { new: true, runValidators: true}
+                const foundPost = await Post.findById(
+                    { _id: postId }
                 );
+                if (context.user.username === foundPost.username) {
+                    const updatedPost = await Post.findOneAndUpdate(
+                        { _id: postId },
+                        { postText },
+                        { new: true, runValidators: true}
+                    );
 
-                return updatedPost;
+                    return updatedPost;
+                } else {
+                    throw new Error("You must be the user who made the post to delete it!");
+                };
+                
             }
 
             throw new AuthenticationError("You need to be logged in!");
         },
         deletePost: async (parent, { postId }, context) => {
-            console.log(context.user);
+            //console.log(context.user);
             if (context.user) {
-                console.log("Reached if statement");
+                //console.log("Reached if statement");
 
                 const foundPost = await Post.findById(
                     { _id: postId}
                 );
 
-                console.log(foundPost.username);
+                //console.log(foundPost.username);
                 if (context.user.username === foundPost.username) {
                     console.log(foundPost.username + ": Usernames match");
-
-                    const postSansComments = await Post.findOneAndUpdate(
-                        { _id: postId },
-                        { $set: { comments: [] }},
-                        { new: true }
-                    );
-
-                    console.log(postSansComments);
 
                     // finds the post by postId and deletes the post
                     const deletedPost = await Post.deleteOne(
@@ -131,7 +133,7 @@ const resolvers = {
                         { new: true }
                     );
 
-                    return updatedUser;
+                    return deletedPost;
                 } else {
                     throw new Error("You must be the user who made the post to delete it!");
                 };
