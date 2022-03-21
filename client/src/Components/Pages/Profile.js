@@ -46,9 +46,12 @@ function Profile (props){
     return (
        <div className="flex justify-center">
            <div className="w-4/5">
-                <div className=" flex justify-center user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
-                    <img className="rounded-full w-60 p-3" src={Die} alt="profile-img"></img>
-                    <div> 
+                <div className=" flex justify-evenly user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
+                    <div className="flex-auto rounded-full w-20 p-3">
+                        <img className="p-4" src={Die} alt="profile-img"></img>
+                    </div>
+                    
+                    <div className="flex-auto w-80"> 
                         <h2 className="text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         <button className='w-50 text-slate bg-turq/75 rounded-md mt-5'> ✏️ Edit Profile</button>
                     </div>
@@ -67,7 +70,7 @@ function Profile (props){
                             <Nav.Link className="font-antiqua nav-a text-3xl" eventKey="posts">My Posts</Nav.Link>
                         </Nav.Item>
                     </Nav>
-                    <Tab.Content className="p-4 ">
+                    <Tab.Content className="p-4">
                         <Tab.Pane eventKey="characters" title="My Characters" className="">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
                             {user.username && 
@@ -93,7 +96,7 @@ function Profile (props){
                                     <Characters characters={user.characters} />
                                 </div>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
+                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 md:px-4">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
                             <Campaigns campaigns={user.campaigns} />
                         </Tab.Pane>
