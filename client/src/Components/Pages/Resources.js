@@ -74,7 +74,6 @@ function Resources() {
                         {
                             //   console.log(item)
                             Object.keys(item).map((key, i) => (
-                            // key === "Document__slug" || "Document__title" || "Document__license_url" ? className="hidden":className"" ,
                                 // console.log(key,i,item[key])
                                 <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose">
                                     <span className="capitalize font-light text-sm lg:pr-4">{key}:</span>
