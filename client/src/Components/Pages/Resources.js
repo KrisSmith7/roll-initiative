@@ -40,27 +40,27 @@ function Resources (){
                  <img src={stockImg7} className="h-full w-full object-contain opacity-50"/>
                  </div>
 
-            <div className="p-8 w-full lg:h-1/6 flex flex-wrap text-white">
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Spells</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Monsters</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Backgrounds</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Races</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Classes</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Magic Items</button>
-                <button className="h-1/2 w-full p-2.5 lg:p-6 mx-2.5 my-1.5 bg-sienna rounded-lg lg:text-4xl uppercase lg:font-bold">Weapons</button>
+            <div className="md:py-6 w-full flex flex-wrap text-white">
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Spells</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Monsters</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Backgrounds</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Races</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Classes</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Magic Items</button>
+                <button className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold">Weapons</button>
             </div>
 
                <div className="h-3/5 bg-sienna overflow-auto">
             {items.map(item =>
-                     <div className="bg-gray-900/[.35] mb-4 lg:mx-4 py-4 text-sm">
+                     <div className="bg-gray-900/[.35] mb-4 lg:mx-4 py-4">
                          <h1 className="text-3xl text-center">{item.name}</h1>
                  {  
                 //   console.log(item)
                      Object.keys(item).map((key,i) => (
                             // console.log(key,i,item[key])
-                   <div key={i} className="px-2 lg:py-2 lg:px-4 text-white leading-loose">
+                   <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose">
                        <span className="capitalize font-light lg:pr-8">{key}: </span>
-                       <span className="font-semibold tracking-wide font-unicase"> {item[key]}</span>
+                       <span className="font-semibold tracking-widest font-unicase"> {item[key]}</span>
                        </div>
                ))
                
