@@ -9,13 +9,13 @@ function Resources (){
         // this useEffect will run once
         // similar to componentDidMount()
         useEffect(() => {
-          fetch("https://api.open5e.com/spells/?limit=5")
+          fetch("https://api.open5e.com/weapons/")
             .then(res => res.json())
             .then(
                 (results) => {
                     setIsLoaded(true);
                     setItems(results.results);
-                    // console.log(items)
+                    console.log(items)
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -38,22 +38,24 @@ function Resources (){
 
          return (
              
-             <section className="bg-charcoal h-full">
-               <div className="h-1/2">
+             <section className="h-full">
+               <div className="h-2/3 overflow-auto">
             {items.map(item =>
-                 { return (
+                     <div className="bg-sienna mb-4 mx-4 py-2">
+                 {  
                 //   console.log(item)
                      Object.keys(item).map((key,i) => (
                             // console.log(key,i,item[key])
-
-                   <p key={i} className="py-2">
-                       <span className="uppercase">{key}: </span>
-                       <span className="normal-case"> {item[key]}</span>
-                       </p>
+                   <div key={i} className="py-2 px-4 text-3xl text-white">
+                       <span className="uppercase font-light pr-8">{key}: </span>
+                       <span className="uppercase font-semibold tracking-wide"> {item[key]}</span>
+                       </div>
                ))
-                 )
-               }
-            )}
+               
+            }
+            </div>
+            )
+            }
 
                    </div> 
               </section>
