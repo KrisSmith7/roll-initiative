@@ -2,13 +2,15 @@ import { React, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import Characters from "../Characters";
 import Campaigns from "../Campaigns";
+import PostList from "../PostList";
 import AddCharacter from '../AddCharacter'; 
+import PostForm from '../PostForm';
 import { Modal, Tab, Nav } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth'; 
 import Die from "../../assets/socialrolls_logo.png";
-import EditProfile from "../EditProfile";
+// import EditProfile from "../EditProfile";
 
 function Profile (props){
 
@@ -26,11 +28,9 @@ function Profile (props){
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
-    const [showEdit, setShowEdit] = useState(false);
-    const handleCloseEdit = () => setShowEdit(false);
-    const handleEdit = () => setShowEdit(true);
-
-    
+    const [showPostModal, setShowPostModal] = useState(false);
+    const handlePostClose = () => setShowPostModal(false);
+    const handlePostShow = () => setShowPostModal(true);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
         // isMe = true; 
@@ -54,9 +54,9 @@ function Profile (props){
                     
                     <div className="flex-auto w-80"> 
                         <h2 className="text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
-                        <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button>
+                        {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
                     </div>
-                    <Modal 
+                    {/* <Modal 
                         size="lg"
                         centered
                         show={showEdit}
@@ -64,7 +64,7 @@ function Profile (props){
                         ClassName="modal"
                     >
                         <EditProfile handleCloseEdit={handleCloseEdit}/>
-                    </Modal>
+                    </Modal> */}
                 </div>
                 
                 <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
@@ -75,8 +75,11 @@ function Profile (props){
                         <Nav.Item className='nav-tab'>
                             <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="campaigns">My Campaigns</Nav.Link>
                         </Nav.Item>
+                        <Nav.Item className='nav-tab'>
+                            <Nav.Link className="font-antiqua nav-a text-3xl" eventKey="posts">My Posts</Nav.Link>
+                        </Nav.Item>
                     </Nav>
-                    <Tab.Content className="p-4 ">
+                    <Tab.Content className="p-4">
                         <Tab.Pane eventKey="characters" title="My Characters" className="">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
                             {user.username && 
@@ -102,10 +105,30 @@ function Profile (props){
                                     <Characters characters={user.characters} />
                                 </div>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
+                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 md:px-4">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
-                            <Campaigns campaigns={user.campaigns} username={user.username}/>
-                        </Tab.Pane> 
+                            <Campaigns campaigns={user.campaigns} />
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="posts" title="My Posts" className="flex flex-col items-center bg-sienna/50">
+                            {user.username &&
+                            <>
+                                <div className="flex justify-center">
+                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handlePostShow}>Add a new post!</button>
+                                </div>
+                                <Modal
+                                    size="lg"
+                                    centered
+                                    show={showPostModal}
+                                    onHide={handlePostClose}
+                                    className="modal"
+                                >
+                                    <PostForm handleClose={handlePostClose} />
+                                </Modal>
+                            </>}
+                            <div className="m-2 flex flex-wrap justify-center">
+                                <PostList posts={user.posts} />
+                            </div>
+                        </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
             </div>

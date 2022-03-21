@@ -18,11 +18,11 @@ const PostForm = ({ handleClose }) => {
         console.error(err);
       }
 
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, posts: [...me.posts, addPost] } }
-      // });
+      const { me } = cache.readQuery({ query: QUERY_ME });
+      cache.writeQuery({
+        query: QUERY_ME,
+        data: { me: { ...me, posts: [...me.posts, addPost] } }
+      });
     }
   });
 
@@ -43,6 +43,7 @@ const PostForm = ({ handleClose }) => {
 
       setText('');
       setCharacterCount(0);
+      
     } catch (err) {
       console.log(err);
     }

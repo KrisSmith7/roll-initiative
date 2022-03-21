@@ -45,23 +45,21 @@ function AllCampaigns() {
         )
     }
     return (
-    <>
+    <section className="">
         {/* checks if loggedIn and displays campaigns list */}
         {loggedIn && (
 
-        <div className="bg-slate relative h-full w-full">
-            <img src={stockImg6} className="absolute h-full w-full object-cover opacity-50" alt="castle background" />
-            <div className="inset-0 bg-gradient-to-r from-charcoal to-slate opacity-25 absolute">
-            </div>
-            <div className="flex justify-center w-full h-full">
+        <div className="relative h-full w-full">
+            <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
+                      <div className="flex justify-center w-full h-full">
 
-                    <div className="h-full z-10 py-8 flex flex-col items-center">
+                    <div className="h-full py-8 flex flex-col items-center">
                         <div className="h-48 p-6 flex items-center">
                             <h1 className="text-4xl text-center">
                                 Maybe you'll find what you're looking for here?
                             </h1>
                         </div>
-                        <div className="overflow-auto h-3/4 w-screen my-8">
+                        <div className="overflow-auto h-3/4 w-full my-8">
                             <Campaigns campaigns={campaigns} />
                         </div>
                         <div className="w-full h-48 py-2 border-t flex items-center sm:px-6 lg:px-8">
@@ -90,7 +88,7 @@ function AllCampaigns() {
             </Modal>
         </div>
 
-    </>
+    </section>
     )
 };
 

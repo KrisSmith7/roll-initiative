@@ -67,9 +67,12 @@ const resolvers = {
             return { token, user }; 
         },
         addPost: async (parent, args, context) => {
+            // checks that the user is logged in
             if (context.user) {
+                // creates the post with the given data
                 const post = await Post.create({ ...args, username: context.user.username });
 
+                // adds the new post to the user's posts array
                 await User.findByIdAndUpdate(
                     { _id: context.user._id },
                     { $push: { posts: post._id } },
@@ -83,19 +86,21 @@ const resolvers = {
             throw new AuthenticationError('You need to be logged in!');
         },
         updatePost: async (parent, { postId, postText }, context) => {
-            //console.log("updatePost reached!");
-            //console.log(`postId: ${postId}, postText: ${postText}`);
+            // checks if the user is logged in
             if (context.user) {
+                // retrieves the post by Id
                 const foundPost = await Post.findById(
                     { _id: postId }
                 );
+                // checks that the logged in user matches the user who created the post
                 if (context.user.username === foundPost.username) {
+                    // updates the post with the given postText
                     const updatedPost = await Post.findOneAndUpdate(
                         { _id: postId },
                         { postText },
                         { new: true, runValidators: true}
                     );
-
+                    
                     return updatedPost;
                 } else {
                     throw new Error("You must be the user who made the post to delete it!");
@@ -106,15 +111,14 @@ const resolvers = {
             throw new AuthenticationError("You need to be logged in!");
         },
         deletePost: async (parent, { postId }, context) => {
-            //console.log(context.user);
+            // checks if user is logged in
             if (context.user) {
-                //console.log("Reached if statement");
-
+                // finds the post by the given id
                 const foundPost = await Post.findById(
                     { _id: postId}
                 );
 
-                //console.log(foundPost.username);
+                // checks if the logged in user is the user who created the post
                 if (context.user.username === foundPost.username) {
                     console.log(foundPost.username + ": Usernames match");
 
@@ -124,7 +128,7 @@ const resolvers = {
                         { new: true }
                     );
 
-                    console.log(deletedPost);
+                    //console.log(deletedPost);
                     
                     //finds the user and pulls the post from the user's posts
                     const updatedUser = await User.findByIdAndUpdate(
@@ -133,19 +137,19 @@ const resolvers = {
                         { new: true }
                     );
 
-                    return deletedPost;
+                    return foundPost;
                 } else {
                     throw new Error("You must be the user who made the post to delete it!");
                 };
 
-
-                
             }
 
             throw new AuthenticationError("You need to be logged in!");
         },
         addComment: async (parent, { postId, commentText }, context) => {
+            // checks that the user is logged in
             if (context.user) {
+                // finds the post by ID and adds the comment to the post's comment array
                 const updatedPost = await Post.findOneAndUpdate(
                     { _id: postId },
                     { $push: { comments: { commentText, username: context.user.username } } },

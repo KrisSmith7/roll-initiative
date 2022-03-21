@@ -1,24 +1,20 @@
 import React from "react";
 
 function Campaigns({ campaigns }) {
-
-    if (!campaigns.length) {
-        return (
-            <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">
-            <div className="w-full flex flex-col items-center justify-center">
-                <h1 className="text-4xl text-center tracking-normal py-2">You are not a part of any campaigns.
-                </h1>
-                <p className="text-2xl font-unicase">
-                    What are you waiting for?
-                </p>
-
-            </div>
-            </div>
-        )
-    }
-    
-
+  if (!campaigns.length) {
     return (
+      <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">
+        <div className="w-full flex flex-col items-center justify-center">
+          <h1 className="text-4xl text-center tracking-normal py-2">
+            You are not a part of any campaigns.
+          </h1>
+          <p className="text-2xl font-unicase">What are you waiting for?</p>
+        </div>
+      </div>
+    );
+  }
+
+  return (
 
                     <div class="md:flex md:flex-col md:items-center w-full">
     <div class="w-full py-2 sm:px-6 lg:px-8">
@@ -53,7 +49,7 @@ function Campaigns({ campaigns }) {
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
                 {campaign.description}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
@@ -70,9 +66,7 @@ function Campaigns({ campaigns }) {
       </div>
     </div>
   </div>
-    )
+  );
 }
 
 export default Campaigns;
-
-        
