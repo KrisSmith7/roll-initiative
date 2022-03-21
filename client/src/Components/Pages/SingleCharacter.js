@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React, { useState } from 'react'; 
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { DELETE_CHARACTER } from '../../utils/mutations';
@@ -20,6 +20,24 @@ function SingleCharacter() {
     const { loading, data } = useQuery(QUERY_CHARACTER, {
         variables: { id: idParam }
     }); 
+
+    const character = data?.character;
+
+    // const [characterForm, setCharacterForm] = useState({
+    //     name: character.name,
+    //     class: character.class, 
+    //     level: character.level, 
+    //     background: character.background, 
+    //     race: character.race, 
+    //     alignment: character.alignment, 
+    //     bio: character.bio, 
+    //     str: character.str, 
+    //     dex: character.dex, 
+    //     con: character.con, 
+    //     int: character.int, 
+    //     wis: character.wis,
+    //     cha: character.cha
+    // });
 
     const [deleteCharacter, { error }] = useMutation(DELETE_CHARACTER, {
         update(cache, { data: { deleteCharacter }}) {
@@ -67,17 +85,15 @@ function SingleCharacter() {
         routeChange();
     }
 
-    const character = data?.character;
+    const characterChangeHandler = (e) => {
+        console.log(e.target);
+    }
+
 
     if (loading) {
         return(
             <p>No data yet!</p> 
         )
-    }
-
-
-    const characterChangeHandler = (e) => {
-        console.log(e.target);
     }
 
     return(
