@@ -93,27 +93,27 @@ function SingleCharacter() {
     }
 
     const [updateCharacter, { updateError }] = useMutation(UPDATE_CHARACTER, {
-        update(cache, { data: { updateCharacter }}) {
-            console.log(updateCharacter); 
+        // update(cache, { data: { updateCharacter }}) {
+        //     console.log(updateCharacter); 
 
-            try {
-                const { characters } = cache.readQuery({ query: QUERY_CHARACTER }); 
-                cache.writeQuery({
-                    query: QUERY_CHARACTER, 
-                    data: { characters: [...characters].filter((character) => character._id !== updateCharacter._id).then(characters.push(updateCharacter))}
-                });
-            }
-            catch (err) {
-                console.error(err); 
-            }
+        //     try {
+        //         const { characters } = cache.readQuery({ query: QUERY_CHARACTER }); 
+        //         cache.writeQuery({
+        //             query: QUERY_CHARACTER, 
+        //             data: { characters: [...characters].filter((character) => character._id !== updateCharacter._id).then(characters.push(updateCharacter))}
+        //         });
+        //     }
+        //     catch (err) {
+        //         console.error(err); 
+        //     }
 
-            const { me } = cache.readQuery({ query: QUERY_ME });
-            console.log(me);
-            cache.writeQuery({
-              query: QUERY_ME,
-              data: { me: { ...me, characters: [...me.characters].filter((character) => character._id !== deleteCharacter._id).then(me.characters.push(updateCharacter)) } }
-            });
-        }
+        //     const { me } = cache.readQuery({ query: QUERY_ME });
+        //     console.log(me);
+        //     cache.writeQuery({
+        //       query: QUERY_ME,
+        //       data: { me: { ...me, characters: [...me.characters].filter((character) => character._id !== deleteCharacter._id).then(me.characters.push(updateCharacter)) } }
+        //     });
+        // }
     } )
 
     const characterChangeHandler = (e) => { 
