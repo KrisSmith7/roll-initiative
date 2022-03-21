@@ -7,7 +7,8 @@ import { Modal, Tab, Nav } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth'; 
-import Die from "../../assets/socialrolls_logo.png"
+import Die from "../../assets/socialrolls_logo.png";
+import EditProfile from "../EditProfile";
 
 function Profile (props){
 
@@ -24,6 +25,12 @@ function Profile (props){
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+
+    const [showEdit, setShowEdit] = useState(false);
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleEdit = () => setShowEdit(true);
+
+    
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
         // isMe = true; 
@@ -44,9 +51,17 @@ function Profile (props){
                     <img className="rounded-full w-60 p-3" src={Die} alt="profile-img"></img>
                     <div> 
                         <h2 className="text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
-                        <button className='w-50 text-slate bg-turq/75 rounded-md mt-5'> ✏️ Edit Profile</button>
+                        <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button>
                     </div>
-                    
+                    <Modal 
+                        size="lg"
+                        centered
+                        show={showEdit}
+                        onHide={handleCloseEdit}
+                        ClassName="modal"
+                    >
+                        <EditProfile handleCloseEdit={handleCloseEdit}/>
+                    </Modal>
                 </div>
                 
                 <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
@@ -86,7 +101,7 @@ function Profile (props){
                         </Tab.Pane>
                         <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
-                            <Campaigns campaigns={user.campaigns} />
+                            <Campaigns campaigns={user.campaigns} username={user.username}/>
                         </Tab.Pane> 
                     </Tab.Content>
                 </Tab.Container>

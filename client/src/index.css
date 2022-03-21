@@ -104,6 +104,16 @@ footer {
   height: 60px;
 }
 
+select#profile option[value="Dwarf"] {
+  background-image: url(./assets/stock_images/stock_image1.jpg);
+}
+select#profile option[value="Elf"] {
+  background-image: url(./assets/stock_images/stock_image2.jpg);
+}
+select#profile option[value="Wizard"] {
+  background-image: url(./assets/stock_images/stock_image3.jpg);
+}
+
 /* #login {
 z-index: 9999999 !important;
 

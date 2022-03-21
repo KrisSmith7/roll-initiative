@@ -60,7 +60,7 @@ function Campaigns({ campaigns }) {
                 {campaign.setting}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
-                <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username}
+                <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username ? `${campaign.username}` : 'you!'}
               </td>
             </tr>
                         )
