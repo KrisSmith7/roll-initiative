@@ -23,6 +23,7 @@ function SingleCharacter() {
     });    
     
     const character = data?.character;
+    //console.log('character data: ', character);
 
     const [characterForm, setCharacterForm] = useState({
         name: '',
@@ -93,6 +94,10 @@ function SingleCharacter() {
     }
 
     const [updateCharacter, { updateError }] = useMutation(UPDATE_CHARACTER, {
+        // This part doesn't need to be here since when the character is updated it automatically
+        // updates the cache.
+
+
         // update(cache, { data: { updateCharacter }}) {
         //     console.log(updateCharacter); 
 
@@ -117,27 +122,54 @@ function SingleCharacter() {
     } )
 
     const characterChangeHandler = (e) => { 
+        //console.log(e.target.name);
         const { name, value } = e.target;
-        setCharacterForm({ ...characterForm, [name]: value });
-        console.log(characterForm);
+        console.log(`name: ${name}, value: ${value}`);
+        console.log('characterForm:', characterForm);
+        setCharacterForm({ ...characterForm, [name]: value});
+        console.log('updated characterForm: ', characterForm);
     }
 
     const handleCharacterUpdate = async (id) => {
+        let updatedCharacter = {
+            name: characterForm?.name || character.name,
+            level: parseInt(characterForm?.level || character.level),
+            race: characterForm?.race || character.race,
+            class: characterForm?.class || character.class,
+            bio: characterForm?.bio || character.bio,
+            background: characterForm?.background || character.background,
+            str: parseInt(characterForm?.str || character.str),
+            dex: parseInt(characterForm?.dex || character.dex),
+            con: parseInt(characterForm?.con || character.con),
+            wis: parseInt(characterForm?.wis || character.wis),
+            int: parseInt(characterForm?.int || character.int),
+            cha: parseInt(characterForm?.cha || character.cha),
+        };
+        console.log("updatedCharacter", updatedCharacter);
         try {
-            characterForm.level = parseInt(characterForm.level); 
-            characterForm.str = parseInt(characterForm.str);
-            characterForm.dex = parseInt(characterForm.dex); 
-            characterForm.con = parseInt(characterForm.con); 
-            characterForm.wis = parseInt(characterForm.wis); 
-            characterForm.int = parseInt(characterForm.int); 
-            characterForm.cha = parseInt(characterForm.cha); 
+            // characterForm.level = parseInt(characterForm.level); 
+            // characterForm.str = parseInt(characterForm.str);
+            // characterForm.dex = parseInt(characterForm.dex); 
+            // characterForm.con = parseInt(characterForm.con); 
+            // characterForm.wis = parseInt(characterForm.wis); 
+            // characterForm.int = parseInt(characterForm.int); 
+            // characterForm.cha = parseInt(characterForm.cha); 
 
             await updateCharacter({
                 variables: { 
                 _id: id,
-                name: characterForm.name, 
-                level: characterForm.level, 
-                str: characterForm.str }
+                name: updatedCharacter.name, 
+                level: updatedCharacter.level,
+                race: updatedCharacter.race,
+                bio: updatedCharacter.bio,
+                background: updatedCharacter.background,
+                class: updatedCharacter.class,
+                str: updatedCharacter.str,
+                dex: updatedCharacter.dex,
+                con: updatedCharacter.con,
+                int: updatedCharacter.int,
+                wis: updatedCharacter.wis,
+                cha: updatedCharacter.cha }
             });
 
             console.log('after await update');

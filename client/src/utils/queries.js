@@ -145,6 +145,14 @@ export const QUERY_CHARACTER = gql`
       class
       bio
       background
+      race
+      alignment
+      str
+      dex
+      con
+      int
+      wis
+      cha
     }
   }`
 
