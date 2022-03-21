@@ -2,7 +2,9 @@ import { React, useState } from "react";
 import { Redirect, useParams } from "react-router-dom";
 import Characters from "../Characters";
 import Campaigns from "../Campaigns";
+import PostList from "../PostList";
 import AddCharacter from '../AddCharacter'; 
+import PostForm from '../PostForm';
 import { Modal, Tab, Nav } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
@@ -24,6 +26,10 @@ function Profile (props){
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
+
+    const [showPostModal, setShowPostModal] = useState(false);
+    const handlePostClose = () => setShowPostModal(false);
+    const handlePostShow = () => setShowPostModal(true);
 
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
         // isMe = true; 
@@ -57,6 +63,9 @@ function Profile (props){
                         <Nav.Item className='nav-tab'>
                             <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="campaigns">My Campaigns</Nav.Link>
                         </Nav.Item>
+                        <Nav.Item className='nav-tab'>
+                            <Nav.Link className="font-antiqua nav-a text-3xl" eventKey="posts">My Posts</Nav.Link>
+                        </Nav.Item>
                     </Nav>
                     <Tab.Content className="p-4 ">
                         <Tab.Pane eventKey="characters" title="My Characters" className="">
@@ -87,7 +96,27 @@ function Profile (props){
                         <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
                             <Campaigns campaigns={user.campaigns} />
-                        </Tab.Pane> 
+                        </Tab.Pane>
+                        <Tab.Pane eventKey="posts" title="My Posts" className="flex flex-col items-center bg-sienna/50">
+                            {user.username &&
+                            <>
+                                <div className="flex justify-center">
+                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handlePostShow}>Add a new post!</button>
+                                </div>
+                                <Modal
+                                    size="lg"
+                                    centered
+                                    show={showPostModal}
+                                    onHide={handlePostClose}
+                                    className="modal"
+                                >
+                                    <PostForm handleClose={handlePostClose} />
+                                </Modal>
+                            </>}
+                            <div className="m-2 flex flex-wrap justify-center">
+                                <PostList posts={user.posts} />
+                            </div>
+                        </Tab.Pane>
                     </Tab.Content>
                 </Tab.Container>
             </div>
