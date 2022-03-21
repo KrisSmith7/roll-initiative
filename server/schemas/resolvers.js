@@ -198,11 +198,50 @@ const resolvers = {
                     )
                     return character; 
                 }
+            }
+            throw new AuthenticationError('Must log in to your account to delete characters!')
+        },
+        updateCharacter: async (parent, args, context) => {
+            console.log(args);
+            const { _id, name, level, bio, alignment, str } = args; 
+            console.log('name:', name)
+            console.log('level:', level)
+            console.log('str:', str)
+            if (context.user) {
+                const foundCharacter = await Character.findById(
+                    { _id: args._id }
+                );
 
+                console.log(foundCharacter); 
+
+                if (context.user.username === foundCharacter.username) {
+                    const updatedCharacter = await Character.findOneAndUpdate(
+                        { _id: args._id },
+                        {   race: args.race, 
+                            level: args.level,
+                            class: args.class,
+                            background: args.background,
+                            alignment: args.alignment,
+                            bio: args.bio,
+                            str: args.str,
+                            dex: args.dex,
+                            con: args.con,
+                            wis: args.wis,
+                            int: args.int,
+                            cha: args.cha   },
+                        { new: true }
+                    );
+
+                    console.log(updatedCharacter); 
+
+                    return updatedCharacter;
+                } else {
+                    throw new Error("You must be the user who made the character to delete it!");
+                };
+                
             }
 
-            throw new AuthenticationError('Must log in to your account to delete characters!')
-
+            throw new AuthenticationError("You need to be logged in!");
         },
 
     // adding campaign code -- do we want to change user dmstatus to true here?

@@ -81,6 +81,8 @@ const typeDefs = gql`
             race: String, alignment: String, bio: String): Character
         addCampaign(campaignName: String!, description: String!, setting: String!): Campaign
         deleteCharacter(_id: ID!): Character
+        updateCharacter(_id: ID!, level: Int, background: String, race: String, alignment: String, bio: String, 
+            str: Int, dex: Int, con: Int, wis: Int, int: Int, cha: Int): Character
         }
         `
 
