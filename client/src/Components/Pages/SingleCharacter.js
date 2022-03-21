@@ -13,7 +13,6 @@ function SingleCharacter() {
     const routeChange = () => {
             let path = `/profile`;
             history.push(path);
-
     }
 
     const { id: idParam } = useParams(); 
@@ -23,7 +22,6 @@ function SingleCharacter() {
     });    
     
     const character = data?.character;
-    console.log('character data: ', character);
 
     const [characterForm, setCharacterForm] = useState({
         name: '',
@@ -90,7 +88,6 @@ function SingleCharacter() {
     const [updateCharacter, { updateError }] = useMutation(UPDATE_CHARACTER);
 
     const characterChangeHandler = (e) => { 
-        //console.log(e.target.name);
         const { name, value } = e.target;
         console.log(`name: ${name}, value: ${value}`);
         console.log('characterForm:', characterForm);
@@ -104,6 +101,7 @@ function SingleCharacter() {
             level: parseInt(characterForm?.level || character.level),
             race: characterForm?.race || character.race,
             class: characterForm?.class || character.class,
+            alignment: characterForm?.alignment || character.alignment,
             bio: characterForm?.bio || character.bio,
             background: characterForm?.background || character.background,
             str: parseInt(characterForm?.str || character.str),

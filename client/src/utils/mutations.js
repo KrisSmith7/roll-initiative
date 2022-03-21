@@ -117,13 +117,14 @@ mutation deleteCharacter($_id: ID!) {
 }`
 
 export const UPDATE_CHARACTER = gql`
-mutation updateCharacter($_id: ID!, $level: Int, $background: String, $race: String, $alignment: String, $bio: String, 
+mutation updateCharacter($_id: ID!, $level: Int, $class: String, $background: String, $race: String, $alignment: String, $bio: String, 
     $str: Int, $dex: Int, $con: Int, $wis: Int, $int: Int, $cha: Int) {
-        updateCharacter(_id: $_id, level: $level, background: $background, race: $race, alignment: $alignment, bio: $bio, 
+        updateCharacter(_id: $_id, level: $level, class: $class, background: $background, race: $race, alignment: $alignment, bio: $bio, 
             str: $str, dex: $dex, con: $con, wis: $wis, int: $int, cha: $cha) {
                 _id
                 name
                 background
+                class
                 level
                 race
                 alignment
@@ -134,6 +135,5 @@ mutation updateCharacter($_id: ID!, $level: Int, $background: String, $race: Str
                 wis
                 int
                 cha
-
             }
     }`

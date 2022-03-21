@@ -206,11 +206,7 @@ const resolvers = {
             throw new AuthenticationError('Must log in to your account to delete characters!')
         },
         updateCharacter: async (parent, args, context) => {
-            console.log(args);
-            const { _id, name, level, bio, alignment, str } = args; 
-            console.log('name:', name)
-            console.log('level:', level)
-            console.log('str:', str)
+            const { _id } = args; 
             if (context.user) {
                 const foundCharacter = await Character.findById(
                     { _id: args._id }
