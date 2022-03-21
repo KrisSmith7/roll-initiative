@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 function Campaigns({ campaigns }) {
   if (!campaigns.length) {
@@ -56,7 +57,9 @@ function Campaigns({ campaigns }) {
                 {campaign.setting}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+                <Link to={`/profile/${campaign.username}`}>
                 <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username}
+                </Link>
               </td>
             </tr>
                         )
