@@ -6,7 +6,7 @@ import axe from '../assets/axe.svg';
 import beer from '../assets/beer.svg';
 import books from '../assets/books.svg';
 import search from '../assets/search.svg';
-import door from '../assets/door-closed.svg';
+import door from '../assets/door.svg';
 import Auth from '../utils/auth';
 import SignUpForm from './SignUpForm';
 import LoginForm from './LoginForm';
@@ -18,7 +18,7 @@ function NavTabs({ currentPage, handlePageChange }) {
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
  
-    console.log(currentPage);
+    // console.log(currentPage);
     
     return (    
        
@@ -33,7 +33,7 @@ function NavTabs({ currentPage, handlePageChange }) {
     </button>
         </div>
         
-            <div id="menu" className='collapse overflow-hidden bg-charcoal h-full'>
+            <div id="menu" className='collapse overflow-hidden  h-full'>
                         <button data-bs-toggle="collapse" data-bs-target="#menu" className='w-full relative left-36 text-5xl hover:text-white hover:text-7xl'>&times;</button>
                 <div className="flex flex-col sm:flex-row sm:justify-around">
                     <div className="w-72">
@@ -109,9 +109,8 @@ function NavTabs({ currentPage, handlePageChange }) {
                                 <>
                                     <a  className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg" href='#dashboard'
                                     onClick={handleShow}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-door-open-fill" viewBox="0 0 16 16">
-                                                <path d="M1.5 15a.5.5 0 0 0 0 1h13a.5.5 0 0 0 0-1H13V2.5A1.5 1.5 0 0 0 11.5 1H11V.5a.5.5 0 0 0-.57-.495l-7 1A.5.5 0 0 0 3 1.5V15H1.5zM11 2h.5a.5.5 0 0 1 .5.5V15h-1V2zm-2.5 8c-.276 0-.5-.448-.5-1s.224-1 .5-1 .5.448.5 1-.224 1-.5 1z"/>
-                                        </svg>
+                                        <img src={door} alt="login"/>
+
                                         <span className="mx-4 text-lg font-cormorant">
                                             Log In/ Sign Up
                                         </span>
