@@ -13,6 +13,7 @@ import { DELETE_POST } from '../../utils/mutations';
 
 const SinglePost = () => {
   const { id: postId } = useParams();
+  //onst {errorMessage, setErrorMessage} = useState('');
 
   const { loading, data } = useQuery(QUERY_POST, {
     variables: { id: postId }
@@ -29,6 +30,7 @@ const SinglePost = () => {
         });
       } catch (err) {
         console.error(err);
+        
       }
       
 

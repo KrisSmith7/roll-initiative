@@ -106,4 +106,34 @@ mutation addCharacter($name: String!, $class: String!, $level: Int, $background:
                 bio
             }
     }
-`;
+    `
+
+export const DELETE_CHARACTER = gql`
+mutation deleteCharacter($_id: ID!) {
+    deleteCharacter (_id: $_id) {
+        username
+        _id
+    }
+}`
+
+export const UPDATE_CHARACTER = gql`
+mutation updateCharacter($_id: ID!, $level: Int, $background: String, $race: String, $alignment: String, $bio: String, 
+    $str: Int, $dex: Int, $con: Int, $wis: Int, $int: Int, $cha: Int) {
+        updateCharacter(_id: $_id, level: $level, background: $background, race: $race, alignment: $alignment, bio: $bio, 
+            str: $str, dex: $dex, con: $con, wis: $wis, int: $int, cha: $cha) {
+                _id
+                name
+                background
+                level
+                race
+                alignment
+                bio
+                str
+                dex
+                con
+                wis
+                int
+                cha
+
+            }
+    }`

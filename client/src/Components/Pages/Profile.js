@@ -19,17 +19,18 @@ function Profile (props){
 
     const user = data?.me || data?.user || {}; 
 
-    // let isMe; 
+    let isMe; 
 
     const [showModal, setShowModal] = useState(false);
     const handleClose = () => setShowModal(false);
     const handleShow = () => setShowModal(true);
 
-    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
-        // isMe = true; 
+    if (Auth.loggedIn() && Auth.getProfile().data.username === userParam || !userParam ) {
+        isMe = true; 
         // unnecessary to redirect to /profile with our functionality 
-        return <Redirect to="/profile" />; 
-      }
+        // return <Redirect to="/profile" />; 
+    }
+
 
     if (loading) {
         return ( 
@@ -49,47 +50,32 @@ function Profile (props){
                     
                 </div>
                 
-                <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
-                    <Nav variant="tabs">
-                        <Nav.Item className='nav-tab'>
-                            <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="characters">My Characters</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item className='nav-tab'>
-                            <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="campaigns">My Campaigns</Nav.Link>
-                        </Nav.Item>
-                    </Nav>
-                    <Tab.Content className="p-4 ">
-                        <Tab.Pane eventKey="characters" title="My Characters" className="">
-                            {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
-                            {user.username && 
-                            <>
-                                <div className="flex justify-center">
-                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handleShow}>Create a character!</button>
-                                </div>
-                                
-                                {/* <div className='modal-container h-screen'> */}
-                                <Modal                
-                                    size="lg"
-                                    centered
-                                    show={showModal}
-                                    onHide={handleClose}
-                                    ClassName="modal"
-                                >
-                                    <AddCharacter />
-                                    
-                                    </Modal>
-                                    {/* </div> */}
-                                </>}
-                                <div className="m-2 flex flex-wrap justify-center"> 
-                                    <Characters characters={user.characters} />
-                                </div>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
-                            {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
-                            <Campaigns campaigns={user.campaigns} />
-                        </Tab.Pane> 
-                    </Tab.Content>
-                </Tab.Container>
+                <div className="flex justify-evenly">
+                    <div className="flex flex-col items-center">
+                        <h2 className="text-3xl text-slate font-antiqua">My Characters</h2>
+                        {user.username && 
+                        <>
+                        <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handleShow}>Create a character!</button>
+                        {/* <div className='modal-container h-screen'> */}
+                        <Modal                
+                            size="lg"
+                            centered
+                            show={showModal}
+                            onHide={handleClose}
+                            ClassName="modal"
+                        >
+                            <AddCharacter />
+                            
+                            </Modal>
+                            {/* </div> */}
+                            </>}
+                        <Characters characters={user.characters} isMe={isMe} />
+                    </div>
+                    <div className="flex flex-col items-center">
+                        <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2>
+                        <Campaigns campaigns={user.campaigns} />
+                    </div> 
+                </div>
             </div>
        </div>
         

@@ -80,6 +80,10 @@ const typeDefs = gql`
         addCharacter(name: String!, class: String!, level: Int, background: String, 
             race: String, alignment: String, bio: String): Character
         addCampaign(campaignName: String!, description: String!, setting: String!): Campaign
-           }`
+        deleteCharacter(_id: ID!): Character
+        updateCharacter(_id: ID!, level: Int, background: String, race: String, alignment: String, bio: String, 
+            str: Int, dex: Int, con: Int, wis: Int, int: Int, cha: Int): Character
+        }
+        `
 
 module.exports = typeDefs; 

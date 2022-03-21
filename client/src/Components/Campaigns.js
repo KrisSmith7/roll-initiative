@@ -46,9 +46,9 @@ function Campaigns({ campaigns }) {
           <tbody>
                     {campaigns.map(campaign => {
                         return (
-                            <tr class="bg-turq/25 text-white border-b">
-              <td class="md:px-6 md:py-4 whitespace-nowrap font-medium">
-                 <button>+</button>
+                            <tr key={campaign._id} class="bg-turq/25 text-white border-b">
+              <td class="px-6 py-4 whitespace-nowrap font-medium">
+                  +
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}

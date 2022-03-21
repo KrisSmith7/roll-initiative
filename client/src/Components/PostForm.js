@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_POST } from '../utils/mutations';
-import { QUERY_POSTS, QUERY_ME } from '../utils/queries';
+import { QUERY_POSTS } from '../utils/queries';
 
 const PostForm = ({ handleClose }) => {
   const [postText, setText] = useState('');
@@ -17,12 +17,6 @@ const PostForm = ({ handleClose }) => {
       } catch (err) {
         console.error(err);
       }
-
-      // const { me } = cache.readQuery({ query: QUERY_ME });
-      // cache.writeQuery({
-      //   query: QUERY_ME,
-      //   data: { me: { ...me, posts: [...me.posts, addPost] } }
-      // });
     }
   });
 
