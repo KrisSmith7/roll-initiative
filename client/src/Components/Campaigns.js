@@ -53,7 +53,7 @@ function Campaigns({ campaigns }) {
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
                 {campaign.description}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">

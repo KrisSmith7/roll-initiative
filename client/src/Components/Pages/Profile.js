@@ -61,7 +61,7 @@ function Profile (props){
                             <Nav.Link  className="font-antiqua nav-a text-3xl" eventKey="campaigns">My Campaigns</Nav.Link>
                         </Nav.Item>
                     </Nav>
-                    <Tab.Content className="p-4 ">
+                    <Tab.Content className="p-4">
                         <Tab.Pane eventKey="characters" title="My Characters" className="">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
                             {user.username && 
@@ -87,7 +87,7 @@ function Profile (props){
                                     <Characters characters={user.characters} />
                                 </div>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna/50">
+                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 md:px-4">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
                             <Campaigns campaigns={user.campaigns} />
                         </Tab.Pane> 
