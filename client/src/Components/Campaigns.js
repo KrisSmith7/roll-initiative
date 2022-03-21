@@ -14,6 +14,8 @@ function Campaigns({ campaigns }) {
     );
   }
 
+  return (
+
                     <div class="md:flex md:flex-col md:items-center w-full">
     <div class="w-full py-2 sm:px-6 lg:px-8">
       <div class="text-white">
@@ -63,6 +65,7 @@ function Campaigns({ campaigns }) {
         </table>
       </div>
     </div>
+  </div>
   );
 }
 
