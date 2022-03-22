@@ -14,6 +14,7 @@
   }
 
   
+
 }
 
 body {
@@ -29,6 +30,11 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+a:hover{
+  color: #75cccc;
+  background-color: #2f3e46;
 }
 
 .modal-content {
@@ -113,10 +119,6 @@ select#profile option[value="Wizard"] {
   background-image: url(./assets/stock_images/stock_image3.jpg);
 }
 
-/* #login {
-z-index: 9999999 !important;
-
-} */
 
 @media screen and (max-width: 600px) {
   table thead {
