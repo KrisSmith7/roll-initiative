@@ -36,22 +36,15 @@ function NavTabs({ currentPage, handlePageChange }) {
       </div>
 
       <div id="menu" className="collapse overflow-hidden  h-full">
-        <button
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          className="w-full relative left-36 text-5xl hover:text-white hover:text-7xl"
-        >
-          &times;
-        </button>
-        <div className="flex flex-col sm:flex-row sm:justify-around">
-          <div className="w-72">
-            <div className="flex items-center justify-start">
+        <div className="flex flex-row justify-around sm:flex-row sm:justify-around">
+          <div className="flex flex-row justify-between sm:justify-around">
+            <div className="flex items-center justify-around">
               <img className="h-10" src={logo} alt="social rolls logo" />
               <span className="text-gray-600 dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">
                 Social Rolls
               </span>
             </div>
-            <nav>
+            <nav className="flex justify-between">
               <Link to="/">
                 <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                   <img src={beer} alt="Beer glasses" />
@@ -124,9 +117,19 @@ function NavTabs({ currentPage, handlePageChange }) {
                   </a>
                 </>
               )}
+              
             </nav>
+            
           </div>
+          <button
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+          className="relative text-5xl hover:text-white hover:text-7xl"
+          >
+          &times;
+          </button>
         </div>
+      
       </div>
 
       <div className="modal-container">

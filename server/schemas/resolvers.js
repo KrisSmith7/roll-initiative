@@ -257,6 +257,19 @@ const resolvers = {
                 return campaign; 
             }
             throw new AuthenticationError('Must log in or sign up to create a campaign!')
+        },
+        addPlayer: async (parent, { campaignId }, context) => {
+            if (context.user) {
+                const updatedCampaign = await Campaign.findOneAndUpdate(
+                    { _id: campaignId },
+                    { $push: { players: context.user._id } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedCampaign;
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
         }
 
     }

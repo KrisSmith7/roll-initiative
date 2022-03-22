@@ -32,7 +32,6 @@ code {
 }
 
 .modal-content {
-  height: 75vh;
   background-image: url('./assets/stock_images/parchment.jpg');
   background-size: cover;
   background-repeat: none;
