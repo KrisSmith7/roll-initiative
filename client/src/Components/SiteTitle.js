@@ -14,7 +14,7 @@ function Homepage() {
                         Social Rolls
                     </h1>
                     <span className="block bg-sienna py-3 px-4 text-lg text-center text-white font-bold uppercase my-10">
-                        We can add a tagline/description here.
+                        A social network for fans of Dungeons and Dragons
                     </span>
                 </div>
             </div>

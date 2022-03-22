@@ -79,17 +79,18 @@ const SinglePost = () => {
       </div>
       <div className='flex flex-col justify-center items-center mt-2'>
         <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
-          <div className="whitespace-pre-wrap">
-            <p className='text-white'>{post.postText}</p>
-          </div>
           <div>
-            <p className="py-4 font-light text-white">
+            <p className="font-light text-white">
             <span>
               {post.username}
             </span>{' '}
             posted on {post.createdAt}
           </p>
           </div>
+          <div className="whitespace-pre-wrap py-4">
+            <p className='text-white'>{post.postText}</p>
+          </div>
+          
           { isRedirect ? (<Redirect push to="/" />) : null }
           
           <div className='flex'>
