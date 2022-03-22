@@ -3,7 +3,7 @@ import { useMutation } from '@apollo/client'
 import { ADD_CHARACTER } from '../utils/mutations';
 import { QUERY_CHARACTER, QUERY_ME } from '../utils/queries';
 
-function AddCharacter() {
+function AddCharacter({ handleClose }) {
 
     const [characterForm, setCharacterForm] = useState({
         name: '',
@@ -182,7 +182,7 @@ function AddCharacter() {
                     value={characterForm.bio}
                     onChange={handleInputChange}
                 />
-                <button className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
+                <button onClick={handleClose} className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
                     Submit
                 </button>
             </form>

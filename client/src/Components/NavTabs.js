@@ -11,9 +11,12 @@ import Auth from "../utils/auth";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
 import { Modal, Nav, Tab } from "react-bootstrap";
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 
 //create nav links at top of page that conditionally renders component based on selected link
 function NavTabs({ currentPage, handlePageChange }) {
+  const me = useQuery(QUERY_ME);
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -22,7 +25,7 @@ function NavTabs({ currentPage, handlePageChange }) {
 
   return (
     <div className="bg-gray-800 w-auto h-auto">
-      <div className="">
+      <div className="flex justify-between">
         <button
           class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
           type="button"
@@ -33,39 +36,52 @@ function NavTabs({ currentPage, handlePageChange }) {
           <img src={logo} className="h-8" alt="20-sided die" />{" "}
           <span className="px-6 tracking-widest font-light text-xl">Menu</span>
         </button>
+        {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <p>Welcome, <span className="capitalize"> {me.data?.me.username}</span>!</p></div>}
       </div>
 
       <div id="menu" className="collapse overflow-hidden  h-full">
-        <div className="flex flex-row justify-around sm:flex-row sm:justify-around">
-          <div className="flex flex-row justify-between sm:justify-around">
-            <div className="flex items-center justify-around">
+      <button
+          data-bs-toggle="collapse"
+          data-bs-target="#menu"
+          className="w-full text-right text-5xl px-4 hover:text-white hover:text-7xl"
+          >
+          &times;
+          </button>
+        <div className="flex md:flex-row justify-around">
+          <div className="">
+            <div className="flex ">
               <img className="h-10" src={logo} alt="social rolls logo" />
               <span className="text-gray-600 dark:text-gray-300 ml-4 text-2xl font-unicase font-bold">
                 Social Rolls
               </span>
             </div>
-            <nav className="flex justify-between">
-              <Link to="/">
-                <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
-                  <img src={beer} alt="Beer glasses" />
-                  <span className="mx-4 text-lg font-cormorant">
-                    Tavern Talk
-                  </span>
-                  <span className="flex-grow text-right"></span>
-                </p>
-              </Link>
+            <nav className="flex flex-col md:flex-row justify-between">
+                <button data-bs-toggle="collapse" data-bs-target="#menu">
+                <Link to="/">
+                    <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
+                    <img src={beer} alt="Beer glasses" />
+                    <span className="mx-4 text-lg font-cormorant">
+                        Tavern Talk
+                    </span>
+                    <span className="flex-grow text-right"></span>
+                    </p>
+                </Link>
+                </button>
 
               {Auth.loggedIn() ? (
                 <>
-                  <Link to="/profile">
-                    <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
-                      <img src={axe} alt="axe" />
-                      <span className="mx-4 text-lg font-cormorant">
-                        Your Characters and Quests
-                      </span>
-                      <span className="flex-grow text-right"></span>
-                    </p>
-                  </Link>
+                  <button data-bs-toggle="collapse" data-bs-target="#menu">
+                        <Link to="/profile">
+                        <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
+                        <img src={axe} alt="axe" />
+                        <span className="mx-4 text-lg font-cormorant">
+                            Your Characters and Quests
+                        </span>
+                        <span className="flex-grow text-right"></span>
+                        </p>
+                    </Link>
+                    </button>
+                    <button data-bs-toggle="collapse" data-bs-target="#menu">
                   <Link to="/campaigns">
                     <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                       <img src={search} alt="search icon" />
@@ -75,6 +91,8 @@ function NavTabs({ currentPage, handlePageChange }) {
                       <span className="flex-grow text-right"></span>
                     </p>
                   </Link>
+                      </button>
+                  <button data-bs-toggle="collapse" data-bs-target="#menu">
                   <Link to="/resources">
                     <p className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                       <img src={books} alt="books" />
@@ -84,8 +102,10 @@ function NavTabs({ currentPage, handlePageChange }) {
                       <span className="flex-grow text-right"></span>
                     </p>
                   </Link>
+                      </button>
 
-                  {/* <div className="absolute bottom-0 my-10"> */}
+          
+                  <button data-bs-toggle="collapse" data-bs-target="#menu">
                   <Link to="/">
                     <p
                       className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg "
@@ -100,6 +120,7 @@ function NavTabs({ currentPage, handlePageChange }) {
                       </span>
                     </p>
                   </Link>
+                  </button>
                 </>
               ) : (
                 <>
@@ -121,18 +142,12 @@ function NavTabs({ currentPage, handlePageChange }) {
             </nav>
             
           </div>
-          <button
-          data-bs-toggle="collapse"
-          data-bs-target="#menu"
-          className="relative text-5xl hover:text-white hover:text-7xl"
-          >
-          &times;
-          </button>
+          
         </div>
       
       </div>
 
-      <div className="modal-container">
+      <div className="modal-container ">
         <Modal
           // {...props}
           size="lg"
@@ -161,12 +176,12 @@ function NavTabs({ currentPage, handlePageChange }) {
             <Modal.Body className="">
               <Tab.Content className="tab-content">
                 <Tab.Pane eventKey="login" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <LoginForm />
                   </div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="signup" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <SignUpForm />
                   </div>
                 </Tab.Pane>

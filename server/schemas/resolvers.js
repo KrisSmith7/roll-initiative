@@ -59,7 +59,7 @@ const resolvers = {
             const correctPw = await user.isCorrectPassword(password); 
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials'); 
+                throw new AuthenticationError('Incorrect credentials!'); 
             }
 
             const token = signToken(user); 
@@ -103,7 +103,7 @@ const resolvers = {
                     
                     return updatedPost;
                 } else {
-                    throw new Error("You must be the user who made the post to delete it!");
+                    throw new Error("You must be the user who made the post to update it!");
                 };
                 
             }
@@ -257,6 +257,19 @@ const resolvers = {
                 return campaign; 
             }
             throw new AuthenticationError('Must log in or sign up to create a campaign!')
+        },
+        addPlayer: async (parent, { campaignId }, context) => {
+            if (context.user) {
+                const updatedCampaign = await Campaign.findOneAndUpdate(
+                    { _id: campaignId },
+                    { $push: { players: context.user._id } },
+                    { new: true, runValidators: true }
+                );
+
+                return updatedCampaign;
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
         }
 
     }

@@ -21,7 +21,7 @@ function Resources() {
                 .then(
                     (results) => {
                         setIsLoaded(true);
-                        setTimeout(() => {setItems(results.results) } , 1000)
+                        setTimeout(() => {setItems(results.results) } , 2000)
                         // console.log(items)
                     },
                     (error) => {
@@ -46,14 +46,14 @@ function Resources() {
 
     return (
 
-        <section className="h-full">
+        <section className="h-screen">
             <div className="w-full relative">
                 <div className="bg-sienna/50 inset-0 absolute"></div>
                 <img src={stockImg7} className="h-full w-full object-contain opacity-50" />
             </div>
 
-        <div className="bg-gray-900">
-            <div><p className="text-center py-4 text-2xl">Just getting started? Click a button to find a little more info to help you design your next character or just learn more about the game!</p></div>
+        <div className="bg-gray-900 py-4 px-2">
+            <div><p className="text-center pb-4 text-2xl">Just getting started? Click a button to find a little more info to help you design your next character or just learn more about the game!</p></div>
 
             <div className="md:py-6 w-full flex flex-wrap text-white">
                 <button value={"spells"} onClick={evt => handleInput(evt)} className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold hover:bg-white hover:text-sienna active:bg-white active:text-sienna">Spells</button>
@@ -67,20 +67,22 @@ function Resources() {
                 {/* <button value={"monsters"} onClick={evt => handleInput(evt)} className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold hover:bg-white hover:text-sienna">Monsters</button> */}
             </div>
         </div>
-            <div className="bg-sienna md:flex p-8 snap-start overflow-x-scroll">
+            <div className="bg-sienna p-2 overflow-y-auto md:grid md:grid-cols-2  lg:grid-cols-4">
                 {items.map(item =>
-                    <div className="bg-gray-900/[.35] rounded-lg mb-4 lg:mx-4 p-4 w-1/3">
+                    <div className="bg-gray-900/[.35] rounded-lg mb-4 lg:mx-4 p-4 min-w-[30%] ">
                         <h1 className="text-3xl text-center">{item.name}</h1>
+                        <div className="h-1/3 object-contain">
                         {
                             //   console.log(item)
                             Object.keys(item).map((key, i) => (
                                 // console.log(key,i,item[key])
-                                <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose border-b">
+                                <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose border-b overflow-auto">
                                     <span className="capitalize font-light text-sm lg:pr-4">{key}:</span>
                                     <span className="font-semibold tracking-widest font-unicase whitespace-normal"> {item[key]}</span>
                                 </div>
                             ))
                         }
+                        </div>
                     </div>
                 )
                 }

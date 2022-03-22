@@ -14,6 +14,7 @@
   }
 
   
+
 }
 
 body {
@@ -31,11 +32,17 @@ code {
     monospace;
 }
 
+a:hover{
+  color: #75cccc;
+  background-color: #2f3e46;
+}
+
 .modal-content {
   background-image: url('./assets/stock_images/parchment.jpg');
   background-size: cover;
   background-repeat: none;
 }
+
 .modal-content2 {
   height: 75vh;
   background-image: url('./assets/stock_images/parchment.jpg');
@@ -50,6 +57,7 @@ nav a {
 
 .nav-tab {
   background-color: #2f3e46;
+  width: 300px;
 }
 
 .nav-tab:active, .nav-tab:hover {
@@ -103,24 +111,23 @@ footer {
   height: 60px;
 }
 
-select#profile option[value="Dwarf"] {
-  background-image: url(./assets/stock_images/stock_image1.jpg);
-}
-select#profile option[value="Elf"] {
-  background-image: url(./assets/stock_images/stock_image2.jpg);
-}
-select#profile option[value="Wizard"] {
-  background-image: url(./assets/stock_images/stock_image3.jpg);
+.error-message { 
+  display: block;
+  font-weight: 800;
+  font-size: larger;
+  color: red;
+  text-align: center;
+  z-index:6;
+  height: fit-content;
+  width: fit-content;
 }
 
-/* #login {
-z-index: 9999999 !important;
 
-} */
-
-@media screen and (max-width: 600px) {
-  table thead {
+@media screen and (max-width: 750px) {
+  
+  thead {
     display: none;
+    
   }
   table td {
     display: flex;
@@ -130,5 +137,35 @@ z-index: 9999999 !important;
     content: attr(aria-label);
     font-weight: bold;
     width: 10px;
+  }
+
+  .user-profile {
+    flex-direction: column;
+    padding-bottom: 1rem;
+  }
+
+  .user-profile img {
+    width: 50%;
+    margin: 0px;
+  }
+
+  .user-profile h2 {
+    font-size: 36px;
+  }
+
+  .nav-a {
+    font-size: 24px;
+  }
+
+  .nav-tab {
+    width: 250px;
+  }
+
+  .error-message {
+    font-size: smaller;
+  }
+
+  .welcome {
+    font-size: 18px;
   }
 }
