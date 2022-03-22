@@ -4,8 +4,8 @@ import stockImg11 from "../assets/stock_images/stock_image11.jpg"
 function Homepage() {
 
     return (
-        <div className="bg-slate relative h-full border-b-4">
-            <img src={stockImg11} className="absolute h-full w-full object-cover opacity-50" alt="DnD gameplay" />
+        <div className="h-full relative h-full border-b-4">
+            <img src={stockImg11} className="absolute h-full w-full object-cover" alt="DnD gameplay" />
             <div className="inset-0 bg-gradient-to-r from-charcoal to-slate opacity-50 absolute">
             </div>
             <div className="px-6 h-full z-10 flex justify-center items-center">

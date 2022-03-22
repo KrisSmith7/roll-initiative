@@ -51,14 +51,14 @@ function Profile (props){
 
     return (
        <div className="flex justify-center">
-           <div className="w-4/5">
-                <div className=" flex justify-evenly user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
-                    <div className="flex-auto rounded-full w-20 p-3">
-                        <img className="p-4" src={Die} alt="profile-img"></img>
+           <div className="w-full md:w-4/5">
+                <div className=" flex justify-evenly user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center pb-12">
+                    <div className="flex rounded-full w-1/6 md:p-3">
+                        <img className="md:p-4 object-contain" src={Die} alt="profile-img"></img>
                     </div>
                     
                     <div className="flex-auto w-80"> 
-                        <h2 className="text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
+                        <h2 className="text-3xl md:text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
                     </div>
                     {/* <Modal 
