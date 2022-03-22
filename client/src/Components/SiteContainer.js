@@ -16,14 +16,6 @@ import PrivatePosts from './PrivatePosts';
 import Auth from '../utils/auth';
 
 export default function SiteContainer() {
-  
-  // saved for putting into each component if we need
-  // const [isRedirect, setRedirect] = useState(false);
-
-  // if (Auth.isTokenExpired() || !Auth.loggedIn()) {
-  //   setRedirect(true); 
-  // }
-  
 
   return (
     <section className='overflow-auto h-screen w-full'>
