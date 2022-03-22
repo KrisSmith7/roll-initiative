@@ -21,6 +21,7 @@ function Campaigns({ campaigns }) {
   
 
   const handleClick = async (campaignId) => {
+    console.log("handleClick: ", campaignId);
     try {
       await addPlayer({
         variables: { campaignId: campaignId }
@@ -38,7 +39,7 @@ function Campaigns({ campaigns }) {
         <table class="w-full table-auto">
           <thead class="bg-charcoal text-white border-b">
             <tr>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left hidden">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Request to Join
               </th>
               <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
@@ -53,7 +54,7 @@ function Campaigns({ campaigns }) {
               <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 DM
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left hidden">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 Players
               </th>
             </tr>
@@ -62,11 +63,13 @@ function Campaigns({ campaigns }) {
                     {campaigns.map(campaign => {
                         return (
                             <tr key={campaign._id} class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium hidden">
+              <td class="px-6 py-4 whitespace-nowrap font-medium">
                   <button onClick={() => handleClick(campaign._id)}>+</button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
-                {campaign.campaignName}
+                <Link to={`/campaign/${campaign._id}`}>
+                  {campaign.campaignName}
+                </Link>
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
                 {campaign.description}
@@ -79,7 +82,7 @@ function Campaigns({ campaigns }) {
                 <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username ? `${campaign.username}` : 'you!' }
                 </Link>
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap hidden">
+              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.playerCount}
               </td>
             </tr>

@@ -9,7 +9,8 @@ import NoMatch from './Pages/NoMatch';
 import AllCampaigns from './Pages/AllCampaigns';
 import Profile from './Pages/Profile';
 import Resources from './Pages/Resources';
-import SingleCharacter from './Pages/SingleCharacter'
+import SingleCharacter from './Pages/SingleCharacter';
+import SingleCampaign from './Pages/SingleCampaign';
 import Auth from '../utils/auth';
 
 export default function SiteContainer() {
@@ -36,6 +37,7 @@ export default function SiteContainer() {
               <Route exact path="/campaigns" component={AllCampaigns} />
               <Route exact path="/resources" component={Resources} />
               <Route exact path="/post/:id" component={SinglePost} />
+              <Route exact path="/campaign/:id" component={SingleCampaign} />
 
             <Route component={NoMatch} />
           </Switch>

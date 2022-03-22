@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_CAMPAIGN } from "../utils/mutations";
-import { QUERY_CAMPAIGN } from "../utils/queries";
+import { QUERY_CAMPAIGNS } from "../utils/queries";
 
 const AddCampaign = () => {
     const [userFormData, setUserFormData] = useState({
@@ -19,9 +19,9 @@ const AddCampaign = () => {
     const [addCampaign, {error}] = useMutation(ADD_CAMPAIGN,{
         update(cache, { data: { addCampaign } }) {
           try {
-            const {campaigns}  = cache.readQuery({ query: QUERY_CAMPAIGN });
+            const {campaigns}  = cache.readQuery({ query: QUERY_CAMPAIGNS });
             cache.writeQuery({
-              query: QUERY_CAMPAIGN,
+              query: QUERY_CAMPAIGNS,
               data: { campaigns: [addCampaign, ...campaigns] }
             });
           } catch (err) {

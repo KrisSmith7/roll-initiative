@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_CAMPAIGN } from '../../utils/queries';
+import { QUERY_CAMPAIGNS } from '../../utils/queries';
 import { Modal } from 'react-bootstrap';
 import Campaigns from "../Campaigns";
 import Auth from "../../utils/auth";
@@ -11,7 +11,7 @@ import knight from "../../assets/stock_images/knight.png"
 
 function AllCampaigns() {
 
-    const { loading, data } = useQuery(QUERY_CAMPAIGN);
+    const { loading, data } = useQuery(QUERY_CAMPAIGNS);
     console.log(data)
     const campaigns = data?.campaigns || [];
     console.log("all campaigns page", campaigns);

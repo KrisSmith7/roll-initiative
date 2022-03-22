@@ -126,7 +126,7 @@ export const QUERY_ME = gql`
   }
 `;
 
-export const QUERY_CAMPAIGN = gql`
+export const QUERY_CAMPAIGNS = gql`
   query campaigns {
     campaigns {
       _id
@@ -134,6 +134,28 @@ export const QUERY_CAMPAIGN = gql`
       campaignName
       description
       setting
+      playerCount
+      players {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_CAMPAIGN = gql`
+  query campaign($id: ID!) {
+    campaign(_id: $id) {
+      _id
+      username
+      campaignName
+      description
+      setting
+      playerCount
+      players {
+        _id
+        username
+      }
     }
   }
 `;
