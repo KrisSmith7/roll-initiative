@@ -65,7 +65,7 @@ const resolvers = {
             const correctPw = await user.isCorrectPassword(password); 
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials'); 
+                throw new AuthenticationError('Incorrect credentials!'); 
             }
 
             const token = signToken(user); 
@@ -109,7 +109,7 @@ const resolvers = {
                     
                     return updatedPost;
                 } else {
-                    throw new Error("You must be the user who made the post to delete it!");
+                    throw new Error("You must be the user who made the post to update it!");
                 };
                 
             }

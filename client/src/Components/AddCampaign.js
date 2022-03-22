@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_CAMPAIGN } from "../utils/mutations";
-import { QUERY_CAMPAIGNS } from "../utils/queries";
+import { QUERY_CAMPAIGNS, QUERY_ME } from "../utils/queries";
 
-const AddCampaign = ({ handleClose }) => {
+const AddCampaign = ({handleClose}) => {
     const [userFormData, setUserFormData] = useState({
         campaignName: "",
         description: "",
@@ -26,7 +26,14 @@ const AddCampaign = ({ handleClose }) => {
             });
           } catch (err) {
             console.error(err);
-          }}});
+          }
+          const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { me: { ...me, campaigns: [...me.campaigns, addCampaign] } }
+        });
+        }
+    });
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -76,7 +83,7 @@ const AddCampaign = ({ handleClose }) => {
                     value={userFormData.setting}
                     onChange={handleInputChange}
                 />
-                <button onClick={handleClose} className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
+                <button className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit' onClick={handleClose}>
                     Submit
                 </button>
             </form>

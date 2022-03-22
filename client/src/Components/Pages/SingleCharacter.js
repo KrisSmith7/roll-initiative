@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState } from 'react'; 
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { DELETE_CHARACTER, UPDATE_CHARACTER } from '../../utils/mutations';
 import { QUERY_CHARACTER, QUERY_ME } from '../../utils/queries';
-import { Page, PageTitle, StatBlock, Note, MagicItem } from 'dungeons-and-components';
+import { Page, PageTitle, StatBlock, Note } from 'dungeons-and-components';
 
 
 function SingleCharacter() {
@@ -151,22 +151,22 @@ function SingleCharacter() {
             <div className='flex justify-center'>
                 <Link to="/profile" className='text-slate font-bold my-5 text-3xl md:text-4xl'> ← Back to Profile </Link>
             </div>
-            <Page>
-                <PageTitle>{character.name}</PageTitle>
+            <Page> 
+                <PageTitle className='capitalize'>{character.name}</PageTitle>
                 <Note className='flex flex-col text-xl text-center'> 
-                    <h1>Class</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></textarea>
-                    <h1>Race</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.race} name="race" onBlur={characterChangeHandler}></textarea>
-                    <h1>Level</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.level} name="level" onBlur={characterChangeHandler}></textarea>
-                    <h1>Background</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.background} name="background" onBlur={characterChangeHandler}></textarea>
-                    <h1>Bio</h1> <textarea  className='bg-inherit w-1/2 m-auto pl-8 overflow-auto' defaultValue={character.bio} onBlur={characterChangeHandler}></textarea>
+                    <h1>Class</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></input>
+                    <h1>Race</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.race} name="race" onBlur={characterChangeHandler}></input>
+                    <h1>Level</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.level} name="level" onBlur={characterChangeHandler}></input>
+                    <h1>Background</h1><input className='bg-inherit w-1/2 m-auto p-1 pt-2 pb-3 shadow-lg' defaultValue={character.background} name="background" onBlur={characterChangeHandler}></input>
+                    <h1>Bio</h1> <textarea  className='bg-inherit w-max m-auto pl-2 overflow-auto shadow-lg' defaultValue={character.bio} onBlur={characterChangeHandler}></textarea>
                 </Note>
                 <StatBlock className='flex flex-col text-xl text-center'>
-                    <h1>Strength</h1><textarea  className='bg-inherit w-1/2 m-auto pl-8'defaultValue={character.str} name='str' onBlur={characterChangeHandler}></textarea>
-                    <h1>Dexterity</h1><textarea  className='bg-inherit w-1/2 m-auto pl-8'defaultValue={character.dex} name='dex' onBlur={characterChangeHandler}></textarea>
-                    <h1>Constitution</h1><textarea  className='bg-inherit w-1/2 m-auto pl-8'defaultValue={character.con} name='con' onBlur={characterChangeHandler}></textarea>
-                    <h1>Wisdom</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.wis} name='wis' onBlur={characterChangeHandler}></textarea>
-                    <h1>Intelligence</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.int} name='int' onBlur={characterChangeHandler}></textarea>
-                    <h1>Charisma</h1><textarea className='bg-inherit w-1/2 m-auto pl-8' defaultValue={character.cha} name='cha' onBlur={characterChangeHandler}></textarea>
+                    <h1>Strength</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.str} name='str' onBlur={characterChangeHandler}></input>
+                    <h1>Dexterity</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.dex} name='dex' onBlur={characterChangeHandler}></input>
+                    <h1>Constitution</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.con} name='con' onBlur={characterChangeHandler}></input>
+                    <h1>Wisdom</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.wis} name='wis' onBlur={characterChangeHandler}></input>
+                    <h1>Intelligence</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.int} name='int' onBlur={characterChangeHandler}></input>
+                    <h1>Charisma</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.cha} name='cha' onBlur={characterChangeHandler}></input>
                 </StatBlock>
             </Page>
             <button className='text-white bg-emerald-900 p-2 m-2 rounded-md'

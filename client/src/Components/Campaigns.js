@@ -66,7 +66,7 @@ function Campaigns({ campaigns }) {
               <td class="px-6 py-4 whitespace-nowrap font-medium">
                   <button onClick={() => handleClick(campaign._id)}>+</button>
                   </td>
-              <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
+              <td class="font-light font-macondo md:px-6 md:py-4 whitespace-pre-wrap">
                 <Link to={`/campaign/${campaign._id}`}>
                   {campaign.campaignName}
                 </Link>

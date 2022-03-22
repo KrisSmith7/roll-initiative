@@ -4,6 +4,7 @@ import Characters from "../Characters";
 import Campaigns from "../Campaigns";
 import PostList from "../PostList";
 import AddCharacter from '../AddCharacter'; 
+import AddCampaign from '../AddCampaign';
 import PostForm from '../PostForm';
 import { Modal, Tab, Nav } from 'react-bootstrap';
 import { useQuery } from '@apollo/client';
@@ -32,6 +33,10 @@ function Profile (props){
     const handlePostClose = () => setShowPostModal(false);
     const handlePostShow = () => setShowPostModal(true);
 
+    const [showCampaignModal, setShowCampaignModal] = useState(false);
+    const handleCampaignClose = () => setShowCampaignModal(false);
+    const handleCampaignShow = () => setShowCampaignModal(true);
+
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
         // isMe = true; 
         // unnecessary to redirect to /profile with our functionality 
@@ -52,26 +57,21 @@ function Profile (props){
     return (
        <div className="flex justify-center">
            <div className="w-full md:w-4/5">
-                <div className=" flex justify-evenly user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center pb-12">
-                    <div className="flex rounded-full w-1/6 md:p-3">
-                        <img className="md:p-4 object-contain" src={Die} alt="profile-img"></img>
-                    </div>
-                    
-                    <div className="flex-auto w-80"> 
-                        <h2 className="text-3xl md:text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
+                <div className=" flex user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
+                        <img className="p-4 w-72 ml-10" src={Die} alt="profile-img"></img>
+                        <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
-                    </div>
-                    {/* <Modal 
-                        size="lg"
-                        centered
-                        show={showEdit}
-                        onHide={handleCloseEdit}
-                        ClassName="modal"
-                    >
-                        <EditProfile handleCloseEdit={handleCloseEdit}/>
-                    </Modal> */}
+                        {/* <Modal 
+                            size="lg"
+                            centered
+                            show={showEdit}
+                            onHide={handleCloseEdit}
+                            ClassName="modal"
+                        >
+                            <EditProfile handleCloseEdit={handleCloseEdit}/>
+                        </Modal> */}
                 </div>
-                
+
                 <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
                     <Nav variant="tabs">
                         <Nav.Item className='nav-tab'>
@@ -112,7 +112,29 @@ function Profile (props){
                         </Tab.Pane>
                         <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 md:px-4">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
-                            <Campaigns campaigns={user.campaigns} />
+                            {user.username && 
+                            <>
+                                <div className="flex justify-center">
+                                    <button className='text-white bg-turq/75 p-2 m-2 rounded-md' onClick={handleCampaignShow}>Create a campaign!</button>
+                                </div>
+                                
+                                {/* <div className='modal-container h-screen'> */}
+                                <Modal                
+                                    size="lg"
+                                    centered
+                                    show={showCampaignModal}
+                                    onHide={handleCampaignClose}
+                                    ClassName="modal"
+                                >
+                                    <AddCampaign handleClose={handleCampaignClose}/>
+                                    
+                                    </Modal>
+                                    {/* </div> */}
+                                </>}
+                                <div className="m-2 flex justify-center"> 
+                                    <Campaigns campaigns={user.campaigns} />
+                                </div>
+                            
                         </Tab.Pane>
                         <Tab.Pane eventKey="posts" title="My Posts" className="flex flex-col items-center modal-content text-white w-full">
                             {user.username &&

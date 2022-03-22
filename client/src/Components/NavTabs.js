@@ -11,9 +11,12 @@ import Auth from "../utils/auth";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
 import { Modal, Nav, Tab } from "react-bootstrap";
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
 
 //create nav links at top of page that conditionally renders component based on selected link
 function NavTabs({ currentPage, handlePageChange }) {
+  const me = useQuery(QUERY_ME);
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
@@ -22,7 +25,7 @@ function NavTabs({ currentPage, handlePageChange }) {
 
   return (
     <div className="bg-gray-800 w-auto h-auto">
-      <div className="">
+      <div className="flex justify-between">
         <button
           class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
           type="button"
@@ -33,6 +36,7 @@ function NavTabs({ currentPage, handlePageChange }) {
           <img src={logo} className="h-8" alt="20-sided die" />{" "}
           <span className="px-6 tracking-widest font-light text-xl">Menu</span>
         </button>
+        {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <p>Welcome, <span className="capitalize"> {me.data?.me.username}</span>!</p></div>}
       </div>
 
       <div id="menu" className="collapse overflow-hidden  h-full">
@@ -143,7 +147,7 @@ function NavTabs({ currentPage, handlePageChange }) {
       
       </div>
 
-      <div className="modal-container">
+      <div className="modal-container ">
         <Modal
           // {...props}
           size="lg"
@@ -172,12 +176,12 @@ function NavTabs({ currentPage, handlePageChange }) {
             <Modal.Body className="">
               <Tab.Content className="tab-content">
                 <Tab.Pane eventKey="login" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <LoginForm />
                   </div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="signup" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <SignUpForm />
                   </div>
                 </Tab.Pane>

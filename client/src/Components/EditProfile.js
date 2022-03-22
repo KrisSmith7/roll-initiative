@@ -1,5 +1,5 @@
 import React, {useState } from 'react';
-import useStorage from '../Firebase/useStorage';
+// import useStorage from '../Firebase/useStorage';
 
 
 const EditProfile = ({ handleCloseEdit }) => {
