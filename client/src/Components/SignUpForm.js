@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 import Auth from "../utils/auth";
+import knight from "../assets/stock_images/knight.png"
 
 const SignUpForm = () => {
     const [userFormData, setUserFormData] = useState({
@@ -9,6 +10,7 @@ const SignUpForm = () => {
         email: "", 
         password: ""
     });
+
     const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
@@ -16,8 +18,6 @@ const SignUpForm = () => {
         setUserFormData({ ...userFormData, [name]: value });
         console.log(userFormData);
     };
-
-   
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -37,6 +37,11 @@ const SignUpForm = () => {
             password: "",
         });
     };
+
+    const closeError = () => {
+        const errorMessage = document.querySelector('#errorMessage');
+        errorMessage.style.display = "none";
+    }
 
     return (
         <>
@@ -72,7 +77,12 @@ const SignUpForm = () => {
                     Submit
                 </button>
             </form>
-            {error && <div className='error-message'> {error.message} </div>}
+            {error && 
+               <div id="errorMessage" className='bg-slate h-screen flex flex-col justify-center items-center error-message' onClick={closeError}> 
+                   <p className="text-4xl font-macondo uppercase" >{error.message} !</p>
+                   <img src={knight} alt='knight'/>
+               </div>
+            }
         </>
     )
 };

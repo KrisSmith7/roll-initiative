@@ -136,7 +136,7 @@ function NavTabs({ currentPage, handlePageChange }) {
       
       </div>
 
-      <div className="modal-container">
+      <div className="modal-container ">
         <Modal
           // {...props}
           size="lg"
@@ -165,12 +165,12 @@ function NavTabs({ currentPage, handlePageChange }) {
             <Modal.Body className="">
               <Tab.Content className="tab-content">
                 <Tab.Pane eventKey="login" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <LoginForm />
                   </div>
                 </Tab.Pane>
                 <Tab.Pane eventKey="signup" className="tab-pane">
-                  <div className="form">
+                  <div className="form flex flex-col place-items-center">
                     <SignUpForm />
                   </div>
                 </Tab.Pane>

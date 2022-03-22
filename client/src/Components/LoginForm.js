@@ -2,10 +2,12 @@ import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from "../utils/auth";
+import knight from "../assets/stock_images/knight.png"
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ username: "", password: "" });
     const [loginUser, { error }] = useMutation(LOGIN_USER);
+    
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -30,9 +32,14 @@ const LoginForm = () => {
         });
     };
 
+    const closeError = () => {
+      const errorMessage = document.querySelector('#errorMessage');
+      errorMessage.style.display = "none";
+    }
+
     return (
         <>
-            <form id="login" onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50 from-charcoal to-slate rounded-md p-4 w-full">
+            <form id="login" onSubmit={handleFormSubmit} className= "object-center flex flex-col items-center text-slate-50  rounded-md p-4 w-full">
                 <input
                     className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
                     placeholder='Your username'
@@ -55,7 +62,12 @@ const LoginForm = () => {
                    Submit
                 </button>
             </form>
-            {error && <div className='error-message'> {error.message} </div>}
+            {error && 
+               <div id="errorMessage" className='bg-slate h-screen flex flex-col justify-center items-center error-message'onClick={closeError} > 
+                   <p className="text-4xl font-macondo uppercase p-2" >{error.message}</p>
+                   <img src={knight} alt='knight'/>
+               </div>
+            }
         </>
     );
 };

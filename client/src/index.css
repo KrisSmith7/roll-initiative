@@ -36,6 +36,7 @@ code {
   background-size: cover;
   background-repeat: none;
 }
+
 .modal-content2 {
   height: 75vh;
   background-image: url('./assets/stock_images/parchment.jpg');
@@ -105,17 +106,23 @@ footer {
 }
 
 .error-message { 
-  font-weight: 700;
+  display: block;
+  font-weight: 800;
   font-size: larger;
-  color: #53131e;
+  color: red;
+  text-align: center;
+  z-index:6;
+  height: fit-content;
+  width: fit-content;
 }
+
 
 /* #login {
 z-index: 9999999 !important;
 
 } */
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 750px) {
   
   thead {
     display: none;
@@ -129,5 +136,30 @@ z-index: 9999999 !important;
     content: attr(aria-label);
     font-weight: bold;
     width: 10px;
+  }
+
+  .user-profile {
+    flex-direction: column;
+  }
+
+  .user-profile img {
+    width: 75%;
+    margin: 0px;
+  }
+
+  .user-profile h2 {
+    font-size: 36px;
+  }
+
+  .nav-a {
+    font-size: 24px;
+  }
+
+  .nav-tab {
+    width: 200px;
+  }
+
+  .error-message {
+    font-size: smaller;
   }
 }

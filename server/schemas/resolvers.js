@@ -59,7 +59,7 @@ const resolvers = {
             const correctPw = await user.isCorrectPassword(password); 
 
             if (!correctPw) {
-                throw new AuthenticationError('Incorrect credentials'); 
+                throw new AuthenticationError('Incorrect credentials!'); 
             }
 
             const token = signToken(user); 
