@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from 'react-router-dom';
+import { ADD_PLAYER } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 
 function Campaigns({ campaigns }) {
+  const [addPlayer] = useMutation(ADD_PLAYER);
   if (!campaigns.length) {
     return (
       <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">
@@ -15,6 +18,18 @@ function Campaigns({ campaigns }) {
     );
   }
 
+  
+
+  const handleClick = async (campaignId) => {
+    try {
+      await addPlayer({
+        variables: { campaignId: campaignId }
+      });
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
 
                     <div class="md:flex md:flex-col md:items-center w-full">
@@ -23,7 +38,7 @@ function Campaigns({ campaigns }) {
         <table class="w-full table-auto">
           <thead class="bg-charcoal text-white border-b">
             <tr>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left hidden">
                 Request to Join
               </th>
               <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
@@ -38,14 +53,17 @@ function Campaigns({ campaigns }) {
               <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                 DM
               </th>
+              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left hidden">
+                Players
+              </th>
             </tr>
           </thead>
           <tbody>
                     {campaigns.map(campaign => {
                         return (
                             <tr key={campaign._id} class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium">
-                  +
+              <td class="px-6 py-4 whitespace-nowrap font-medium hidden">
+                  <button onClick={() => handleClick(campaign._id)}>+</button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
@@ -60,6 +78,9 @@ function Campaigns({ campaigns }) {
                 <Link to={`/profile/${campaign.username}`}>
                 <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username ? `${campaign.username}` : 'you!' }
                 </Link>
+              </td>
+              <td class="font-light md:px-6 md:py-4 whitespace-nowrap hidden">
+                {campaign.playerCount}
               </td>
             </tr>
                         )
