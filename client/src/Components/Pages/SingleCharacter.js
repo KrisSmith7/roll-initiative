@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'; 
+import React, { useState } from 'react'; 
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client';
 import { DELETE_CHARACTER, UPDATE_CHARACTER } from '../../utils/mutations';
 import { QUERY_CHARACTER, QUERY_ME } from '../../utils/queries';
-import { Page, PageTitle, StatBlock, Note, MagicItem } from 'dungeons-and-components';
+import { Page, PageTitle, StatBlock, Note } from 'dungeons-and-components';
 
 
 function SingleCharacter() {
@@ -151,7 +151,7 @@ function SingleCharacter() {
             <div className='flex justify-center'>
                 <Link to="/profile" className='text-slate font-bold mt-5'> ← Back to Profile </Link>
             </div>
-            <Page>
+            <Page> 
                 <PageTitle className='capitalize'>{character.name}</PageTitle>
                 <Note className='flex flex-col text-xl text-center'> 
                     <h1>Class</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></input>
