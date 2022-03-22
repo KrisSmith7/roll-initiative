@@ -51,6 +51,7 @@ const typeDefs = gql`
         campaignName: String
         description: String
         setting: String
+        players: [User]
     }
 
     type Auth {
@@ -83,7 +84,8 @@ const typeDefs = gql`
         deleteCharacter(_id: ID!): Character
         updateCharacter(_id: ID!, level: Int, class: String, background: String, race: String, alignment: String, bio: String, 
             str: Int, dex: Int, con: Int, wis: Int, int: Int, cha: Int): Character
-        }
-        `
+        addPlayer(campaignId: ID!): Campaign
+    }
+`;
 
 module.exports = typeDefs; 

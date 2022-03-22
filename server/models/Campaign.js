@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-const { Schema } = mongoose;
+const { Schema, model } = mongoose;
+const userSchema = require('./User');
 
 const campaignSchema = new Schema({
     username: {
@@ -20,14 +21,24 @@ const campaignSchema = new Schema({
         type: String, 
         required: true, 
     },
+    players: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        }
+    ]
 },
     {
         toJSON: {
             virtuals: true
         }
     }
-)
+);
 
-const Campaign = mongoose.model('Campaign', campaignSchema);
+campaignSchema.virtual('playerCount').get(function() {
+    return this.players.length;
+})
+
+const Campaign = model('Campaign', campaignSchema);
 
 module.exports = Campaign;
