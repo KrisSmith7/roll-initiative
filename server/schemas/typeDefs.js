@@ -6,6 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         dmstatus: Boolean
+        characterCount: Int
         posts: [Post]
         characters: [Character]
         campaigns: [Campaign]

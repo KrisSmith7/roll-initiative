@@ -43,6 +43,7 @@ export const QUERY_USER = gql`
       username
       email
       dmstatus
+      characterCount
       posts {
         _id
         postText
@@ -155,6 +156,7 @@ export const QUERY_CAMPAIGN = gql`
       players {
         _id
         username
+        characterCount
       }
     }
   }

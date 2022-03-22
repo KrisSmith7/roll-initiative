@@ -83,7 +83,7 @@ function AllCampaigns() {
                 onHide={handleClose}
                 ClassName="modal"
             >
-                <AddCampaign />
+                <AddCampaign handleClose={handleClose} />
 
             </Modal>
         </div>

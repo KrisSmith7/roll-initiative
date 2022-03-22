@@ -1,25 +1,16 @@
 import React, { useState } from 'react';
 import { useParams, Link, Redirect } from 'react-router-dom';
-import { Modal } from 'react-bootstrap';
+import stockImg6 from "../../assets/stock_images/stock_image6.jpg";
 
 import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_CAMPAIGN, QUERY_CAMPAIGNS } from '../../utils/queries';
-import { DELETE_CAMPAIGN } from '../../utils/mutations';
-import { ADD_PLAYER } from '../../utils/mutations';
+import { ADD_PLAYER, DELETE_CAMPAIGN } from '../../utils/mutations';
 
 const SingleCampaign = () => {
   const { id: campaignId } = useParams();
   console.log(campaignId);
   const [addPlayer] = useMutation(ADD_PLAYER);
-
-  const { loading, data } = useQuery(QUERY_CAMPAIGN, {
-    variables: { id: campaignId }
-  });
-
-  const campaign = data?.campaign || {};
-  console.log("page load campaign: ", campaign);
-
   const [deleteCampaign, { error }] = useMutation(DELETE_CAMPAIGN, {
     update(cache, { data: { deleteCampaign } }) {
       try {
@@ -34,6 +25,16 @@ const SingleCampaign = () => {
     }
   });
 
+
+  const { loading, data } = useQuery(QUERY_CAMPAIGN, {
+    variables: { id: campaignId }
+  });
+
+  const campaign = data?.campaign || {};
+  console.log("page load campaign: ", campaign);
+
+  
+
   const [idRedirect, setRedirect] = useState(false);
 
   const handleDeleteCampaign = async (campaignId) => {
@@ -47,7 +48,7 @@ const SingleCampaign = () => {
 
     try {
       await deleteCampaign({
-        varaiables: { campaignId: campaignId }
+        variables: { campaignId: campaignId }
       });
 
       console.log("deletedCampaign: ", campaignId);
@@ -73,9 +74,10 @@ const SingleCampaign = () => {
   }
 
   return (
-    <div>
-      <div>
-        <Link to="/Dashboard" className="text-slate font-bold mt-5"> ← Back to Dashboard </Link>
+    <div className="relative h-full w-full">
+      <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
+      <div className='flex justify-center'>
+        <Link to="/campaigns" className="form-btn font-bold mt-5 bg-turq/25 text-white"> ← Back to All Campaigns </Link>
       </div>
       <div class="md:flex md:flex-col md:items-center w-full">
         <div class="w-full py-2 sm:px-6 lg:px-8">
@@ -103,7 +105,7 @@ const SingleCampaign = () => {
                   </th>
                 </tr>
               </thead>
-              { idRedirect ? (<Redirect push to="/" />) : null }
+              { idRedirect ? (<Redirect push to="/campaigns" />) : null }
               <tbody>
                 <tr class="bg-turq/25 text-white border-b">
               <td class="px-6 py-4 whitespace-nowrap font-medium">
@@ -129,8 +131,39 @@ const SingleCampaign = () => {
               </tr>
               </tbody>
             </table>
-            <div>
-              <button type='button' onClick={() => handleDeleteCampaign(campaign._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'  >Delete Campaign</button>
+            {campaign.players.length > 0 &&
+            <table class="w-full table-auto">
+              <thead class="bg-charcoal text-white border-b">
+                <tr>
+                  <th scope="col" aria-label="player-data" class="text-sm font-medium text-white px-6 py-4 text-center">
+                    Player Username
+                  </th>
+                  <th scope="col" aria-label="player-data" class="text-sm font-medium text-white px-6 py-4 text-center">
+                    Player Character Count
+                  </th>
+                </tr>
+              </thead>
+              
+              <tbody>
+                {campaign.players.map(player => {
+                  return (
+                    <tr key={player._id} class="bg-turq/25 text-white border-b">
+                      <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
+                        <Link to={`/profile/${player._id}`}>
+                          {player.username}
+                        </Link>
+                      </td>
+                      <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
+                        {player.characterCount}
+                      </td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            }
+            <div className='flex justify-center'>
+              <button type='button' onClick={() => handleDeleteCampaign(campaign._id)} className='m-2 form-btn d-block w-30 text-lg bg-turq/25 text-white font-macondo'  >Delete Campaign</button>
             </div>
           </div>
         </div>

@@ -158,15 +158,6 @@ export const DELETE_CAMPAIGN = gql`
     mutation deleteCampaign($campaignId: ID!) {
         deleteCampaign(campaignId: $campaignId) {
             _id
-            username
-            campaignName
-            setting
-            description
-            playerCount
-            players {
-                _id
-                username
-            }
         }
     }
 `;

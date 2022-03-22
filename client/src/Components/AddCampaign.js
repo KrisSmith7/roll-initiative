@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_CAMPAIGN } from "../utils/mutations";
 import { QUERY_CAMPAIGNS } from "../utils/queries";
 
-const AddCampaign = () => {
+const AddCampaign = ({ handleClose }) => {
     const [userFormData, setUserFormData] = useState({
         campaignName: "",
         description: "",
@@ -76,7 +76,7 @@ const AddCampaign = () => {
                     value={userFormData.setting}
                     onChange={handleInputChange}
                 />
-                <button className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
+                <button onClick={handleClose} className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' type='submit'>
                     Submit
                 </button>
             </form>

@@ -38,7 +38,10 @@ const resolvers = {
             return Character.findOne({ _id })
         },
         campaign: async (parent, { _id }) => {
-            return Campaign.findOne({ _id });
+            const campaignData = await Campaign.findOne({ _id})
+                .select('-__v')
+                .populate('players');
+            return campaignData;
         },
         campaigns: async () => {
             const campaignData = await Campaign.find().sort({ createdAt: -1 })
@@ -262,7 +265,7 @@ const resolvers = {
             throw new AuthenticationError('Must log in or sign up to create a campaign!')
         },
         addPlayer: async (parent, { campaignId }, context) => {
-            console.log("backend capaignId: ", campaignId);
+            console.log("backend campaignId: ", campaignId);
             if (context.user) {
                 console.log("logged in user data: ", context.user);
 
@@ -281,7 +284,7 @@ const resolvers = {
         },
         deleteCampaign: async (parent, { campaignId }, context) => {
             // checks if user is logged in
-            console.log("deleteCampaign reached. campaignId: ", campaignId);
+            //console.log("deleteCampaign reached. campaignId: ", campaignId);
             if (context.user) {
                 // finds the post by the given id
                 const foundCampaign = await Campaign.findById(
@@ -290,7 +293,7 @@ const resolvers = {
 
                 // checks if the logged in user is the user who created the post
                 if (context.user.username === foundCampaign.username) {
-                    console.log(foundCampaign.username + ": Usernames match");
+                    //console.log(foundCampaign.username + ": Usernames match");
 
                     // finds the post by postId and deletes the post
                     const deletedCampaign = await Campaign.deleteOne(
