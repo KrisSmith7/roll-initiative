@@ -114,11 +114,11 @@ function Profile (props){
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
                             <Campaigns campaigns={user.campaigns} />
                         </Tab.Pane>
-                        <Tab.Pane eventKey="posts" title="My Posts" className="flex flex-col items-center bg-sienna/50">
+                        <Tab.Pane eventKey="posts" title="My Posts" className="flex flex-col items-center modal-content text-white w-full">
                             {user.username &&
                             <>
-                                <div className="flex justify-center">
-                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md' onClick={handlePostShow}>Add a new post!</button>
+                                <div className="flex justify-center py-4">
+                                    <button className='text-white bg-sienna/75 p-2 m-2 rounded-md hover:bg-sienna hover:border-white hover:border-2' onClick={handlePostShow}>Add a new post!</button>
                                 </div>
                                 <Modal
                                     size="lg"
@@ -130,7 +130,7 @@ function Profile (props){
                                     <PostForm handleClose={handlePostClose} />
                                 </Modal>
                             </>}
-                            <div className="m-2 flex flex-wrap justify-center">
+                            <div className="m-2 p-2">
                                 <PostList posts={user.posts} />
                             </div>
                         </Tab.Pane>

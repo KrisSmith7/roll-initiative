@@ -73,8 +73,8 @@ const SinglePost = () => {
   }
 
   return (
-    <div className='modal-content'>
-      <div className='flex justify-center'>
+    <div className='modal-content overflow-auto'>
+      <div className='flex justify-center '>
         <Link to="/dashboard" className='text-slate font-bold mt-5'> ← Back to Dashboard </Link>
       </div>
       <div className='flex flex-col justify-center items-center mt-2'>

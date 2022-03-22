@@ -43,7 +43,7 @@ function NavTabs({ currentPage, handlePageChange }) {
         >
           &times;
         </button>
-        <div className="flex flex-col sm:flex-row sm:justify-around">
+        <div className="flex  sm:flex-row sm:justify-around">
           <div className="w-72">
             <div className="flex items-center justify-start">
               <img className="h-10" src={logo} alt="social rolls logo" />
