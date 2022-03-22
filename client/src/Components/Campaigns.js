@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 
-function Campaigns({ campaigns }) {
+function Campaigns({ campaigns}) {
   if (!campaigns.length) {
     return (
       <div className="bg-gray-900/25 w-full h-3/4 flex flex-col justify-center p-2">

@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 
 const LoginForm = () => {
     const [userFormData, setUserFormData] = useState({ username: "", password: "" });
-    const [loginUser] = useMutation(LOGIN_USER);
+    const [loginUser, { error }] = useMutation(LOGIN_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -55,6 +55,7 @@ const LoginForm = () => {
                    Submit
                 </button>
             </form>
+            {error && <div> {error.message} </div>}
         </>
     );
 };

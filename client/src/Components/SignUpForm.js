@@ -9,6 +9,7 @@ const SignUpForm = () => {
         email: "", 
         password: ""
     });
+    const [addUser, { error }] = useMutation(ADD_USER);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -16,7 +17,7 @@ const SignUpForm = () => {
         console.log(userFormData);
     };
 
-    const [addUser] = useMutation(ADD_USER);
+   
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -71,6 +72,7 @@ const SignUpForm = () => {
                     Submit
                 </button>
             </form>
+            {error && <div> {error.message} </div>}
         </>
     )
 };

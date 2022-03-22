@@ -73,7 +73,7 @@ const SinglePost = () => {
   }
 
   return (
-    <div className='modal-content'>
+    <div className='modal-content overflow-auto'>
       <div className='flex justify-center'>
         <Link to="/dashboard" className='text-slate font-bold mt-5'> ← Back to Dashboard </Link>
       </div>
@@ -102,6 +102,7 @@ const SinglePost = () => {
               className="modal"
             >
               <UpdatePostForm handleClose={handleClose} postId={post._id} postText={post.postText} />
+              
             </Modal>
             <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
           </div>
@@ -113,6 +114,7 @@ const SinglePost = () => {
 
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </div>
+      {error && <div> {error.message} </div>}
     </div>
   );
 };
