@@ -122,14 +122,6 @@ footer {
   width: fit-content;
 }
 
-<<<<<<< HEAD
-
-/* #login {
-z-index: 9999999 !important;
-
-} */
-=======
->>>>>>> f6aded4b4c783eb619357f9162f6c21ff44ef1fe
 
 @media screen and (max-width: 750px) {
   
@@ -149,10 +141,11 @@ z-index: 9999999 !important;
 
   .user-profile {
     flex-direction: column;
+    padding-bottom: 1rem;
   }
 
   .user-profile img {
-    width: 75%;
+    width: 50%;
     margin: 0px;
   }
 
@@ -165,10 +158,14 @@ z-index: 9999999 !important;
   }
 
   .nav-tab {
-    width: 200px;
+    width: 250px;
   }
 
   .error-message {
     font-size: smaller;
+  }
+
+  .welcome {
+    font-size: 18px;
   }
 }

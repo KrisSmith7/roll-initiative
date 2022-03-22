@@ -36,7 +36,7 @@ function NavTabs({ currentPage, handlePageChange }) {
           <img src={logo} className="h-8" alt="20-sided die" />{" "}
           <span className="px-6 tracking-widest font-light text-xl">Menu</span>
         </button>
-        {Auth.loggedIn() && <div className="flex items-center px-6 py-2.5 text-white font-infant text-xl"> <p>Welcome, <span className="capitalize"> {me.data?.me.username}</span> !</p></div>}
+        {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <p>Welcome, <span className="capitalize"> {me.data?.me.username}</span>!</p></div>}
       </div>
 
       <div id="menu" className="collapse overflow-hidden  h-full">
