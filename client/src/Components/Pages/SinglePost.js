@@ -73,12 +73,12 @@ const SinglePost = () => {
   }
 
   return (
-    <div className='modal-content overflow-auto'>
-      <div className='flex justify-center'>
-        <Link to="/dashboard" className='text-slate font-bold mt-5'> ← Back to Dashboard </Link>
+    <div className='modal-content h-full overflow-auto'>
+      <div className='flex items-center justify-center'>
+        <Link to="/dashboard" className='text-slate font-bold mt-5 text-3xl md:text-4xl'> ← Back to Dashboard </Link>
       </div>
-      <div className='flex flex-col justify-center items-center mt-2'>
-        <div className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
+      <div className='flex flex-col justify-center items-center h-3/4 mt-2'>
+        <div className="bg-sienna/[.80] px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
           <div>
             <p className="font-light text-white">
             <span>
@@ -88,7 +88,7 @@ const SinglePost = () => {
           </p>
           </div>
           <div className="whitespace-pre-wrap py-4">
-            <p className='text-white'>{post.postText}</p>
+            <p className='text-white text-2xl'>{post.postText}</p>
           </div>
           
           { isRedirect ? (<Redirect push to="/" />) : null }
@@ -107,10 +107,12 @@ const SinglePost = () => {
             <button type='button' onClick={() => handleDeletePost(post._id)} className='m-2 form-btn d-block w-30 text-lg text-slate font-macondo bg-turq/75'>Delete Post</button>
           </div>
         </div>
-
+        
+        <div className='w-full flex justify-center my-4'>
         {post.commentCount > 0 && (
           <CommentList comments={post.comments} />
-        )}
+          )}
+          </div>
 
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </div>
