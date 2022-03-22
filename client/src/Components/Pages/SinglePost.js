@@ -116,7 +116,7 @@ const SinglePost = () => {
           )}
         </div>
         
-        <div className='w-full flex justify-center my-4'>
+        <div className='w-full flex justify-center my-4 overflow-auto'>
         {post.commentCount > 0 && (
           <CommentList comments={post.comments} />
           )}
