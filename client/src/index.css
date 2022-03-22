@@ -50,6 +50,7 @@ nav a {
 
 .nav-tab {
   background-color: #2f3e46;
+  width: 300px;
 }
 
 .nav-tab:active, .nav-tab:hover {
@@ -114,9 +115,11 @@ z-index: 9999999 !important;
 
 } */
 
-@media screen and (max-width: 600px) {
-  table thead {
+@media screen and (max-width: 768px) {
+  
+  thead {
     display: none;
+    
   }
   table td {
     display: flex;

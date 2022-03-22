@@ -63,7 +63,7 @@ function Profile (props){
                     </div>
                     
                     <div className="flex-auto w-80"> 
-                        <h2 className="text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
+                        <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
                     </div>
                     {/* <Modal 
@@ -136,7 +136,7 @@ function Profile (props){
                                     </Modal>
                                     {/* </div> */}
                                 </>}
-                                <div className="m-2 flex flex-wrap justify-center"> 
+                                <div className="m-2 flex justify-center"> 
                                     <Campaigns campaigns={user.campaigns} />
                                 </div>
                             
