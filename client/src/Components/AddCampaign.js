@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_CAMPAIGN } from "../utils/mutations";
-import { QUERY_CAMPAIGN } from "../utils/queries";
+import { QUERY_CAMPAIGN, QUERY_ME } from "../utils/queries";
 
 const AddCampaign = ({handleClose}) => {
     const [userFormData, setUserFormData] = useState({
@@ -26,7 +26,14 @@ const AddCampaign = ({handleClose}) => {
             });
           } catch (err) {
             console.error(err);
-          }}});
+          }
+          const { me } = cache.readQuery({ query: QUERY_ME });
+            cache.writeQuery({
+                query: QUERY_ME,
+                data: { me: { ...me, campaigns: [...me.campaigns, addCampaign] } }
+        });
+        }
+    });
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
