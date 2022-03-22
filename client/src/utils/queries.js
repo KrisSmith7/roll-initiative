@@ -118,10 +118,12 @@ export const QUERY_ME = gql`
         cha
       }
       campaigns {
+        _id
         campaignName
         description
         setting
         username
+        playerCount
       }
     }
   }
