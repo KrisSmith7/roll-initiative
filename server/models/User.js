@@ -68,9 +68,9 @@ userSchema.methods.isCorrectPassword = async function(password) {
 };
 
 // virtuals if we need in the future 
-// userSchema.virtual('characterCount').get(function() {
-//     return this.characters.length; 
-// })
+userSchema.virtual('characterCount').get(function() {
+    return this.characters.length; 
+})
 
 // userSchema.virtual('campaignCount').get(function() {
 //     return this.campaigns.length; 

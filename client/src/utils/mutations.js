@@ -106,7 +106,7 @@ mutation addCharacter($name: String!, $class: String!, $level: Int, $background:
                 bio
             }
     }
-    `
+    `;
 
 export const DELETE_CHARACTER = gql`
 mutation deleteCharacter($_id: ID!) {
@@ -114,7 +114,7 @@ mutation deleteCharacter($_id: ID!) {
         username
         _id
     }
-}`
+}`;
 
 export const UPDATE_CHARACTER = gql`
 mutation updateCharacter($_id: ID!, $level: Int, $class: String, $background: String, $race: String, $alignment: String, $bio: String, 
@@ -136,16 +136,28 @@ mutation updateCharacter($_id: ID!, $level: Int, $class: String, $background: St
                 int
                 cha
             }
-    }`
+    }`;
 
 export const ADD_PLAYER = gql`
-    mutation addPlayer($id: ID!) {
-        addPlayer(campaignId: $id) {
+    mutation addPlayer($campaignId: ID!) {
+        addPlayer(campaignId: $campaignId) {
             _id
             campaignName
             description
             setting
-            players
+            playerCount
+            players {
+                _id
+                username
+            }
+        }
+    }
+`;
+
+export const DELETE_CAMPAIGN = gql`
+    mutation deleteCampaign($campaignId: ID!) {
+        deleteCampaign(campaignId: $campaignId) {
+            _id
         }
     }
 `;

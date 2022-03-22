@@ -6,6 +6,7 @@ const typeDefs = gql`
         username: String
         email: String
         dmstatus: Boolean
+        characterCount: Int
         posts: [Post]
         characters: [Character]
         campaigns: [Campaign]
@@ -51,6 +52,7 @@ const typeDefs = gql`
         campaignName: String
         description: String
         setting: String
+        playerCount: Int
         players: [User]
     }
 
@@ -66,7 +68,7 @@ const typeDefs = gql`
         posts(username: String): [Post]
         post(_id: ID!): Post
         character(_id: ID!): Character
-        campaign(campaignName: String!): Campaign
+        campaign(_id: ID!): Campaign
         campaigns: [Campaign]
 
     }
@@ -85,6 +87,7 @@ const typeDefs = gql`
         updateCharacter(_id: ID!, level: Int, class: String, background: String, race: String, alignment: String, bio: String, 
             str: Int, dex: Int, con: Int, wis: Int, int: Int, cha: Int): Character
         addPlayer(campaignId: ID!): Campaign
+        deleteCampaign(campaignId: ID!): Campaign
     }
 `;
 

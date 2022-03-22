@@ -1,7 +1,5 @@
-const mongoose = require('mongoose');
-
-const { Schema, model } = mongoose;
-const userSchema = require('./User');
+const { Schema, model } = require('mongoose');
+//const userSchema = require('./User');
 
 const campaignSchema = new Schema({
     username: {

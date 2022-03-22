@@ -43,6 +43,7 @@ export const QUERY_USER = gql`
       username
       email
       dmstatus
+      characterCount
       posts {
         _id
         postText
@@ -117,16 +118,18 @@ export const QUERY_ME = gql`
         cha
       }
       campaigns {
+        _id
         campaignName
         description
         setting
         username
+        playerCount
       }
     }
   }
 `;
 
-export const QUERY_CAMPAIGN = gql`
+export const QUERY_CAMPAIGNS = gql`
   query campaigns {
     campaigns {
       _id
@@ -134,6 +137,29 @@ export const QUERY_CAMPAIGN = gql`
       campaignName
       description
       setting
+      playerCount
+      players {
+        _id
+        username
+      }
+    }
+  }
+`;
+
+export const QUERY_CAMPAIGN = gql`
+  query campaign($id: ID!) {
+    campaign(_id: $id) {
+      _id
+      username
+      campaignName
+      description
+      setting
+      playerCount
+      players {
+        _id
+        username
+        characterCount
+      }
     }
   }
 `;

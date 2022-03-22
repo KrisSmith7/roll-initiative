@@ -36,7 +36,13 @@ const resolvers = {
         },
         character: async (parent, { _id }) => {
             return Character.findOne({ _id })
-        }, 
+        },
+        campaign: async (parent, { _id }) => {
+            const campaignData = await Campaign.findOne({ _id})
+                .select('-__v')
+                .populate('players');
+            return campaignData;
+        },
         campaigns: async () => {
             const campaignData = await Campaign.find().sort({ createdAt: -1 })
             return campaignData;
@@ -120,7 +126,7 @@ const resolvers = {
 
                 // checks if the logged in user is the user who created the post
                 if (context.user.username === foundPost.username) {
-                    console.log(foundPost.username + ": Usernames match");
+                    //console.log(foundPost.username + ": Usernames match");
 
                     // finds the post by postId and deletes the post
                     const deletedPost = await Post.deleteOne(
@@ -259,18 +265,59 @@ const resolvers = {
             throw new AuthenticationError('Must log in or sign up to create a campaign!')
         },
         addPlayer: async (parent, { campaignId }, context) => {
+            console.log("backend campaignId: ", campaignId);
             if (context.user) {
+                console.log("logged in user data: ", context.user);
+
                 const updatedCampaign = await Campaign.findOneAndUpdate(
                     { _id: campaignId },
                     { $push: { players: context.user._id } },
                     { new: true, runValidators: true }
                 );
 
+                console.log("updatedCampaign: ", updatedCampaign);
+
                 return updatedCampaign;
             }
 
             throw new AuthenticationError("You need to be logged in!");
-        }
+        },
+        deleteCampaign: async (parent, { campaignId }, context) => {
+            // checks if user is logged in
+            //console.log("deleteCampaign reached. campaignId: ", campaignId);
+            if (context.user) {
+                // finds the post by the given id
+                const foundCampaign = await Campaign.findById(
+                    { _id: campaignId}
+                );
+
+                // checks if the logged in user is the user who created the post
+                if (context.user.username === foundCampaign.username) {
+                    //console.log(foundCampaign.username + ": Usernames match");
+
+                    // finds the post by postId and deletes the post
+                    const deletedCampaign = await Campaign.deleteOne(
+                        { _id: campaignId }
+                    );
+
+                    //console.log(deletedPost);
+                    
+                    //finds the user and pulls the post from the user's posts
+                    const updatedUser = await User.findByIdAndUpdate(
+                        { _id: context.user._id },
+                        { $pull: { campaigns: campaignId } },
+                        { new: true }
+                    );
+
+                    return foundCampaign;
+                } else {
+                    throw new Error("You must be the user who made the campaign to delete it!");
+                };
+
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
+        },
 
     }
 }

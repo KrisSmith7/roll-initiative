@@ -47,7 +47,7 @@ const SinglePost = () => {
   const [isRedirect, setRedirect] = useState(false);
 
   const handleDeletePost = async (postId) => {
-    console.log("delete button clicked");
+    //console.log("delete button clicked");
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -59,7 +59,7 @@ const SinglePost = () => {
         variables: { postId: postId }
       });
 
-      console.log("deleted post: ", postId);
+      //console.log("deleted post: ", postId);
       setRedirect(true);
 
     } catch (err) {
