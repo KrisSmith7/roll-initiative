@@ -30,8 +30,8 @@ function Dashboard() {
             <img src={stockImg} className="absolute h-full w-full object-cover opacity-75" alt="ye old tavern"/>
             <div className="inset-0 bg-gradient-to-l from-charcoal absolute">
             </div>
-            <div className="mx-auto px-6 md:px-12 relative z-10 flex items-start py-4 xl:py-40">
-                <div className="w-full flex flex-col items-center relative z-10">
+            <div className="mx-auto px-6 md:px-12 relative  flex items-start py-4 xl:py-40">
+                <div className="w-full flex flex-col items-center relative ">
                     <h1 className="font-bold text-4xl text-center p-4 rounded-lg lg:text-7xl text-white leading-tight">
                         Tavern Talk
                     </h1>
