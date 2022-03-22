@@ -137,3 +137,15 @@ mutation updateCharacter($_id: ID!, $level: Int, $class: String, $background: St
                 cha
             }
     }`
+
+export const ADD_PLAYER = gql`
+mutation addPlayer($id: ID!) {
+        addPlayer(campaignId: $id) {
+            _id
+            campaignName
+            description
+            setting
+            players
+        }
+    }
+`;

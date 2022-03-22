@@ -41,7 +41,7 @@ function AllCampaigns() {
                         <img src={knight} alt='knight'/>
                         <p className="text-4xl">You must log in first!</p>
                     </div>
-                </div>
+            </div>
         )
     }
     return (
