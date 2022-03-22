@@ -101,7 +101,7 @@ function Profile (props){
                                     onHide={handleClose}
                                     ClassName="modal"
                                 >
-                                    <AddCharacter />
+                                    <AddCharacter handleClose={handleClose} />
                                     
                                     </Modal>
                                     {/* </div> */}
