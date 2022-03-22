@@ -56,20 +56,25 @@ function Profile (props){
 
     return (
        <div className="flex justify-center">
-           <div className="w-4/5">
-                <div className=" flex user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
-                        <img className="p-4 w-72 ml-10" src={Die} alt="profile-img"></img>
-                        <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
+           <div className="w-full md:w-4/5">
+                <div className=" flex justify-evenly user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center pb-12">
+                    <div className="flex rounded-full w-1/6 md:p-3">
+                        <img className="md:p-4 object-contain" src={Die} alt="profile-img"></img>
+                    </div>
+                    
+                    <div className="flex-auto w-80"> 
+                        <h2 className="text-3xl md:text-5xl text-slate font-antiqua"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
-                    {/* <Modal 
-                        size="lg"
-                        centered
-                        show={showEdit}
-                        onHide={handleCloseEdit}
-                        ClassName="modal"
-                    >
-                        <EditProfile handleCloseEdit={handleCloseEdit}/>
-                    </Modal> */}
+                        {/* <Modal 
+                            size="lg"
+                            centered
+                            show={showEdit}
+                            onHide={handleCloseEdit}
+                            ClassName="modal"
+                        >
+                            <EditProfile handleCloseEdit={handleCloseEdit}/>
+                        </Modal> */}
+                    </div>
                 </div>
                 
                 <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">
@@ -101,7 +106,7 @@ function Profile (props){
                                     onHide={handleClose}
                                     ClassName="modal"
                                 >
-                                    <AddCharacter />
+                                    <AddCharacter handleClose={handleClose} />
                                     
                                     </Modal>
                                     {/* </div> */}

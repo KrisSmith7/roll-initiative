@@ -149,7 +149,7 @@ function SingleCharacter() {
     return(
         <div className="flex flex-col items-center tracking-wider text-md p-4 lg:text-xl lg:p-8 text-rose-900"> 
             <div className='flex justify-center'>
-                <Link to="/profile" className='text-slate font-bold mt-5'> ← Back to Profile </Link>
+                <Link to="/profile" className='text-slate font-bold my-5 text-3xl md:text-4xl'> ← Back to Profile </Link>
             </div>
             <Page>
                 <PageTitle>{character.name}</PageTitle>
