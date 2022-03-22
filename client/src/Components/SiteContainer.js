@@ -13,7 +13,8 @@ import SingleCharacter from './Pages/SingleCharacter';
 import SingleCampaign from './Pages/SingleCampaign';
 import PrivateProfile from './PrivateProfile';
 import PrivateCampaigns from './PrivateCampaigns';
-import PrivatePosts from './PrivatePosts'; 
+import PrivateCampaign from './PrivateCampaign';
+// import PrivatePosts from './PrivatePosts'; 
 //import Auth from '../utils/auth';
 
 export default function SiteContainer() {
@@ -36,9 +37,9 @@ export default function SiteContainer() {
                 <Route exact path="/campaign/:id" component={SingleCampaign} />
               </PrivateCampaign>
               <Route exact path="/resources" component={Resources} />
-              <PrivatePosts path="/post/:id">
+              {/* <PrivatePosts path="/post/:id"> */}
                 <Route exact path="/post/:id" component={SinglePost} />
-              </PrivatePosts>
+              {/* </PrivatePosts> */}
             <Route component={NoMatch} />
           </Switch>
         <Footer />
