@@ -53,7 +53,7 @@ function Resources() {
             </div>
 
         <div className="bg-gray-900">
-            <div><p className="text-center py-4 text-2xl">Just getting started? Click a button to find a little more info to help you design your next character or in your next campaign!</p></div>
+            <div><p className="text-center py-4 text-2xl">Just getting started? Click a button to find a little more info to help you design your next character or just learn more about the game!</p></div>
 
             <div className="md:py-6 w-full flex flex-wrap text-white">
                 <button value={"spells"} onClick={evt => handleInput(evt)} className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold hover:bg-white hover:text-sienna active:bg-white active:text-sienna">Spells</button>
@@ -67,7 +67,7 @@ function Resources() {
                 {/* <button value={"monsters"} onClick={evt => handleInput(evt)} className="h-1/2 w-full md:w-1/5 p-2.5 mx-2.5 my-1.5 bg-sienna rounded-lg uppercase md:font-bold hover:bg-white hover:text-sienna">Monsters</button> */}
             </div>
         </div>
-            <div className="h-fit-content bg-sienna overflow-auto md:flex p-4">
+            <div className="bg-sienna md:flex p-8 snap-start overflow-x-scroll">
                 {items.map(item =>
                     <div className="bg-gray-900/[.35] rounded-lg mb-4 lg:mx-4 p-4 w-1/3">
                         <h1 className="text-3xl text-center">{item.name}</h1>
@@ -75,7 +75,7 @@ function Resources() {
                             //   console.log(item)
                             Object.keys(item).map((key, i) => (
                                 // console.log(key,i,item[key])
-                                <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose">
+                                <div key={i} className="px-2 lg:py-2 lg:px-4 lg:text-xl text-white leading-loose border-b">
                                     <span className="capitalize font-light text-sm lg:pr-4">{key}:</span>
                                     <span className="font-semibold tracking-widest font-unicase whitespace-normal"> {item[key]}</span>
                                 </div>

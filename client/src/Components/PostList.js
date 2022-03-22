@@ -13,19 +13,22 @@ const PostList = ({ posts }) => {
         posts.map(post => (
           <article className="bg-sienna/50 px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold">
             <div key={post._id}>
-              <div className="whitespace-pre-wrap">
-                <Link to={`/post/${post._id}`}>
-                  <p>{post.postText}</p>
-                </Link>
-              </div>
               <div className="py-4 font-light">
-                Posted by: {' '}
+                 Posted by: {' '}
                 <Link
                   to={`/profile/${post.username}`}
                 >
                 {post.username}
                 </Link>{' '}
                 {' '}on {post.createdAt} 
+              </div>
+              <div className="whitespace-pre-wrap">
+                <Link to={`/post/${post._id}`}>
+                  <p>{post.postText}</p>
+                </Link>
+              </div>
+              <div className="py-4 font-light">
+               
                 <p>
                   Comments: {post.commentCount}
                 </p> 
