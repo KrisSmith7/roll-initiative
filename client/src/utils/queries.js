@@ -75,6 +75,7 @@ export const QUERY_USER = gql`
         campaignName
         description
         setting
+        username
       }
     }
   }
@@ -119,6 +120,7 @@ export const QUERY_ME = gql`
         campaignName
         description
         setting
+        username
       }
     }
   }
