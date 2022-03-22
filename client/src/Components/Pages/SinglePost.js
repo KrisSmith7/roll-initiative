@@ -114,7 +114,7 @@ const SinglePost = () => {
 
         {Auth.loggedIn() && <CommentForm postId={post._id} />}
       </div>
-      {error && <div> {error.message} </div>}
+      {error && <div className='error-message'> {error.message} </div>}
     </div>
   );
 };
