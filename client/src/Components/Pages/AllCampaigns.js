@@ -49,7 +49,7 @@ function AllCampaigns() {
         {/* checks if loggedIn and displays campaigns list */}
         {loggedIn && (
 
-        <div className="relative h-full w-full">
+        <div className="relative h-screen w-full">
             <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
                       <div className="flex justify-center w-full h-full">
 
