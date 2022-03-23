@@ -64,7 +64,7 @@ function Campaigns({ campaigns }) {
                     {campaigns.map(campaign => {
                         return (
                             <tr key={campaign._id} class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium">
+              <td class="px-6 py-4 whitespace-nowrap font-medium hidden">
                   <button onClick={() => handleClick(campaign._id)}>
                       <img src={addIcon}/>
                       </button>
