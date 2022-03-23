@@ -81,7 +81,7 @@ function AllCampaigns() {
                 centered
                 show={showModal}
                 onHide={handleClose}
-                ClassName="modal"
+                className="modal"
             >
                 <AddCampaign handleClose={handleClose} />
 

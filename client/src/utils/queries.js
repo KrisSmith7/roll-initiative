@@ -138,10 +138,6 @@ export const QUERY_CAMPAIGNS = gql`
       description
       setting
       playerCount
-      players {
-        _id
-        username
-      }
     }
   }
 `;
