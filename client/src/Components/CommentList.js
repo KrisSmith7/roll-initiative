@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const CommentList = ({ comments }) => {
   return (
-    <div className='flex flex-col bg-charcoal w-50 overflow-auto overscroll-contain'>
+    <div className='flex flex-col bg-charcoal md:w-6/12 w-9/12 overflow-auto overscroll-contain'>
       <div>
         <span className='text-white font-macondo p-2'>Comments</span>
       </div>

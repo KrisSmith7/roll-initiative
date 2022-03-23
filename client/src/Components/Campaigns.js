@@ -35,8 +35,8 @@ function Campaigns({ campaigns }) {
 
                     <div class="md:flex md:flex-col md:items-center w-full">
     <div class="w-full py-2 sm:px-6 lg:px-8">
-      <div class="text-white">
-        <table class="w-full table-auto">
+      <div class="text-white flex justify-center">
+        <table class="w-11/12 table-auto">
           <thead class="bg-charcoal text-white border-b">
             <tr>
               <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">

@@ -31,7 +31,7 @@ const CommentForm = ({ postId }) => {
   };
 
   return (
-    <div className=' w-50 text-slate bg-turq/75'>
+    <div className=' comment-form md:w-6/12 w-9/12 text-slate bg-turq/75'>
       <p className='font-bold'>
         Character Count: {characterCount}/280
         {error && <span>Something went wrong...</span>}

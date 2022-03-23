@@ -168,4 +168,12 @@ footer {
   .welcome {
     font-size: 18px;
   }
+
+  
+}
+
+@media screen and (max-width: 500px) {
+  .welcome {
+    font-size: 12px;
+  }
 }

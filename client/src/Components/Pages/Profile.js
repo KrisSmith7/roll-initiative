@@ -55,7 +55,7 @@ function Profile (props){
     }    
 
     return (
-       <div className="flex justify-center">
+       <div className="flex justify-center mt-10">
            <div className="w-full md:w-4/5">
                 <div className=" flex user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
                         <img className="p-4 w-72 ml-10" src={Die} alt="profile-img"></img>
@@ -84,7 +84,7 @@ function Profile (props){
                             <Nav.Link className="font-antiqua nav-a text-3xl" eventKey="posts">My Posts</Nav.Link>
                         </Nav.Item>
                     </Nav>
-                    <Tab.Content className="p-4">
+                    <Tab.Content className="p-4 flex justify-center">
                         <Tab.Pane eventKey="characters" title="My Characters" className="">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Characters</h2> */}
                             {user.username && 
@@ -110,7 +110,7 @@ function Profile (props){
                                     <Characters characters={user.characters} isMe={isMe} />
                                 </div>
                         </Tab.Pane>
-                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 md:px-4">
+                        <Tab.Pane eventKey="campaigns" title="My Campaigns" className="flex flex-col items-center bg-sienna md:py-4 w-screen">
                             {/* <h2 className="text-3xl text-slate font-antiqua">My Campaigns</h2> */}
                             {user.username && 
                             <>

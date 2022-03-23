@@ -80,10 +80,10 @@ const SinglePost = () => {
 
   return (
     <div className='modal-content h-full overflow-auto'>
-      <div className='flex items-center justify-center'>
-        <Link to="/dashboard" className='text-slate font-bold mt-5 text-3xl md:text-4xl'> ← Back to Dashboard </Link>
+      <div className='flex items-center justify-center p-4 mt-10'>
+        <Link to="/dashboard" className='text-slate font-bold text-3xl md:text-4xl'> ← Back to Dashboard </Link>
       </div>
-      <div className='flex flex-col justify-center items-center h-3/4 mt-2'>
+      <div className='flex flex-col justify-start items-center h-3/4 mt-2'>
         <div className="bg-sienna/[.80] px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
           <div>
             <p className="font-light text-white">
