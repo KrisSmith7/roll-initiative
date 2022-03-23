@@ -57,7 +57,7 @@ function Profile (props){
     return (
        <div className="flex justify-center mt-10">
            <div className="w-full md:w-4/5">
-                <div className=" flex user-profile mt-3 bg-gradient-to-b from-charcoal/[.35] items-center">
+                <div className=" flex user-profile bg-gradient-to-b from-charcoal/[.35] items-center">
                         <img className="p-4 w-72 ml-10" src={Die} alt="profile-img"></img>
                         <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
                         {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}

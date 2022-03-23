@@ -75,9 +75,9 @@ const SingleCampaign = () => {
   }
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-screen w-full">
       <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-10'>
         <Link to="/campaigns" className="form-btn font-bold mt-5 bg-turq/25 text-white"> ← Back to All Campaigns </Link>
       </div>
       <div class="md:flex md:flex-col md:items-center w-full">

@@ -47,7 +47,7 @@ function Resources() {
     return (
 
         <section className="h-screen">
-            <div className="w-full relative">
+            <div className="w-full relative mt-10">
                 <div className="bg-sienna/50 inset-0 absolute"></div>
                 <img src={stockImg7} className="h-full w-full object-contain opacity-50" />
             </div>
