@@ -12,6 +12,8 @@ This project was built with:
 > - React
 > - Tailwind
 > - Bootstrap
+> - Dungeons and Components
+       >> - Check out more about this library [here](https://www.npmjs.com/package/dungeons-and-components "Dungeons and Components npm install")!
 > #### Back End
 > 
 > - Node.js
