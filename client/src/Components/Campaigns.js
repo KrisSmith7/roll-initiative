@@ -67,15 +67,15 @@ function Campaigns({ campaigns }) {
                   <button onClick={() => handleClick(campaign._id)}>+</button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-pre-wrap">
-                <Link to={`/campaign/${campaign._id}`}>
+              <span className="pr-2 font-semibold md:hidden">Name:</span><Link to={`/campaign/${campaign._id}`}>
                   {campaign.campaignName}
                 </Link>
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
-                {campaign.description}
+              <span className="pr-2 font-semibold md:hidden">Description:</span><br className="md:hidden"/>{campaign.description}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
-                {campaign.setting}
+              <span className="pr-2 font-semibold md:hidden">Setting:</span>{campaign.setting}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
                 <Link to={`/profile/${campaign.username}`}>
@@ -83,7 +83,7 @@ function Campaigns({ campaigns }) {
                 </Link>
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
-                {campaign.playerCount}
+              <span className="pr-2 font-semibold md:hidden">Players:</span>{campaign.playerCount}
               </td>
             </tr>
                         )
