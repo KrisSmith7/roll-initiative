@@ -12,7 +12,7 @@ const CommentList = ({ comments }) => {
           comments.map(comment => (
             <p className='text-slate font-bold bg-white border-b-4 p-2 border-burnt-orange/50' key={comment._id}>
               {comment.commentText} {'// '}
-              <Link to={'/profile/${comment.username'}>
+              <Link to={`/profile/${comment.username}`}>
                 {comment.username} on {comment.createdAt}
               </Link>
             </p>
