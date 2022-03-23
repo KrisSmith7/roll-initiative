@@ -271,7 +271,7 @@ const resolvers = {
 
                 const updatedCampaign = await Campaign.findOneAndUpdate(
                     { _id: campaignId },
-                    { $push: { players: context.user._id } },
+                    { $addToSet: { players: context.user._id } },
                     { new: true }
                 );
 

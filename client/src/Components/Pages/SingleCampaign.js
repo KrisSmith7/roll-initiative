@@ -22,6 +22,7 @@ const SingleCampaign = () => {
       } catch (err) {
         console.error(err);
       }
+      
     }
   });
 
@@ -32,6 +33,44 @@ const SingleCampaign = () => {
 
   const campaign = data?.campaign || {};
   console.log("page load campaign: ", campaign);
+  const profile = Auth.getProfile();
+  console.log(profile.data);
+  let showAdd = true;
+  let playerChecked = false;
+  while(!playerChecked) {
+    if (campaign) {
+      if (campaign.playerCount >= 6) {
+        showAdd = false;
+        
+      } else if (campaign.username === profile.data.username) {
+        showAdd = false;
+      } else {
+        let i = 0;
+        while (showAdd && i < campaign.playerCount) {
+          if (campaign.players[i]._id === profile.data._id) {
+            showAdd = false;
+          }
+          i++;
+        }
+      }
+      playerChecked = true;
+    }
+      
+
+    
+  }
+    // if (campaign.username === profile.data.username) {
+    //   playerInCampaign = true;
+    // };
+    // let i = 0;
+    // while (!playerInCampaign && i < campaign.playerCount) {
+    //   if (campaign.player[i]._id === profile.data._id) {
+    //     playerInCampaign = true;
+    //   };
+    // };
+  
+  
+
 
   
 
@@ -85,9 +124,9 @@ const SingleCampaign = () => {
             <table class="w-full table-auto">
               <thead class="bg-charcoal text-white border-b">
                 <tr>
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                {showAdd && <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                     Request to Join
-                  </th>
+                  </th>}
                   <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
                     Campaign Name
                   </th>
@@ -108,9 +147,9 @@ const SingleCampaign = () => {
               { idRedirect ? (<Redirect push to="/campaigns" />) : null }
               <tbody>
                 <tr class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium">
+              {showAdd && <td class="px-6 py-4 whitespace-nowrap font-medium">
                   <button onClick={() => handleClick(campaign._id)}>+</button>
-                  </td>
+                  </td>}
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
