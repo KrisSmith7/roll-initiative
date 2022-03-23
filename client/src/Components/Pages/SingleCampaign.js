@@ -152,7 +152,7 @@ const SingleCampaign = () => {
                   return (
                     <tr key={player._id} class="bg-turq/25 text-white border-b">
                       <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
-                        <Link to={`/profile/${player._id}`}>
+                        <Link to={`/profile/${player.username}`}>
                           {player.username}
                         </Link>
                       </td>

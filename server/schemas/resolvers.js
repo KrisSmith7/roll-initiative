@@ -45,6 +45,8 @@ const resolvers = {
         },
         campaigns: async () => {
             const campaignData = await Campaign.find().sort({ createdAt: -1 })
+                .select('-__v')
+                .populate('players');
             return campaignData;
     },
 }, 
@@ -272,8 +274,10 @@ const resolvers = {
                 const updatedCampaign = await Campaign.findOneAndUpdate(
                     { _id: campaignId },
                     { $push: { players: context.user._id } },
-                    { new: true, runValidators: true }
+                    { new: true }
                 );
+
+                console.log('after push:', context.user);
 
                 console.log("updatedCampaign: ", updatedCampaign);
 
