@@ -39,7 +39,7 @@ Social Rolls was a collabortive project made by Katelyn Bunker, Austin Coats, An
 
 ## Questions
 > Contact any of the creators with questions: 
-> #### GitHub LInks: 
+> #### GitHub Links: 
 >
 > - [Anna](https://github.com/acdodd17 "Anna's Profile")
 > - [Austin](https://github.com/aucoats "Austin's Profile")
