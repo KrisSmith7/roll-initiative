@@ -17,14 +17,15 @@ import { QUERY_ME } from '../utils/queries';
 //create nav links at top of page that conditionally renders component based on selected link
 function NavTabs({ currentPage, handlePageChange }) {
   const me = useQuery(QUERY_ME);
+
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  // console.log(currentPage);
+  console.log(me.data?.me.username);
 
   return (
-    <div className="bg-gray-800 w-auto h-auto">
+    <div className="bg-gray-800 h-auto w-screen absolute" style={{zIndex:30}}>
       <div className="flex justify-between">
         <button
           class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
@@ -39,7 +40,7 @@ function NavTabs({ currentPage, handlePageChange }) {
         {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <p>Welcome, <span className="capitalize"> {me.data?.me.username}</span>!</p></div>}
       </div>
 
-      <div id="menu" className="collapse overflow-hidden  h-full">
+      <div id="menu" className="collapse overflow-hidden h-full">
       <button
           data-bs-toggle="collapse"
           data-bs-target="#menu"
