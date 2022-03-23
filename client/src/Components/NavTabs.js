@@ -15,8 +15,17 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 
 //create nav links at top of page that conditionally renders component based on selected link
-function NavTabs() {
-  const me = useQuery(QUERY_ME);
+function NavTabs({ currentPage, handlePageChange }) {
+ 
+  let me; 
+  
+  if(Auth.loggedIn()) {
+
+    const profile = Auth.getProfile();
+    me = profile.data; 
+    console.log(me);
+  } 
+
 
   let userMe;
 
@@ -34,13 +43,12 @@ function NavTabs() {
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  //console.log(me.data?.me.username);
 
   return (
     <div className="bg-gray-800 h-auto w-screen absolute" style={{zIndex:30}}>
       <div className="flex justify-between">
         <button
-          class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
+          className="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#menu"
@@ -49,7 +57,7 @@ function NavTabs() {
           <img id="die" src={logo} className="h-8" alt="20-sided die" />{" "}
           <span className="px-6 tracking-widest font-light text-xl">Menu</span>
         </button>
-        {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <Link to="/profile"><p>Welcome, <span className="capitalize"> {userMe.username}</span>!</p></Link></div>}
+        {Auth.loggedIn() && <div className=" welcome flex items-center px-6 py-2.5 text-white font-infant text-xl"> <Link to="/profile"><p>Welcome, <span className="capitalize">{me.username}</span>!</p></Link></div>}
       </div>
 
       <div id="menu" className="collapse overflow-hidden h-full">
@@ -167,7 +175,7 @@ function NavTabs() {
           centered
           show={showModal}
           onHide={handleClose}
-          ClassName="modal"
+          className="modal"
         >
           <Tab.Container defaultActiveKey="login">
             <Modal.Header closeButton>

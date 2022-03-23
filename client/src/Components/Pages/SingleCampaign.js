@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_CAMPAIGN, QUERY_CAMPAIGNS } from '../../utils/queries';
 import { ADD_PLAYER, DELETE_CAMPAIGN } from '../../utils/mutations';
+import addIcon from "../../assets/add.svg"
 
 const SingleCampaign = () => {
   const { id: campaignId } = useParams();
@@ -113,9 +114,9 @@ const SingleCampaign = () => {
   }
 
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-screen w-full">
       <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
-      <div className='flex justify-center'>
+      <div className='flex justify-center mt-10'>
         <Link to="/campaigns" className="form-btn font-bold mt-5 bg-turq/25 text-white"> ← Back to All Campaigns </Link>
       </div>
       <div class="md:flex md:flex-col md:items-center w-full">
@@ -148,8 +149,10 @@ const SingleCampaign = () => {
               <tbody>
                 <tr class="bg-turq/25 text-white border-b">
               {showAdd && <td class="px-6 py-4 whitespace-nowrap font-medium">
-                  <button onClick={() => handleClick(campaign._id)}>+</button>
-                  </td>}
+                  <button onClick={() => handleClick(campaign._id)}>
+                    <img src={addIcon} alt="add icon"/>
+                    </button>
+                  </td> }
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
@@ -188,9 +191,9 @@ const SingleCampaign = () => {
                   return (
                     <tr key={player._id} class="bg-turq/25 text-white border-b">
                       <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
-                        {/* <Link to={`/profile/${player._id}`}> */}
+                        <Link to={`/profile/${player.username}`}>
                           {player.username}
-                        {/* </Link> */}
+                        </Link>
                       </td>
                       <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
                         {player.characterCount}

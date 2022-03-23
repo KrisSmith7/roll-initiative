@@ -50,7 +50,7 @@ function Dashboard() {
                       <div className="flex justify-center">
                         <button
                           onClick={handleShow}
-                          className="form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75"
+                          className="form-btn d-block w-9/12 md:w-6/12 m-2 md:m-5 text-lg text-slate font-macondo bg-turq/75"
                         >
                           Create New Post
                         </button>

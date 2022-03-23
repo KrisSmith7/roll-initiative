@@ -45,6 +45,8 @@ const resolvers = {
         },
         campaigns: async () => {
             const campaignData = await Campaign.find().sort({ createdAt: -1 })
+                .select('-__v')
+                .populate('players');
             return campaignData;
     },
 }, 

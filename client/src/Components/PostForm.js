@@ -59,12 +59,12 @@ const PostForm = ({ handleClose }) => {
       </p>
       <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
         <textarea
-          className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
+          className='form-input m-2 text-lg font-cormorant font-bold rounded-md whitespace-normal'
           placeholder="Type your post here"
           value={postText}
           onChange={handleChange}
         ></textarea>
-        <button type="submit" className='form-btn d-block w-50 m-5 text-lg text-slate font-macondo bg-turq/75' onClick={handleClose}>
+        <button type="submit" className='form-btn d-block sm:w-9/12 w-6/12 m-5 text-lg text-slate font-macondo bg-turq/75' onClick={handleClose}>
           Submit
         </button>
       </form>

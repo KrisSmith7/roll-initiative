@@ -24,7 +24,7 @@ const PostList = ({ posts }) => {
               </div>
               <div className="whitespace-pre-wrap text-2xl ">
                 <Link to={`/post/${post._id}`}>
-                  <p>{post.postText}</p>
+                  <p className='whitespace-normal'>{post.postText}</p>
                 </Link>
               </div>
               <div className="py-4 font-light">

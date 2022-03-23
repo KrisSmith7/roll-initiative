@@ -53,7 +53,7 @@ function AllCampaigns() {
             <img src={stockImg6} className="absolute h-full w-full object-cover z-[-100] brightness-50" alt="castle background" />
                       <div className="flex justify-center w-full h-full">
 
-                    <div className="h-full py-8 flex flex-col items-center">
+                    <div className="h-full py-8 flex flex-col items-center mt-10">
                         <div className="h-48 p-6 flex items-center">
                             <h1 className="text-4xl text-center">
                                 Maybe you'll find what you're looking for here?
