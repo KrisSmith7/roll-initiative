@@ -122,6 +122,30 @@ footer {
   width: fit-content;
 }
 
+@keyframes bounce {
+  60%, 80%, to { 
+    transform: translateY(0px); 
+    animation-timing-function: cubic-bezier(.215, .61, .355, 1);
+  }
+  70% { transform: translateY(10x); }
+  90% { transform: translateY(5px); }
+}
+@keyframes roll-in {
+  from { 
+    transform: translateX(0px) rotate(0deg);
+  }
+  to { 
+    transform: translate(160px, 0px) rotate(359deg);
+  }
+ 
+}
+
+
+.roll-in {
+  animation: 2s forwards roll-in ;
+}
+
+
 
 @media screen and (max-width: 750px) {
   
