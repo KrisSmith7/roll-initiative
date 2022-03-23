@@ -81,7 +81,7 @@ function AddCharacter({ handleClose }) {
     };
 
     return( 
-        <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-slate-50  from-charcoal to-slate rounded-md p-4 w-full">
+        <form onSubmit={handleFormSubmit} className="object-center flex flex-col items-center text-sienna text-xl font-bold from-charcoal to-slate rounded-md p-4 w-full">
                 <label for="name">Name</label>
                 <input
                     className='form-input m-2 text-lg font-cormorant font-bold rounded-md'
