@@ -154,10 +154,10 @@ function SingleCharacter() {
             <Page> 
                 <PageTitle className='capitalize'>{character.name}</PageTitle>
                 <Note className='flex flex-col text-xl text-center'> 
-                    <h1>Class</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></input>
-                    <h1>Race</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.race} name="race" onBlur={characterChangeHandler}></input>
-                    <h1>Level</h1><input className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.level} name="level" onBlur={characterChangeHandler}></input>
-                    <h1>Background</h1><input className='bg-inherit w-1/2 m-auto p-1 pt-2 pb-3 shadow-lg' defaultValue={character.background} name="background" onBlur={characterChangeHandler}></input>
+                    <h1>Class</h1><input className='bg-inherit text-m w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></input>
+                    <h1>Race</h1><input className='bg-inherit w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.race} name="race" onBlur={characterChangeHandler}></input>
+                    <h1>Level</h1><input className='bg-inherit w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.level} name="level" onBlur={characterChangeHandler}></input>
+                    <h1>Background</h1><input className='bg-inherit w-3/5 m-auto p-1 pt-2 pb-3 shadow-lg' defaultValue={character.background} name="background" onBlur={characterChangeHandler}></input>
                     <h1>Bio</h1> <textarea  className='bg-inherit w-max m-auto pl-2 overflow-auto shadow-lg' defaultValue={character.bio} onBlur={characterChangeHandler}></textarea>
                 </Note>
                 <StatBlock className='flex flex-col text-xl text-center'>
