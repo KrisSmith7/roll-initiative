@@ -111,7 +111,7 @@ const SingleCampaign = () => {
                 <tr class="bg-turq/25 text-white border-b">
               <td class="px-6 py-4 whitespace-nowrap font-medium">
                   <button onClick={() => handleClick(campaign._id)}>
-                    <img src={addIcon}/>
+                    <img src={addIcon} alt="add icon"/>
                     </button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">

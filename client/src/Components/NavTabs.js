@@ -36,7 +36,7 @@ function NavTabs({ currentPage, handlePageChange }) {
     <div className="bg-gray-800 h-auto w-screen absolute" style={{zIndex:30}}>
       <div className="flex justify-between">
         <button
-          class="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
+          className="w-auto md:w-auto lg:w-auto flex items-center px-6 py-2.5 text-white font-infant uppercase active:bg-turq active:shadow-lg transition duration-150 ease-in-out"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#menu"
@@ -163,7 +163,7 @@ function NavTabs({ currentPage, handlePageChange }) {
           centered
           show={showModal}
           onHide={handleClose}
-          ClassName="modal"
+          className="modal"
         >
           <Tab.Container defaultActiveKey="login">
             <Modal.Header closeButton>
