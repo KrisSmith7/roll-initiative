@@ -18,11 +18,13 @@ import { QUERY_ME } from '../utils/queries';
 function NavTabs({ currentPage, handlePageChange }) {
   const me = useQuery(QUERY_ME);
 
+ 
+
   const [showModal, setShowModal] = useState(false);
   const handleClose = () => setShowModal(false);
   const handleShow = () => setShowModal(true);
 
-  console.log(me.data?.me.username);
+  //console.log(me.data?.me.username);
 
   return (
     <div className="bg-gray-800 h-auto w-screen absolute" style={{zIndex:30}}>

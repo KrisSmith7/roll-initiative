@@ -189,9 +189,9 @@ const resolvers = {
                      { _id: _id }
                 );
                 
-                console.log("character:", character);
+                //console.log("character:", character);
 
-                console.log(context);
+                //console.log(context);
                 
                 if (context.user.username === character.username) {
 
@@ -199,7 +199,7 @@ const resolvers = {
                         { _id: _id }, 
                     );
 
-                    console.log(deletedCharacter);
+                    //console.log(deletedCharacter);
 
                     const user = await User.findByIdAndUpdate(
                         { _id: context.user._id },
@@ -218,7 +218,7 @@ const resolvers = {
                     { _id: args._id }
                 );
 
-                console.log(foundCharacter); 
+                //console.log(foundCharacter); 
 
                 if (context.user.username === foundCharacter.username) {
                     const updatedCharacter = await Character.findOneAndUpdate(
@@ -238,7 +238,7 @@ const resolvers = {
                         { new: true }
                     );
 
-                    console.log(updatedCharacter); 
+                    //console.log(updatedCharacter); 
 
                     return updatedCharacter;
                 } else {
@@ -265,17 +265,17 @@ const resolvers = {
             throw new AuthenticationError('Must log in or sign up to create a campaign!')
         },
         addPlayer: async (parent, { campaignId }, context) => {
-            console.log("backend campaignId: ", campaignId);
+            //console.log("backend campaignId: ", campaignId);
             if (context.user) {
-                console.log("logged in user data: ", context.user);
+                //console.log("logged in user data: ", context.user);
 
                 const updatedCampaign = await Campaign.findOneAndUpdate(
                     { _id: campaignId },
                     { $push: { players: context.user._id } },
-                    { new: true, runValidators: true }
+                    { new: true }
                 );
 
-                console.log("updatedCampaign: ", updatedCampaign);
+                //console.log("updatedCampaign: ", updatedCampaign);
 
                 return updatedCampaign;
             }

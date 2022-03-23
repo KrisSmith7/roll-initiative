@@ -87,9 +87,11 @@ const SinglePost = () => {
         <div className="bg-sienna/[.80] px-2 my-2 border-l-2 border-sienna rounded-bl-lg font-semibold w-75">
           <div>
             <p className="font-light text-white">
-            <span>
-              {post.username}
-            </span>{' '}
+            <Link to={`/profile/${post.username}`}>
+              <span>
+                {post.username}
+              </span>
+            </Link>{' '}
             posted on {post.createdAt}
           </p>
           </div>
