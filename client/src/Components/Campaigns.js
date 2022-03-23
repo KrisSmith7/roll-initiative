@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom';
 import { ADD_PLAYER } from '../utils/mutations';
 import { useMutation } from '@apollo/client';
+import addIcon from "../assets/add.svg"
 
 function Campaigns({ campaigns }) {
   const [addPlayer] = useMutation(ADD_PLAYER);
@@ -64,18 +65,20 @@ function Campaigns({ campaigns }) {
                         return (
                             <tr key={campaign._id} class="bg-turq/25 text-white border-b">
               <td class="px-6 py-4 whitespace-nowrap font-medium">
-                  <button onClick={() => handleClick(campaign._id)}>+</button>
+                  <button onClick={() => handleClick(campaign._id)}>
+                      <img src={addIcon}/>
+                      </button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-pre-wrap">
-                <Link to={`/campaign/${campaign._id}`}>
+              <span className="pr-2 font-semibold md:hidden">Name:</span><Link to={`/campaign/${campaign._id}`}>
                   {campaign.campaignName}
                 </Link>
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
-                {campaign.description}
+              <span className="pr-2 font-semibold md:hidden">Description:</span><br className="md:hidden"/>{campaign.description}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
-                {campaign.setting}
+              <span className="pr-2 font-semibold md:hidden">Setting:</span>{campaign.setting}
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
                 <Link to={`/profile/${campaign.username}`}>
@@ -83,7 +86,7 @@ function Campaigns({ campaigns }) {
                 </Link>
               </td>
               <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
-                {campaign.playerCount}
+              <span className="pr-2 font-semibold md:hidden">Players:</span>{campaign.playerCount}
               </td>
             </tr>
                         )
