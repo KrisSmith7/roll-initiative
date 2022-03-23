@@ -1,70 +1,48 @@
-# Getting Started with Create React App
+# Social Rolls 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+*A social network for fans of Dungeons and Dragons*
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Social Rolls allows users to interact with other DnD enthusiasts and share details of their created characters. For users with multiple characters, Social Rolls is an application users can store their character sheets for quick reference. Social Rolls offers a resource for beginners to learn about the world and rules of DnD.
 
-### `npm start`
+This project was built with: 
+> #### Front End
+>
+> - React
+> - Tailwind
+> - Bootstrap
+> #### Back End
+> 
+> - Node.js
+> - Express
+> - GraphQL
+> - MondoDB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Table of Contents
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Installation](#installation)
+- [Usage](#usage)
+- [Credits](#credits)
+- [Questions](#questions)
 
-### `npm test`
+## Installation
+To see this code in action, clone this repository and get started by running `npm install` to be sure you have all necssary packages. Then, run `npm run develop` to see this app in development mode. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Usage
+View the deployed site [here](https://socialrolls.herokuapp.com/ "Social Rolls") to get started creating your user account and keeping track of all things DnD!
 
-### `npm run build`
+![wepage screenshot](/client/src/assets/screenshot.png "Website Screenshot")
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Credits
+Social Rolls was a collabortive project made by Katelyn Bunker, Austin Coats, Anna Dodd and Kris Smith. 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Questions
+> Contact any of the creators with questions: 
+> #### GitHub LInks: 
+>
+> - [Anna](https://github.com/acdodd17 "Anna's Profile")
+> - [Austin](https://github.com/aucoats "Austin's Profile")
+> - [Katelyn](https://github.com/kerbunker "Katelyn's Profile")
+> - [Kris](https://github.com/KrisSmith7 "Kris' Profile")
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
