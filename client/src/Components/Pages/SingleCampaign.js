@@ -6,6 +6,7 @@ import Auth from '../../utils/auth';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_CAMPAIGN, QUERY_CAMPAIGNS } from '../../utils/queries';
 import { ADD_PLAYER, DELETE_CAMPAIGN } from '../../utils/mutations';
+import addIcon from "../../assets/add.svg"
 
 const SingleCampaign = () => {
   const { id: campaignId } = useParams();
@@ -109,7 +110,9 @@ const SingleCampaign = () => {
               <tbody>
                 <tr class="bg-turq/25 text-white border-b">
               <td class="px-6 py-4 whitespace-nowrap font-medium">
-                  <button onClick={() => handleClick(campaign._id)}>+</button>
+                  <button onClick={() => handleClick(campaign._id)}>
+                    <img src={addIcon}/>
+                    </button>
                   </td>
               <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
