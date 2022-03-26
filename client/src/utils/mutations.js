@@ -26,6 +26,16 @@ export const ADD_USER = gql `
     }
 `;
 
+// update user profile with image and bio
+export const UPDATE_USER = gql `
+    mutation updateUser($image: String!, $bio: String!) {
+        updateUser(image: $image, bio: $bio){
+            _id
+            username
+        }
+    }
+`;
+
 export const ADD_POST = gql`
     mutation addPost($postText: String!) {
         addPost(postText: $postText) {

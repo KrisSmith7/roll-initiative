@@ -74,6 +74,32 @@ const resolvers = {
 
             return { token, user }; 
         },
+        updateUser: async (parent, { image, bio }, context) => {
+            // checks if the user is logged in
+            if (context.user) {
+                // retrieves the user by Id
+                const foundUser = await User.findById(
+                    { _id: _id }
+                );
+                // checks that the logged in user matches the user profile
+                if (context.user.username === foundUser.username) {
+                    // updates the user with the given input
+                    const updatedUser = await User.findOneAndUpdate(
+                        { _id: _id },
+                        { image },
+                        { bio },
+                        { new: true, runValidators: true}
+                    );
+                    
+                    return updatedUser;
+                } else {
+                    throw new Error("This profile must belong to you in order to update it!");
+                };
+                
+            }
+
+            throw new AuthenticationError("You need to be logged in!");
+        },
         addPost: async (parent, args, context) => {
             // checks that the user is logged in
             if (context.user) {

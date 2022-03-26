@@ -34,28 +34,28 @@ function Campaigns({ campaigns }) {
 
   return (
 
-                    <div class="md:flex md:flex-col md:items-center w-full">
-    <div class="w-full py-2 sm:px-6 lg:px-8">
-      <div class="text-white flex justify-center">
-        <table class="w-11/12 table-auto">
-          <thead class="bg-charcoal text-white border-b">
+                    <div className="md:flex md:flex-col md:items-center w-full">
+    <div className="w-full py-2 sm:px-6 lg:px-8">
+      <div className="text-white flex justify-center">
+        <table className="w-11/12 table-auto">
+          <thead className="bg-charcoal text-white border-b">
             <tr>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left hidden">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left hidden">
                 Request to Join
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                 Campaign Name
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                 Description
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                 Setting
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                 DM
               </th>
-              <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+              <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                 Players
               </th>
             </tr>
@@ -63,29 +63,29 @@ function Campaigns({ campaigns }) {
           <tbody>
                     {campaigns.map(campaign => {
                         return (
-                            <tr key={campaign._id} class="bg-turq/25 text-white border-b">
-              <td class="px-6 py-4 whitespace-nowrap font-medium hidden">
+                            <tr key={campaign._id} className="bg-turq/25 text-white border-b">
+              <td className="px-6 py-4 whitespace-nowrap font-medium hidden">
                   <button onClick={() => handleClick(campaign._id)}>
                       <img src={addIcon}/>
                       </button>
                   </td>
-              <td class="font-light font-macondo md:px-6 md:py-4 whitespace-pre-wrap">
+              <td className="font-light font-macondo md:px-6 md:py-4 whitespace-pre-wrap">
               <span className="pr-2 font-semibold md:hidden">Name:</span><Link to={`/campaign/${campaign._id}`}>
                   {campaign.campaignName}
                 </Link>
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-pre-wrap">
               <span className="pr-2 font-semibold md:hidden">Description:</span><br className="md:hidden"/>{campaign.description}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
               <span className="pr-2 font-semibold md:hidden">Setting:</span>{campaign.setting}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
                 <Link to={`/profile/${campaign.username}`}>
                 <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username ? `${campaign.username}` : 'you!' }
                 </Link>
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
               <span className="pr-2 font-semibold md:hidden">Players:</span>{campaign.playerCount}
               </td>
             </tr>

@@ -119,68 +119,68 @@ const SingleCampaign = () => {
       <div className='flex justify-center mt-10'>
         <Link to="/campaigns" className="form-btn font-bold mt-5 bg-turq/25 text-white"> ← Back to All Campaigns </Link>
       </div>
-      <div class="md:flex md:flex-col md:items-center w-full">
-        <div class="w-full py-2 sm:px-6 lg:px-8">
-          <div class="text-white">
-            <table class="w-full table-auto">
-              <thead class="bg-charcoal text-white border-b">
+      <div className="md:flex md:flex-col md:items-center w-full">
+        <div className="w-full py-2 sm:px-6 lg:px-8">
+          <div className="text-white">
+            <table className="w-full table-auto">
+              <thead className="bg-charcoal text-white border-b">
                 <tr>
-                {showAdd && <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                {showAdd && <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     Request to Join
                   </th>}
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                  <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     Campaign Name
                   </th>
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                  <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     Description
                   </th>
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                  <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     Setting
                   </th>
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                  <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     DM
                   </th>
-                  <th scope="col" aria-label="campaign-data" class="text-sm font-medium text-white px-6 py-4 text-left">
+                  <th scope="col" aria-label="campaign-data" className="text-sm font-medium text-white px-6 py-4 text-left">
                     Players
                   </th>
                 </tr>
               </thead>
               { idRedirect ? (<Redirect push to="/campaigns" />) : null }
               <tbody>
-                <tr class="bg-turq/25 text-white border-b">
-              {showAdd && <td class="px-6 py-4 whitespace-nowrap font-medium">
+                <tr className="bg-turq/25 text-white border-b">
+              {showAdd && <td className="px-6 py-4 whitespace-nowrap font-medium">
                   <button onClick={() => handleClick(campaign._id)}>
                     <img src={addIcon} alt="add icon"/>
                     </button>
                   </td> }
-              <td class="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light font-macondo md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.campaignName}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-pre-wrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-pre-wrap">
                 {campaign.description}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.setting}
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
                 <Link to={`/profile/${campaign.username}`}>
                 <span className="pr-2 font-semibold md:hidden">DM:</span>{campaign.username ? `${campaign.username}` : 'you!' }
                 </Link>
               </td>
-              <td class="font-light md:px-6 md:py-4 whitespace-nowrap">
+              <td className="font-light md:px-6 md:py-4 whitespace-nowrap">
                 {campaign.playerCount}
               </td>
               </tr>
               </tbody>
             </table>
             {campaign.players.length > 0 &&
-            <table class="w-full table-auto">
-              <thead class="bg-charcoal text-white border-b">
+            <table className="w-full table-auto">
+              <thead className="bg-charcoal text-white border-b">
                 <tr>
-                  <th scope="col" aria-label="player-data" class="text-sm font-medium text-white px-6 py-4 text-center">
+                  <th scope="col" aria-label="player-data" className="text-sm font-medium text-white px-6 py-4 text-center">
                     Player Username
                   </th>
-                  <th scope="col" aria-label="player-data" class="text-sm font-medium text-white px-6 py-4 text-center">
+                  <th scope="col" aria-label="player-data" className="text-sm font-medium text-white px-6 py-4 text-center">
                     Player Character Count
                   </th>
                 </tr>
@@ -189,13 +189,13 @@ const SingleCampaign = () => {
               <tbody>
                 {campaign.players.map(player => {
                   return (
-                    <tr key={player._id} class="bg-turq/25 text-white border-b">
-                      <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
+                    <tr key={player._id} className="bg-turq/25 text-white border-b">
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-center">
                         <Link to={`/profile/${player.username}`}>
                           {player.username}
                         </Link>
                       </td>
-                      <td class="px-6 py-4 whitespace-nowrap font-medium text-center">
+                      <td className="px-6 py-4 whitespace-nowrap font-medium text-center">
                         {player.characterCount}
                       </td>
                     </tr>

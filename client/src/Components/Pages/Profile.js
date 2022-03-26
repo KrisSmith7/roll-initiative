@@ -11,9 +11,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME, QUERY_USER } from '../../utils/queries';
 import Auth from '../../utils/auth'; 
 import Die from "../../assets/socialrolls_logo.png";
-// import EditProfile from "../EditProfile";
+import EditProfile from "../EditProfile";
 
-function Profile (props){
+function Profile (){
 
     const { username: userParam } = useParams(); 
 
@@ -37,6 +37,10 @@ function Profile (props){
     const handleCampaignClose = () => setShowCampaignModal(false);
     const handleCampaignShow = () => setShowCampaignModal(true);
 
+    const [showEdit, setShowEdit] = useState(false);
+    const handleCloseEdit = () => setShowEdit(false);
+    const handleEdit = () => setShowEdit(true);
+
     if (Auth.loggedIn() && Auth.getProfile().data.username === userParam ) {
         // isMe = true; 
         // unnecessary to redirect to /profile with our functionality 
@@ -58,18 +62,24 @@ function Profile (props){
        <div className="flex justify-center mt-10">
            <div className="w-full md:w-4/5">
                 <div className=" flex user-profile bg-gradient-to-b from-charcoal/[.35] items-center">
-                        <img className="p-4 w-72 ml-10" src={Die} alt="profile-img"></img>
-                        <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
-                        {/* <button className='w-50 text-slate bg-turq/75 rounded-md mt-5' onClick={handleEdit}> ✏️ Edit Profile</button> */}
-                        {/* <Modal 
+                        <img className="p-4 w-72 ml-10" src={ user.image ? `${user.image}` : Die } alt="profile-img"></img>
+                        <div className="flex flex-col">
+                            <h2 className="text-5xl text-slate font-antiqua capitalize"> {user.username ? `${user.username}'s` : 'your'} profile </h2>
+                            <p className="text-sienna bg-white/50 ">{user.bio ? `${user.bio}` : ''}</p>
+                            {Auth.loggedIn() && <div className="flex justify-center mt-5">
+                                <button className='w-6/12 text-slate bg-turq/75 rounded-md' onClick={handleEdit}> ✏️ Edit Profile</button> 
+                            </div>}
+                        </div>
+                        
+                        <Modal 
                             size="lg"
                             centered
                             show={showEdit}
                             onHide={handleCloseEdit}
                             ClassName="modal"
                         >
-                            <EditProfile handleCloseEdit={handleCloseEdit}/>
-                        </Modal> */}
+                            <EditProfile handleCloseEdit={handleCloseEdit} bio={user.bio}/>
+                        </Modal> 
                 </div>
 
                 <Tab.Container defaultActiveKey="characters" className="flex justify-evenly w-75">

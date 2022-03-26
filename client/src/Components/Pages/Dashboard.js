@@ -25,7 +25,7 @@ function Dashboard() {
         <SiteTitle />
       </div>
       <div className="bg-sienna pt-12 lg:pt-24">
-        <div className="bg-slate relative h-full w-full lg:border-t-4 ">
+        <div className="bg-slate relative h-screen w-full lg:border-t-4 ">
           <img
             src={stockImg}
             className="absolute h-full w-full object-cover opacity-75"
