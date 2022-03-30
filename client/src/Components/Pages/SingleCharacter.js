@@ -151,16 +151,16 @@ function SingleCharacter() {
             <div className='flex justify-center'>
                 <Link to="/profile" className='text-slate font-bold my-5 text-3xl md:text-4xl'> ← Back to Profile </Link>
             </div>
-            <Page> 
+            <Page className='flex flex-col items-center py-4 md:block'> 
                 <PageTitle className='capitalize'>{character.name}</PageTitle>
-                <Note className='flex flex-col text-xl text-center'> 
+                <Note className='flex flex-col text-xl text-center h-4/6 my-2'> 
                     <h1>Class</h1><input className='bg-inherit text-m w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.class} name="class" onBlur={characterChangeHandler}></input>
                     <h1>Race</h1><input className='bg-inherit w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.race} name="race" onBlur={characterChangeHandler}></input>
                     <h1>Level</h1><input className='bg-inherit w-3/5 m-auto px-5 pt-2 pb-3 shadow-lg' defaultValue={character.level} name="level" onBlur={characterChangeHandler}></input>
                     <h1>Background</h1><input className='bg-inherit w-3/5 m-auto p-1 pt-2 pb-3 shadow-lg' defaultValue={character.background} name="background" onBlur={characterChangeHandler}></input>
                     <h1>Bio</h1> <textarea  className='bg-inherit w-max m-auto pl-2 overflow-auto shadow-lg' defaultValue={character.bio} onBlur={characterChangeHandler}></textarea>
                 </Note>
-                <StatBlock className='flex flex-col text-xl text-center'>
+                <StatBlock className='flex flex-col text-xl text-center h-4/6'>
                     <h1>Strength</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.str} name='str' onBlur={characterChangeHandler}></input>
                     <h1>Dexterity</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.dex} name='dex' onBlur={characterChangeHandler}></input>
                     <h1>Constitution</h1><input  className='bg-inherit w-1/2 m-auto px-5 pt-2 pb-3 shadow-lg'defaultValue={character.con} name='con' onBlur={characterChangeHandler}></input>
